@@ -2,11 +2,13 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
 const screenshots = [
-  ...Array.from({ length: 10 }, (_, i) => `/screenshots/${i + 1}.png`),
-  '/screenshots/applehealth-screen.png',
-  '/screenshots/haptics.png',
-  '/screenshots/home-widgets.png'
+  ...Array.from({ length: 10 }, (_, i) => asset(`screenshots/${i + 1}.png`)),
+  asset('screenshots/applehealth-screen.png'),
+  asset('screenshots/haptics.png'),
+  asset('screenshots/home-widgets.png')
 ];
 
 const CTAButton = ({ href, text, className = "" }: { href: string, text: string, className?: string }) => (
@@ -62,7 +64,7 @@ export default function App() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full px-6 py-4 md:px-10 md:py-5 flex justify-between items-center z-50 bg-black/30 backdrop-blur-xl border-b border-white/10 shadow-sm">
         <div className="flex items-center gap-3">
-          <img src="/screenshots/logo.webp" alt="Luma Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+          <img src={asset('screenshots/logo.webp')} alt="Luma Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
           <div className="font-bold text-2xl tracking-tighter">LUMA.</div>
         </div>
         <a href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" target="_blank" rel="noopener noreferrer" className="font-mono text-xs uppercase tracking-widest hover:text-[#d8d628] transition-colors flex items-center gap-2">
@@ -219,44 +221,44 @@ export default function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10 border-b border-white/10">
           <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src="/screenshots/applewatch-icon.png" alt="Apple Watch Icon" className="w-48 h-16 object-contain object-left group-hover:scale-110 transition-transform duration-500 invert origin-left" />
+              <img src={asset('screenshots/applewatch-icon.png')} alt="Apple Watch Icon" className="w-48 h-16 object-contain object-left group-hover:scale-110 transition-transform duration-500 invert origin-left" />
               <h4 className="text-3xl font-bold tracking-tight">Apple Watch</h4>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Standalone sessions directly from your wrist. Leave the phone behind.</p>
             </div>
             <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-20 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
-              <img src="/screenshots/watch-screen.png" alt="Apple Watch" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
+              <img src={asset('screenshots/watch-screen.png')} alt="Apple Watch" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </div>
           <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src="/screenshots/liveactivity-icon.png" alt="Widgets Icon" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
+              <img src={asset('screenshots/liveactivity-icon.png')} alt="Widgets Icon" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
               <h4 className="text-3xl font-bold tracking-tight">Widgets & Live Activities</h4>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Track your session on the Lock Screen and customize your Home Screen with beautiful iOS widgets.</p>
             </div>
             <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-20 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
-              <img src="/screenshots/home-widgets.png" alt="Widgets" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
+              <img src={asset('screenshots/home-widgets.png')} alt="Widgets" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10">
           <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src="/screenshots/ah-icon.png" alt="Apple Health Icon" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
+              <img src={asset('screenshots/ah-icon.png')} alt="Apple Health Icon" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
               <h4 className="text-3xl font-bold tracking-tight">Apple Health</h4>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Seamlessly sync your mindful minutes and heart rate data.</p>
             </div>
             <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-20 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
-              <img src="/screenshots/applehealth-screen.png" alt="Apple Health" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
+              <img src={asset('screenshots/applehealth-screen.png')} alt="Apple Health" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </div>
           <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src="/screenshots/haptics-icon.png" alt="Haptics Icon" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
+              <img src={asset('screenshots/haptics-icon.png')} alt="Haptics Icon" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
               <h4 className="text-3xl font-bold tracking-tight">Haptics</h4>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Feel every breath with custom-designed haptic feedback patterns.</p>
             </div>
             <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-20 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
-              <img src="/screenshots/haptics.png" alt="Haptics" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
+              <img src={asset('screenshots/haptics.png')} alt="Haptics" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </div>
         </div>
@@ -287,8 +289,8 @@ export default function App() {
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           className="flex whitespace-nowrap text-[15vw] font-bold tracking-tighter leading-none uppercase items-center"
         >
-          <span className="pr-[4vw] flex items-center gap-[4vw]">Free Forever <img src="/screenshots/logo.webp" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/> Get Luma <img src="/screenshots/logo.webp" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/></span>
-          <span className="pr-[4vw] flex items-center gap-[4vw]">Free Forever <img src="/screenshots/logo.webp" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/> Get Luma <img src="/screenshots/logo.webp" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/></span>
+          <span className="pr-[4vw] flex items-center gap-[4vw]">Free Forever <img src={asset('screenshots/logo.webp')} className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/> Get Luma <img src={asset('screenshots/logo.webp')} className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/></span>
+          <span className="pr-[4vw] flex items-center gap-[4vw]">Free Forever <img src={asset('screenshots/logo.webp')} className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/> Get Luma <img src={asset('screenshots/logo.webp')} className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/></span>
         </motion.div>
 
         <div className="absolute bottom-6 w-full px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-xs font-bold text-[#0012da]">

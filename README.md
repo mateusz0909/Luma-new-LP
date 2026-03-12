@@ -1,20 +1,55 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# LUMA Landing Page
 
-# Run and deploy your AI Studio app
+Landing page for LUMA, built with React and Vite.
 
-This contains everything you need to run your app locally.
+## Stack
 
-View your app in AI Studio: https://ai.studio/apps/60f980eb-85c9-408c-97b0-6af71a3920bc
+- React 19
+- Vite
+- Tailwind CSS
+- Motion
 
-## Run Locally
+## Local Development
 
-**Prerequisites:**  Node.js
+Requirements:
 
+- Node.js 20+
+- npm
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Run locally:
+
+```bash
+npm install
+npm run dev
+```
+
+Default dev server:
+
+- http://localhost:3000
+
+## Production Build
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Deploying To Vercel
+
+This project is a standard Vite app, so Vercel can build it without extra configuration.
+
+Recommended settings:
+
+- Build command: `npm run build`
+- Output directory: `dist`
+
+## Asset Paths
+
+Static images are served from `public/screenshots`.
+
+Do not hardcode public asset URLs with a leading slash like `/screenshots/...` when the app may be deployed under a non-root base path. In this project, asset URLs are resolved through `import.meta.env.BASE_URL`, which keeps images and favicon paths working correctly after deployment.
