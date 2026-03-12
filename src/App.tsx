@@ -237,7 +237,7 @@ export default function App() {
               <h4 className="text-3xl font-bold tracking-tight">Widgets & Live Activities</h4>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Track your session on the Lock Screen and customize your Home Screen with beautiful iOS widgets.</p>
             </div>
-            <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-20 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
+            <div className="absolute -bottom-24 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-20 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
               <img src={asset('screenshots/home-widgets.png')} alt="Widgets" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </div>
