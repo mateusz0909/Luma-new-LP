@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import { ArrowRight, Apple, Activity, Wind, BarChart3 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const screenshots = [
   ...Array.from({ length: 10 }, (_, i) => `/screenshots/${i + 1}.png`),
@@ -8,6 +8,22 @@ const screenshots = [
   '/screenshots/haptics.png',
   '/screenshots/homeWidgets.png'
 ];
+
+const CTAButton = ({ href, text, className = "" }: { href: string, text: string, className?: string }) => (
+  <a 
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={`group relative inline-flex items-center gap-6 rounded-full p-2 pr-8 bg-white/5 border border-white/10 backdrop-blur-xl transition-all duration-700 hover:bg-white hover:border-white hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:-translate-y-1 ${className}`}
+  >
+    <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-full bg-[#d8d628] text-black transition-all duration-700 group-hover:scale-90 group-hover:bg-black group-hover:text-white">
+      <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.87,0,0.13,1)]" />
+    </div>
+    <span className="relative z-10 font-mono text-xs sm:text-sm uppercase tracking-[0.2em] text-white group-hover:text-black transition-colors duration-700 font-bold">
+      {text}
+    </span>
+  </a>
+);
 
 const PhoneFrame = ({ children }: { children: React.ReactNode }) => (
   <div className="relative w-[280px] md:w-[320px] aspect-[1170/2532] rounded-[48px] p-2 bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-3xl border border-white/10 shadow-[0_0_100px_rgba(0,18,218,0.4)]">
@@ -44,12 +60,12 @@ export default function App() {
     <div className="bg-black text-white selection:bg-[#d8d628] selection:text-black font-sans min-h-screen">
       
       {/* Navigation */}
-      <nav className="fixed top-0 w-full p-6 md:p-10 flex justify-between items-center z-50 mix-blend-difference pointer-events-none">
-        <div className="pointer-events-auto flex items-center gap-3">
+      <nav className="fixed top-0 w-full px-6 py-4 md:px-10 md:py-5 flex justify-between items-center z-50 bg-black/30 backdrop-blur-xl border-b border-white/10 shadow-sm">
+        <div className="flex items-center gap-3">
           <img src="/screenshots/logo.webp" alt="Luma Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
           <div className="font-bold text-2xl tracking-tighter">LUMA.</div>
         </div>
-        <a href="#" className="font-mono text-xs uppercase tracking-widest hover:text-[#d8d628] transition-colors flex items-center gap-2 pointer-events-auto">
+        <a href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" target="_blank" rel="noopener noreferrer" className="font-mono text-xs uppercase tracking-widest hover:text-[#d8d628] transition-colors flex items-center gap-2">
           Download <ArrowRight className="w-4 h-4" />
         </a>
       </nav>
@@ -68,13 +84,22 @@ export default function App() {
           className="absolute w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full bg-[#d8d628] blur-[100px] md:blur-[150px] mix-blend-screen"
         />
         
-        <div className="z-10 text-center mix-blend-difference flex flex-col items-center w-full px-4">
-          <h1 className="text-[22vw] md:text-[18vw] leading-[0.75] font-bold tracking-tighter uppercase">
-            Breathe.
-          </h1>
-          <p className="font-serif italic text-2xl md:text-5xl mt-8 md:mt-12 text-white/90">
-            The Iceman method, reimagined.
-          </p>
+        <div className="z-10 flex flex-col items-center w-full px-4">
+          <div className="text-center mix-blend-difference mb-12">
+            <h1 className="text-[22vw] md:text-[18vw] leading-[0.75] font-bold tracking-tighter uppercase text-white">
+              Breathe.
+            </h1>
+            <p className="font-serif italic text-2xl md:text-5xl mt-8 md:mt-12 text-white/90">
+              The Iceman method, reimagined.
+            </p>
+          </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 1 }}
+          >
+            <CTAButton href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" text="Download for iOS" />
+          </motion.div>
         </div>
       </section>
 
@@ -194,7 +219,7 @@ export default function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10 border-b border-white/10">
           <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <Apple className="w-12 h-12 text-[#d8d628] group-hover:scale-110 transition-transform duration-500" />
+              <img src="/screenshots/applewatchicon.png" alt="Apple Watch Icon" className="w-48 h-16 object-contain object-left group-hover:scale-110 transition-transform duration-500 invert origin-left" />
               <h4 className="text-3xl font-bold tracking-tight">Apple Watch</h4>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Standalone sessions directly from your wrist. Leave the phone behind.</p>
             </div>
@@ -204,9 +229,9 @@ export default function App() {
           </div>
           <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <Activity className="w-12 h-12 text-[#d8d628] group-hover:scale-110 transition-transform duration-500" />
-              <h4 className="text-3xl font-bold tracking-tight">Live Activities</h4>
-              <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Track your session on the Lock Screen with beautiful iOS widgets.</p>
+              <img src="/screenshots/liveactivityIcon.png" alt="Widgets Icon" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
+              <h4 className="text-3xl font-bold tracking-tight">Widgets & Live Activities</h4>
+              <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Track your session on the Lock Screen and customize your Home Screen with beautiful iOS widgets.</p>
             </div>
             <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-20 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
               <img src="/screenshots/homeWidgets.png" alt="Widgets" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
@@ -216,7 +241,7 @@ export default function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10">
           <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <Activity className="w-12 h-12 text-[#d8d628] group-hover:scale-110 transition-transform duration-500" />
+              <img src="/screenshots/AHicon.png" alt="Apple Health Icon" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
               <h4 className="text-3xl font-bold tracking-tight">Apple Health</h4>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Seamlessly sync your mindful minutes and heart rate data.</p>
             </div>
@@ -226,7 +251,7 @@ export default function App() {
           </div>
           <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <Wind className="w-12 h-12 text-[#d8d628] group-hover:scale-110 transition-transform duration-500" />
+              <img src="/screenshots/hapticsIcon.png" alt="Haptics Icon" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
               <h4 className="text-3xl font-bold tracking-tight">Haptics</h4>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Feel every breath with custom-designed haptic feedback patterns.</p>
             </div>
@@ -237,6 +262,24 @@ export default function App() {
         </div>
       </section>
 
+      {/* Pre-Footer CTA */}
+      <section className="py-32 px-6 flex flex-col items-center justify-center text-center border-t border-white/10 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0012da]/10 pointer-events-none" />
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-20%" }}
+          transition={{ duration: 0.8 }}
+          className="z-10 flex flex-col items-center"
+        >
+          <h2 className="text-5xl md:text-8xl font-bold tracking-tighter mb-6">Start breathing.</h2>
+          <p className="text-xl md:text-2xl text-white/50 font-serif italic mb-12 max-w-xl">
+            Join thousands of others optimizing their mind and body. No paywalls. Free forever.
+          </p>
+          <CTAButton href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" text="Get Luma Free" />
+        </motion.div>
+      </section>
+
       {/* Massive Marquee Footer */}
       <footer className="bg-[#d8d628] text-[#0012da] overflow-hidden pt-32 pb-24 flex flex-col items-center justify-center relative">
         <motion.div
@@ -244,8 +287,8 @@ export default function App() {
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           className="flex whitespace-nowrap text-[15vw] font-bold tracking-tighter leading-none uppercase items-center"
         >
-          <span className="pr-16 flex items-center gap-8">Free Forever <img src="/screenshots/logo.webp" className="w-[10vw] h-[10vw] object-contain" alt="Logo"/> Get Luma <img src="/screenshots/logo.webp" className="w-[10vw] h-[10vw] object-contain" alt="Logo"/></span>
-          <span className="pr-16 flex items-center gap-8">Free Forever <img src="/screenshots/logo.webp" className="w-[10vw] h-[10vw] object-contain" alt="Logo"/> Get Luma <img src="/screenshots/logo.webp" className="w-[10vw] h-[10vw] object-contain" alt="Logo"/></span>
+          <span className="pr-[4vw] flex items-center gap-[4vw]">Free Forever <img src="/screenshots/logo.webp" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/> Get Luma <img src="/screenshots/logo.webp" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/></span>
+          <span className="pr-[4vw] flex items-center gap-[4vw]">Free Forever <img src="/screenshots/logo.webp" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/> Get Luma <img src="/screenshots/logo.webp" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/></span>
         </motion.div>
 
         <div className="absolute bottom-6 w-full px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-xs font-bold text-[#0012da]">
