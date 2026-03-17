@@ -6,11 +6,41 @@ const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
 
 const logoSrc = asset('screenshots/logo.webp');
 
+const appearanceSettings = asset('screenshots/appearance-settings.jpeg');
+
+const appearanceThemes = [
+  {
+    name: 'Aurora Lab',
+    description: 'Electric cyan glow with vivid magenta accents for a sharper night mode.',
+    image: asset('screenshots/Aurora Lab.jpeg'),
+    accent: '#49cfff'
+  },
+  {
+    name: 'Plum Midnight',
+    description: 'A softer violet palette that keeps the interface dark but less severe.',
+    image: asset('screenshots/Plum midnight.jpeg'),
+    accent: '#d18dff'
+  },
+  {
+    name: 'Ember Noir',
+    description: 'Warm ember highlights for a darker, richer visual mood during sessions.',
+    image: asset('screenshots/ember.jpeg'),
+    accent: '#ff9a5c'
+  },
+  {
+    name: 'Forest Night',
+    description: 'A calmer green look for people who want less glow and more depth.',
+    image: asset('screenshots/green.jpeg'),
+    accent: '#77d78a'
+  }
+];
+
 const screenshots = [
   ...Array.from({ length: 10 }, (_, i) => asset(`screenshots/${i + 1}.png`)),
   asset('screenshots/applehealth-screen.png'),
   asset('screenshots/haptics.png'),
-  asset('screenshots/home-widgets.png')
+  asset('screenshots/home-widgets.png'),
+  ...appearanceThemes.map((theme) => theme.image)
 ];
 
 const CTAButton = ({ href, text, className = "" }: { href: string, text: string, className?: string }) => (
@@ -215,6 +245,54 @@ export default function App() {
               </div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      <section className="border-t border-white/10 py-24 md:py-32 overflow-hidden bg-[radial-gradient(circle_at_top,#ffffff0d,transparent_35%),linear-gradient(180deg,#000000_0%,#050814_100%)]">
+        <div className="px-6 md:px-20 max-w-7xl mx-auto">
+          <div className="max-w-3xl mb-14 md:mb-20">
+            <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 inline-flex">NEW / APPEARANCE</span>
+            <h2 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.95]">Change the mood, keep the flow.</h2>
+            <p className="mt-6 text-xl md:text-2xl text-white/55 font-serif italic leading-relaxed">Luma now lets you switch the app's visual theme without touching your practice. Pick the atmosphere that fits the session.</p>
+          </div>
+
+          <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-10 md:gap-12 items-start">
+            <div className="relative rounded-[2rem] border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8 md:p-10 overflow-hidden">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#d8d62826,transparent_35%)] pointer-events-none" />
+              <div className="relative z-10 flex flex-col gap-8">
+                <div>
+                  <div className="text-white/40 font-mono text-xs tracking-[0.2em] uppercase mb-4">Theme Settings</div>
+                  <h3 className="text-3xl md:text-5xl font-bold tracking-tighter leading-none">One tap, completely different feel.</h3>
+                </div>
+                <div className="self-center xl:self-start">
+                  <PhoneFrame>
+                    <img src={appearanceSettings} alt="Appearance settings" className="w-full h-full object-cover" />
+                  </PhoneFrame>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+              {appearanceThemes.map((theme) => (
+                <div
+                  key={theme.name}
+                  className="relative min-h-[520px] rounded-[2rem] border border-white/10 overflow-hidden bg-white/[0.03] group"
+                  style={{ background: `radial-gradient(circle at top left, ${theme.accent}22, transparent 35%), linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)` }}
+                >
+                  <div className="relative z-10 p-7 md:p-8 max-w-[70%]">
+                    <div className="w-3 h-3 rounded-full mb-5" style={{ backgroundColor: theme.accent }} />
+                    <h3 className="text-3xl md:text-4xl font-bold tracking-tight leading-none">{theme.name}</h3>
+                    <p className="mt-4 text-base md:text-lg text-white/60 font-serif italic leading-relaxed">{theme.description}</p>
+                  </div>
+                  <div className="absolute right-[-6%] bottom-[-10%] w-[62%] md:w-[58%] rotate-[12deg] group-hover:rotate-[7deg] transition-transform duration-700 ease-out drop-shadow-2xl">
+                    <PhoneFrame>
+                      <img src={theme.image} alt={`${theme.name} theme`} className="w-full h-full object-cover" />
+                    </PhoneFrame>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
