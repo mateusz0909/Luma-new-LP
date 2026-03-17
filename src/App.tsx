@@ -39,8 +39,7 @@ const screenshots = [
   ...Array.from({ length: 10 }, (_, i) => asset(`screenshots/${i + 1}.png`)),
   asset('screenshots/applehealth-screen.png'),
   asset('screenshots/haptics.png'),
-  asset('screenshots/home-widgets.png'),
-  ...appearanceThemes.map((theme) => theme.image)
+  asset('screenshots/home-widgets.png')
 ];
 
 const CTAButton = ({ href, text, className = "" }: { href: string, text: string, className?: string }) => (
