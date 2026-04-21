@@ -1,55 +1,26 @@
-# LUMA Landing Page
+# Luma New Landing Page
 
-Landing page for LUMA, built with React and Vite.
+> **Status:** Landing page prototype
 
-## Stack
+A new landing-page direction for Luma Breathwork, designed to sharpen product positioning and improve conversion through clearer messaging and stronger presentation.
 
-- React 19
-- Vite
-- Tailwind CSS
-- Motion
+## What This Repo Shows
 
-## Local Development
+- Clear positioning and conversion-focused structure instead of a generic one-page layout.
+- Strong emphasis on presentation, messaging hierarchy, and a polished first impression.
+- Useful as a portfolio example of translating a product idea into a market-facing page.
 
-Requirements:
+## Tech
 
-- Node.js 20+
-- npm
+React, Vite, TypeScript, Tailwind CSS, Express
 
-Run locally:
+## Run Locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Default dev server:
+## Notes
 
-- http://localhost:3000
-
-## Production Build
-
-```bash
-npm run build
-```
-
-Preview the production build locally:
-
-```bash
-npm run preview
-```
-
-## Deploying To Vercel
-
-This project is a standard Vite app, so Vercel can build it without extra configuration.
-
-Recommended settings:
-
-- Build command: `npm run build`
-- Output directory: `dist`
-
-## Asset Paths
-
-Static images are served from `public/screenshots`.
-
-Do not hardcode public asset URLs with a leading slash like `/screenshots/...` when the app may be deployed under a non-root base path. In this project, asset URLs are resolved through `import.meta.env.BASE_URL`, which keeps images and favicon paths working correctly after deployment.
+This repository is kept public as part of my product and marketing portfolio.
