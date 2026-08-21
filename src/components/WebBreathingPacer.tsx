@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Play, Volume2, VolumeX, RotateCcw, Sparkles, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Play, Volume2, VolumeX, RotateCcw, Sparkles, CheckCircle2, ChevronRight, Wind } from 'lucide-react';
 
 type WimHofPhase = 'idle' | 'breathing' | 'retention' | 'recovery' | 'round_complete';
 
@@ -16,184 +16,242 @@ export function WebBreathingPacer() {
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
   const [tempo, setTempo] = useState<'slow' | 'normal' | 'fast'>('normal');
 
-  // Timings in seconds
-  const timings = {
-    slow: { inhale: 2.4, exhale: 1.8 },
-    normal: { inhale: 1.9, exhale: 1.3 },
+  // Static tempo timings (seconds)
+  const tempoConfig = useMemo(() => ({
+    slow: { inhale: 2.2, exhale: 1.6 },
+    normal: { inhale: 1.8, exhale: 1.2 },
     fast: { inhale: 1.4, exhale: 1.0 }
-  }[tempo];
+  }), []);
 
-  // Audio Context Ref
+  const currentTiming = tempoConfig[tempo];
+
+  // Web Audio Context & High-End Acoustic Tibetan Singing Bowl Synth
   const audioCtxRef = useRef<AudioContext | null>(null);
 
-  const getAudioContext = useCallback(() => {
-    if (!audioCtxRef.current) {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      if (AudioCtx) {
-        audioCtxRef.current = new AudioCtx();
+  const initAudioContext = useCallback(() => {
+    try {
+      if (!audioCtxRef.current) {
+        const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+        if (AudioCtx) {
+          audioCtxRef.current = new AudioCtx();
+        }
       }
+      if (audioCtxRef.current && audioCtxRef.current.state === 'suspended') {
+        audioCtxRef.current.resume();
+      }
+    } catch {
+      // AudioContext unavailable
     }
-    if (audioCtxRef.current && audioCtxRef.current.state === 'suspended') {
-      audioCtxRef.current.resume();
-    }
-    return audioCtxRef.current;
   }, []);
 
-  // Safe sound synthesizer
-  const playTone = useCallback((freq: number, duration: number, gainVal: number = 0.15) => {
+  // Rich Organic Tibetan Singing Bowl Sound (Deep Warm Resonance, Low-pass Filtered, NO Tamagotchi beeps)
+  const playTibetanBowl = useCallback((baseFreq = 216, decay = 4.0, volume = 0.25) => {
     if (!soundEnabled) return;
     try {
-      const ctx = getAudioContext();
+      initAudioContext();
+      const ctx = audioCtxRef.current;
       if (!ctx) return;
 
       const now = ctx.currentTime;
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
 
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, now);
+      // Master output & Warm Lowpass Filter (eliminates all harsh digital high-pitch beeps)
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(900, now);
+      filter.Q.setValueAtTime(1.5, now);
 
-      gain.gain.setValueAtTime(0.0001, now);
-      gain.gain.exponentialRampToValueAtTime(gainVal, now + 0.04);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+      const masterGain = ctx.createGain();
+      masterGain.gain.setValueAtTime(volume, now);
 
-      osc.connect(gain);
-      gain.connect(ctx.destination);
+      filter.connect(masterGain);
+      masterGain.connect(ctx.destination);
 
-      osc.start(now);
-      osc.stop(now + duration + 0.1);
-    } catch {
-      // Audio context suppressed
-    }
-  }, [soundEnabled, getAudioContext]);
-
-  // Tibetan Singing Bowl Harmonic Chime
-  const playBowlGong = useCallback((baseFreq = 432) => {
-    if (!soundEnabled) return;
-    try {
-      const ctx = getAudioContext();
-      if (!ctx) return;
-
-      const now = ctx.currentTime;
-      // 3 Overtones for natural Tibetan bowl resonance
-      const partials = [
-        { freq: baseFreq, gain: 0.18, decay: 3.5 },
-        { freq: baseFreq * 2.0, gain: 0.08, decay: 2.2 },
-        { freq: baseFreq * 2.76, gain: 0.04, decay: 1.8 },
+      // Acoustic Tibetan Bowl Partials (Fundamental + Warm Overtones + Sub-bass)
+      const harmonics = [
+        { freq: baseFreq, gain: 0.7, d: decay },
+        { freq: baseFreq * 0.5, gain: 0.4, d: decay * 1.2 }, // Sub-bass body
+        { freq: baseFreq * 2.01, gain: 0.35, d: decay * 0.8 },
+        { freq: baseFreq * 2.76, gain: 0.18, d: decay * 0.6 },
+        { freq: baseFreq * 4.04, gain: 0.08, d: decay * 0.4 },
       ];
 
-      partials.forEach(({ freq, gain: gVal, decay }) => {
+      harmonics.forEach(({ freq, gain: g, d }) => {
         const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
+        const gainNode = ctx.createGain();
 
         osc.type = 'sine';
         osc.frequency.setValueAtTime(freq, now);
 
-        gain.gain.setValueAtTime(0.0001, now);
-        gain.gain.exponentialRampToValueAtTime(gVal, now + 0.03);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + decay);
+        // Soft smooth acoustic strike envelope (no sudden digital clicks)
+        gainNode.gain.setValueAtTime(0.0001, now);
+        gainNode.gain.exponentialRampToValueAtTime(g, now + 0.06);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, now + d);
 
-        osc.connect(gain);
-        gain.connect(ctx.destination);
+        osc.connect(gainNode);
+        gainNode.connect(filter);
 
         osc.start(now);
-        osc.stop(now + decay + 0.1);
+        osc.stop(now + d + 0.1);
       });
     } catch {
       // Audio suppressed
     }
-  }, [soundEnabled, getAudioContext]);
+  }, [soundEnabled, initAudioContext]);
 
-  // ==========================================
-  // PHASE 1: GUIDED POWER BREATHING LOOP
-  // ==========================================
+  // Gentle organic breath pulse chime
+  const playBreathChime = useCallback((isInhale: boolean) => {
+    if (!soundEnabled) return;
+    try {
+      initAudioContext();
+      const ctx = audioCtxRef.current;
+      if (!ctx) return;
+
+      const now = ctx.currentTime;
+      const freq = isInhale ? 288 : 216; // Warm subtle deep tones
+
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(600, now);
+
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.06, now + 0.08);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.6);
+
+      const osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now);
+
+      osc.connect(gain);
+      gain.connect(filter);
+      filter.connect(ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.7);
+    } catch {
+      // suppress
+    }
+  }, [soundEnabled, initAudioContext]);
+
+  // =========================================================
+  // ROBUST STATE MACHINE & BREATHING LOOP (Ref-Driven)
+  // =========================================================
+  const stateRef = useRef({
+    phase: 'idle' as WimHofPhase,
+    breath: 1,
+    totalBreaths: 30,
+    isInhaling: true,
+    timing: currentTiming,
+    timerId: null as ReturnType<typeof setTimeout> | null,
+  });
+
+  // Keep ref synchronized
+  stateRef.current.phase = phase;
+  stateRef.current.totalBreaths = totalBreaths;
+  stateRef.current.timing = currentTiming;
+
   useEffect(() => {
-    if (phase !== 'breathing') return;
+    if (phase !== 'breathing') {
+      if (stateRef.current.timerId) {
+        clearTimeout(stateRef.current.timerId);
+        stateRef.current.timerId = null;
+      }
+      return;
+    }
 
-    let breath = 1;
-    let inhaling = true;
-    let timerId: ReturnType<typeof setTimeout>;
-
+    stateRef.current.breath = 1;
+    stateRef.current.isInhaling = true;
     setBreathCount(1);
     setIsInhaling(true);
-    playTone(432, 0.4, 0.12); // Inhale chime
+    playTibetanBowl(216, 3.0, 0.2); // Start of round gong
 
-    const runStep = () => {
-      if (inhaling) {
-        // Was inhaling, now switch to exhale
-        inhaling = false;
+    const scheduleNext = () => {
+      if (stateRef.current.phase !== 'breathing') return;
+
+      const { isInhaling: currentlyInhaling, breath: currBreath, totalBreaths: maxBreaths, timing } = stateRef.current;
+
+      if (currentlyInhaling) {
+        // Switch to Exhale
+        stateRef.current.isInhaling = false;
         setIsInhaling(false);
-        playTone(324, 0.35, 0.08); // Exhale tone
-        timerId = setTimeout(runStep, timings.exhale * 1000);
+        playBreathChime(false);
+
+        stateRef.current.timerId = setTimeout(scheduleNext, timing.exhale * 1000);
       } else {
-        // Was exhaling, increment breath
-        breath += 1;
-        if (breath > totalBreaths) {
-          // Finished all breaths -> Move to Retention
+        // Exhale finished -> increment breath
+        const nextBreath = currBreath + 1;
+
+        if (nextBreath > maxBreaths) {
+          // Finished all 30 breaths -> Transition to Retention Hold
           setPhase('retention');
           setRetentionSec(0);
-          playBowlGong(432); // Resonant gong to signal breath hold
+          playTibetanBowl(216, 4.5, 0.35); // Deep singing bowl gong entering retention
           return;
         }
 
-        setBreathCount(breath);
-        inhaling = true;
+        stateRef.current.breath = nextBreath;
+        stateRef.current.isInhaling = true;
+        setBreathCount(nextBreath);
         setIsInhaling(true);
-        playTone(432, 0.4, 0.12);
-        timerId = setTimeout(runStep, timings.inhale * 1000);
+        playBreathChime(true);
+
+        stateRef.current.timerId = setTimeout(scheduleNext, timing.inhale * 1000);
       }
     };
 
-    timerId = setTimeout(runStep, timings.inhale * 1000);
+    stateRef.current.timerId = setTimeout(scheduleNext, currentTiming.inhale * 1000);
 
     return () => {
-      clearTimeout(timerId);
+      if (stateRef.current.timerId) {
+        clearTimeout(stateRef.current.timerId);
+        stateRef.current.timerId = null;
+      }
     };
-  }, [phase, totalBreaths, timings, playTone, playBowlGong]);
+  }, [phase, currentTiming, playTibetanBowl, playBreathChime]);
 
-  // ==========================================
-  // PHASE 2: RETENTION TIMER (UPWARD STOPWATCH)
-  // ==========================================
+  // =========================================================
+  // RETENTION STOPWATCH (Counts up accurately)
+  // =========================================================
   useEffect(() => {
     if (phase !== 'retention') return;
 
-    const startTime = performance.now();
+    const startTime = Date.now();
     const interval = setInterval(() => {
-      const elapsed = Math.floor((performance.now() - startTime) / 1000);
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
       setRetentionSec(elapsed);
-    }, 250);
+    }, 200);
 
     return () => clearInterval(interval);
   }, [phase]);
 
-  // ==========================================
-  // PHASE 3: RECOVERY HOLD (15S COUNTDOWN)
-  // ==========================================
+  // =========================================================
+  // RECOVERY COUNTDOWN (15s on full lungs)
+  // =========================================================
   useEffect(() => {
     if (phase !== 'recovery') return;
 
     setRecoverySecLeft(15);
-    playBowlGong(540); // Uplifting recovery chime
+    playTibetanBowl(288, 3.5, 0.3); // Warm uplifting chime
 
-    const startTime = performance.now();
+    const startTime = Date.now();
     const interval = setInterval(() => {
-      const elapsed = Math.floor((performance.now() - startTime) / 1000);
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
       const remaining = Math.max(0, 15 - elapsed);
       setRecoverySecLeft(remaining);
 
       if (remaining <= 0) {
         clearInterval(interval);
         setPhase('round_complete');
-        playBowlGong(864); // Completion harmonic chime
+        playTibetanBowl(432, 4.0, 0.3); // Harmonious completion bell
       }
-    }, 250);
+    }, 200);
 
     return () => clearInterval(interval);
-  }, [phase, playBowlGong]);
+  }, [phase, playTibetanBowl]);
 
-  // Handlers
+  // UI Handlers
   const handleStart = () => {
-    getAudioContext();
+    initAudioContext();
     setPhase('breathing');
   };
 
@@ -208,22 +266,27 @@ export function WebBreathingPacer() {
   };
 
   const handleReset = () => {
+    if (stateRef.current.timerId) {
+      clearTimeout(stateRef.current.timerId);
+      stateRef.current.timerId = null;
+    }
     setPhase('idle');
     setBreathCount(1);
+    setIsInhaling(true);
     setRetentionSec(0);
     setRecoverySecLeft(15);
   };
 
-  const formatTimer = (secs: number) => {
-    const m = Math.floor(secs / 60);
-    const s = secs % 60;
+  const formatTimer = (totalSeconds: number) => {
+    const m = Math.floor(totalSeconds / 60);
+    const s = totalSeconds % 60;
     return `${m}:${s < 10 ? '0' : ''}${s}`;
   };
 
   return (
     <div className="w-full max-w-4xl mx-auto p-6 md:p-12 rounded-[36px] bg-gradient-to-b from-white/10 to-white/[0.02] backdrop-blur-2xl border border-white/10 shadow-[0_0_100px_rgba(0,18,218,0.25)] flex flex-col items-center select-none">
       
-      {/* Header */}
+      {/* Top Badge & Header */}
       <div className="text-center mb-6">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono uppercase tracking-widest text-[#d8d628] mb-3">
           <Sparkles className="w-3.5 h-3.5" /> Wim Hof Method Session
@@ -236,9 +299,9 @@ export function WebBreathingPacer() {
         </p>
       </div>
 
-      {/* Round Pill & Settings */}
+      {/* Round Pill & Config Bar */}
       <div className="flex flex-wrap items-center justify-center gap-3 mb-6 font-mono text-xs">
-        <div className="px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-white font-bold">
+        <div className="px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-white font-bold tracking-wider">
           ROUND {round}
         </div>
 
@@ -277,48 +340,41 @@ export function WebBreathingPacer() {
         )}
       </div>
 
-      {/* Center Breathing Orb Container */}
+      {/* Breathing Arena */}
       <div className="relative w-72 h-72 md:w-88 md:h-88 flex items-center justify-center my-4">
         
-        {/* Dynamic Glow Aura */}
-        <motion.div
-          animate={{
-            scale: phase === 'breathing' ? (isInhaling ? 1.35 : 0.8) : phase === 'retention' ? 1.05 : phase === 'recovery' ? 1.25 : 0.9,
-            opacity: phase === 'idle' ? 0.2 : 0.6
-          }}
-          transition={{
-            duration: phase === 'breathing' ? (isInhaling ? timings.inhale : timings.exhale) : 1.2,
-            ease: 'easeInOut'
-          }}
-          className="absolute inset-0 rounded-full blur-3xl pointer-events-none"
+        {/* Ambient Glow */}
+        <div
+          className="absolute inset-0 rounded-full blur-3xl transition-all duration-1000 pointer-events-none"
           style={{
+            transform: phase === 'breathing' ? (isInhaling ? 'scale(1.3)' : 'scale(0.85)') : phase === 'retention' ? 'scale(1.05)' : phase === 'recovery' ? 'scale(1.25)' : 'scale(0.9)',
             backgroundColor:
               phase === 'retention'
                 ? 'rgba(73, 207, 255, 0.4)'
                 : phase === 'recovery'
                 ? 'rgba(216, 214, 40, 0.45)'
-                : 'rgba(0, 18, 218, 0.55)'
+                : 'rgba(0, 18, 218, 0.55)',
+            opacity: phase === 'idle' ? 0.25 : 0.65
           }}
         />
 
-        {/* Dynamic Orb */}
-        <motion.div
-          animate={{
-            scale:
-              phase === 'breathing'
-                ? (isInhaling ? 1.0 : 0.55)
-                : phase === 'recovery'
-                ? 1.05
-                : phase === 'retention'
-                ? 0.65
-                : 0.8
-          }}
-          transition={{
-            duration: phase === 'breathing' ? (isInhaling ? timings.inhale : timings.exhale) : 0.8,
-            ease: [0.45, 0.05, 0.55, 0.95]
-          }}
-          className="w-56 h-56 md:w-68 md:h-68 rounded-full border-2 border-white/40 flex flex-col items-center justify-center relative shadow-2xl backdrop-blur-md"
+        {/* Central Orb with Hardware-Accelerated Smooth CSS Easing */}
+        <div
+          className="w-56 h-56 md:w-68 md:h-68 rounded-full border-2 flex flex-col items-center justify-center relative shadow-2xl backdrop-blur-md transition-transform"
           style={{
+            transform:
+              phase === 'breathing'
+                ? (isInhaling ? 'scale(1.0)' : 'scale(0.62)')
+                : phase === 'recovery'
+                ? 'scale(1.05)'
+                : phase === 'retention'
+                ? 'scale(0.68)'
+                : 'scale(0.82)',
+            transitionDuration:
+              phase === 'breathing'
+                ? `${isInhaling ? currentTiming.inhale : currentTiming.exhale}s`
+                : '0.8s',
+            transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
             borderColor: phase === 'retention' ? '#49cfff' : phase === 'recovery' ? '#d8d628' : '#ffffff',
             boxShadow:
               phase === 'retention'
@@ -328,62 +384,54 @@ export function WebBreathingPacer() {
                 : '0 0 50px rgba(0, 18, 218, 0.4), inset 0 0 25px rgba(0, 18, 218, 0.3)'
           }}
         >
-          <AnimatePresence mode="wait">
-            
-            {/* 1. IDLE STATE */}
-            {phase === 'idle' && (
-              <motion.div key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-center">
-                <span className="text-xs font-mono uppercase tracking-widest text-white/50 block">READY</span>
-                <span className="text-2xl md:text-3xl font-bold tracking-tight text-white mt-1 block">Round {round}</span>
-                <span className="text-xs text-neutral-400 mt-1 block">{totalBreaths} Breaths</span>
-              </motion.div>
-            )}
+          {/* Phase Content */}
+          {phase === 'idle' && (
+            <div className="text-center">
+              <span className="text-xs font-mono uppercase tracking-widest text-white/50 block">READY</span>
+              <span className="text-2xl md:text-3xl font-bold tracking-tight text-white mt-1 block">Round {round}</span>
+              <span className="text-xs text-neutral-400 mt-1 block">{totalBreaths} Breaths</span>
+            </div>
+          )}
 
-            {/* 2. BREATHING STATE */}
-            {phase === 'breathing' && (
-              <motion.div key="breathing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-center">
-                <span className="text-lg md:text-xl font-bold tracking-wider text-white uppercase block">
-                  {isInhaling ? 'Fully In' : 'Let Go'}
-                </span>
-                <span className="text-4xl md:text-5xl font-mono font-bold mt-1 text-[#d8d628] block">
-                  {breathCount} <span className="text-lg text-white/40">/ {totalBreaths}</span>
-                </span>
-              </motion.div>
-            )}
+          {phase === 'breathing' && (
+            <div className="text-center">
+              <span className="text-lg md:text-xl font-bold tracking-wider text-white uppercase block transition-all">
+                {isInhaling ? 'Fully In' : 'Let Go'}
+              </span>
+              <span className="text-4xl md:text-5xl font-mono font-bold mt-1 text-[#d8d628] block">
+                {breathCount} <span className="text-lg text-white/40">/ {totalBreaths}</span>
+              </span>
+            </div>
+          )}
 
-            {/* 3. RETENTION STATE */}
-            {phase === 'retention' && (
-              <motion.div key="retention" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="text-center">
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#49cfff] block">RETENTION</span>
-                <span className="text-4xl md:text-6xl font-mono font-bold mt-1 text-white block">
-                  {formatTimer(retentionSec)}
-                </span>
-                <span className="text-[11px] text-neutral-400 mt-1 block">Hold on empty lungs</span>
-              </motion.div>
-            )}
+          {phase === 'retention' && (
+            <div className="text-center animate-in fade-in zoom-in duration-300">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#49cfff] block">RETENTION</span>
+              <span className="text-4xl md:text-6xl font-mono font-bold mt-1 text-white block">
+                {formatTimer(retentionSec)}
+              </span>
+              <span className="text-[11px] text-neutral-400 mt-1 block">Hold on empty lungs</span>
+            </div>
+          )}
 
-            {/* 4. RECOVERY STATE */}
-            {phase === 'recovery' && (
-              <motion.div key="recovery" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-center">
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#d8d628] block">RECOVERY INHALE</span>
-                <span className="text-4xl md:text-6xl font-mono font-bold mt-1 text-white block">
-                  {recoverySecLeft}s
-                </span>
-                <span className="text-[11px] text-neutral-400 mt-1 block">Hold full for 15s</span>
-              </motion.div>
-            )}
+          {phase === 'recovery' && (
+            <div className="text-center animate-in fade-in zoom-in duration-300">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#d8d628] block">RECOVERY INHALE</span>
+              <span className="text-4xl md:text-6xl font-mono font-bold mt-1 text-white block">
+                {recoverySecLeft}s
+              </span>
+              <span className="text-[11px] text-neutral-400 mt-1 block">Hold full for 15s</span>
+            </div>
+          )}
 
-            {/* 5. ROUND COMPLETE */}
-            {phase === 'round_complete' && (
-              <motion.div key="complete" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} className="text-center px-4">
-                <CheckCircle2 className="w-8 h-8 text-[#d8d628] mx-auto mb-1.5" />
-                <span className="text-base font-bold text-white block">Round {round} Complete!</span>
-                <span className="text-xs font-mono text-[#49cfff] mt-1 block">Hold: {formatTimer(lastHoldTime)}</span>
-              </motion.div>
-            )}
-
-          </AnimatePresence>
-        </motion.div>
+          {phase === 'round_complete' && (
+            <div className="text-center px-4 animate-in fade-in duration-300">
+              <CheckCircle2 className="w-8 h-8 text-[#d8d628] mx-auto mb-1.5" />
+              <span className="text-base font-bold text-white block">Round {round} Complete!</span>
+              <span className="text-xs font-mono text-[#49cfff] mt-1 block">Hold: {formatTimer(lastHoldTime)}</span>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Control Buttons */}
@@ -401,9 +449,13 @@ export function WebBreathingPacer() {
         {phase === 'breathing' && (
           <button
             onClick={() => {
+              if (stateRef.current.timerId) {
+                clearTimeout(stateRef.current.timerId);
+                stateRef.current.timerId = null;
+              }
               setPhase('retention');
               setRetentionSec(0);
-              playBowlGong(432);
+              playTibetanBowl(216, 4.5, 0.35);
             }}
             className="px-6 py-3 rounded-full bg-[#49cfff] text-black font-bold font-mono text-xs uppercase tracking-wider hover:bg-white transition-all shadow-lg flex items-center gap-2"
           >
@@ -444,7 +496,7 @@ export function WebBreathingPacer() {
           className={`p-3.5 rounded-full border transition-colors ${
             soundEnabled ? 'bg-white/10 border-white/20 text-white' : 'bg-white/5 border-white/10 text-neutral-500'
           }`}
-          title={soundEnabled ? 'Mute 432 Hz Sound' : 'Unmute 432 Hz Sound'}
+          title={soundEnabled ? 'Mute Tibetan Bowl Sound' : 'Unmute Tibetan Bowl Sound'}
         >
           {soundEnabled ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
         </button>
