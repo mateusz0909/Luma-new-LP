@@ -53,10 +53,33 @@ const screenshotItems = [
   { src: asset('screenshots/home-widgets.png'), alt: 'Luma iOS Home Screen and Lock Screen breathwork widgets' }
 ];
 
-const stickySectionImages = [
-  { src: screenshotItems[5].src, alt: 'Luma Wim Hof breathing ritual setup and customizable rounds' },
-  { src: screenshotItems[6].src, alt: 'Luma guided Wim Hof breathing pacer with visual pulsing orb' },
-  { src: screenshotItems[3].src, alt: 'Luma breath retention stopwatch and hold time statistics' }
+const sessionVideoSrc = asset('video/luma-video.mp4');
+
+const stickySectionItems = [
+  { 
+    type: 'video' as const, 
+    src: sessionVideoSrc, 
+    alt: 'Luma iOS app actual Wim Hof breathing session recording' 
+  },
+  { 
+    type: 'image' as const, 
+    src: screenshotItems[6].src, 
+    alt: 'Luma guided Wim Hof breathing pacer with visual pulsing orb' 
+  },
+  { 
+    type: 'image' as const, 
+    src: screenshotItems[3].src, 
+    alt: 'Luma breath retention stopwatch and hold time statistics' 
+  }
+];
+
+const galleryItems = [
+  { 
+    type: 'video' as const, 
+    src: sessionVideoSrc, 
+    alt: 'Luma iOS actual Wim Hof breathing session recording in action' 
+  },
+  ...screenshotItems.map((item) => ({ type: 'image' as const, ...item }))
 ];
 
 const faqs = [
@@ -268,16 +291,32 @@ export default function App() {
           <motion.div style={{ y: y1 }}>
             <PhoneFrame>
               <AnimatePresence mode="wait">
-                <motion.img
-                  key={activeIndex}
-                  src={stickySectionImages[activeIndex].src}
-                  alt={stickySectionImages[activeIndex].alt}
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="w-full h-full object-cover"
-                />
+                {stickySectionItems[activeIndex].type === 'video' ? (
+                  <motion.video
+                    key="sticky-session-video"
+                    src={stickySectionItems[activeIndex].src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <motion.img
+                    key={`sticky-screenshot-${activeIndex}`}
+                    src={stickySectionItems[activeIndex].src}
+                    alt={stickySectionItems[activeIndex].alt}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="w-full h-full object-cover"
+                  />
+                )}
               </AnimatePresence>
             </PhoneFrame>
           </motion.div>
@@ -300,10 +339,21 @@ export default function App() {
             style={{ width: "max-content" }}
           >
             {/* Double the array to create a seamless loop */}
-            {[...screenshotItems, ...screenshotItems].map((item, idx) => (
+            {[...galleryItems, ...galleryItems].map((item, idx) => (
               <div key={idx} className="shrink-0">
                 <PhoneFrame>
-                  <img src={item.src} alt={item.alt} className="w-full h-full object-cover" />
+                  {item.type === 'video' ? (
+                    <video
+                      src={item.src}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <img src={item.src} alt={item.alt} className="w-full h-full object-cover" />
+                  )}
                 </PhoneFrame>
               </div>
             ))}
