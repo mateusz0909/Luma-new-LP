@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luma-new-lp.vercel.app/sitemap.xml

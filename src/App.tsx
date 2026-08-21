@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 import { WebBreathingPacer } from './components/WebBreathingPacer';
 import { FooterWithSupport } from './components/FooterWithSupport';
 
@@ -37,11 +37,54 @@ const appearanceThemes = [
   }
 ];
 
-const screenshots = [
-  ...Array.from({ length: 10 }, (_, i) => asset(`screenshots/${i + 1}.png`)),
-  asset('screenshots/applehealth-screen.png'),
-  asset('screenshots/haptics.png'),
-  asset('screenshots/home-widgets.png')
+const screenshotItems = [
+  { src: asset('screenshots/1.png'), alt: 'Luma iOS Wim Hof breathing timer session overview and start screen' },
+  { src: asset('screenshots/2.png'), alt: 'Luma customizable breathing cycles and round duration settings' },
+  { src: asset('screenshots/3.png'), alt: 'Luma Wim Hof retention stopwatch and breath hold analytics' },
+  { src: asset('screenshots/4.png'), alt: 'Luma dark mode breathing session history and streak tracking' },
+  { src: asset('screenshots/5.png'), alt: 'Luma breathwork home dashboard and daily practice launcher' },
+  { src: asset('screenshots/6.png'), alt: 'Luma guided Wim Hof power breathing pacer with visual orb' },
+  { src: asset('screenshots/7.png'), alt: 'Luma recovery hold timer with 15-second lung hold countdown' },
+  { src: asset('screenshots/8.png'), alt: 'Luma audio presets and ambient meditation soundscapes' },
+  { src: asset('screenshots/9.png'), alt: 'Luma mindful minutes and breathwork statistics overview' },
+  { src: asset('screenshots/10.png'), alt: 'Luma complete breath session summary and retention records' },
+  { src: asset('screenshots/applehealth-screen.png'), alt: 'Luma Apple Health integration with mindful minutes logging' },
+  { src: asset('screenshots/haptics.png'), alt: 'Luma custom tactile haptic feedback for guided breathing' },
+  { src: asset('screenshots/home-widgets.png'), alt: 'Luma iOS Home Screen and Lock Screen breathwork widgets' }
+];
+
+const stickySectionImages = [
+  { src: screenshotItems[5].src, alt: 'Luma Wim Hof breathing ritual setup and customizable rounds' },
+  { src: screenshotItems[6].src, alt: 'Luma guided Wim Hof breathing pacer with visual pulsing orb' },
+  { src: screenshotItems[3].src, alt: 'Luma breath retention stopwatch and hold time statistics' }
+];
+
+const faqs = [
+  {
+    id: 1,
+    question: "Is Luma really 100% free with no subscriptions?",
+    answer: "Yes, Luma is completely free forever. There are zero subscriptions, no hidden paywalls, and no advertisements. All breathing timers, retention stopwatch tools, ambient audio, customizable themes, and Apple Watch features are fully unlocked for everyone."
+  },
+  {
+    id: 2,
+    question: "How does Luma support the Wim Hof Method?",
+    answer: "Luma is purpose-built for Wim Hof Method (Iceman) breathwork. It provides guided rhythmic power breathing (customizable 30–40 breaths), an automated breath retention stopwatch with hold history, recovery breath timers (15s on full lungs), and fully customizable round cycles."
+  },
+  {
+    id: 3,
+    question: "Can I use Luma standalone on my Apple Watch?",
+    answer: "Yes! Luma includes a native, standalone Apple Watch app with custom haptic vibration feedback. You can perform your entire Wim Hof breathwork session with tactile pulses directly from your wrist without your iPhone nearby."
+  },
+  {
+    id: 4,
+    question: "Does Luma sync with Apple Health?",
+    answer: "Yes, Luma seamlessly integrates with Apple Health (HealthKit), automatically logging your Mindful Minutes and session heart rate to give you complete visibility over your recovery, nervous system regulation, and consistency."
+  },
+  {
+    id: 5,
+    question: "Can I practice Wim Hof breathing in my web browser?",
+    answer: "Yes, our interactive Web Breathing Pacer right here on this page allows you to practice guided power breathing, retention stopwatch timing, and recovery holds directly in any desktop or mobile browser without installing anything."
+  }
 ];
 
 const CTAButton = ({ href, text, eventName = "App Store Hero Click", className = "" }: { href: string, text: string, eventName?: string, className?: string }) => (
@@ -82,6 +125,11 @@ export default function App() {
   // Calculate which section is active (0, 1, or 2) based on scroll
   const activeSection = useTransform(scrollYProgress, [0.3, 0.5, 0.7], [0, 1, 2]);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const toggleFaq = (id: number) => {
+    setOpenFaq(openFaq === id ? null : id);
+  };
 
   useEffect(() => {
     return activeSection.on("change", (latest) => {
@@ -89,16 +137,13 @@ export default function App() {
     });
   }, [activeSection]);
 
-  // Map the 3 sections to specific screenshots: Home, Breathing, Stats
-  const sectionImages = [screenshots[5], screenshots[6], screenshots[3]];
-
   return (
     <div className="bg-black text-white selection:bg-[#d8d628] selection:text-black font-sans min-h-screen">
       
       {/* Navigation */}
       <nav className="fixed top-0 w-full px-6 py-4 md:px-10 md:py-5 flex justify-between items-center z-50 bg-black/30 backdrop-blur-xl border-b border-white/10 shadow-sm">
         <div className="flex items-center gap-3">
-          <img src={logoSrc} alt="Luma Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+          <img src={logoSrc} alt="Luma Free Wim Hof Timer Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
           <div className="font-bold text-2xl tracking-tighter">LUMA.</div>
         </div>
         <a 
@@ -131,9 +176,9 @@ export default function App() {
             <h1 className="text-[22vw] md:text-[18vw] leading-[0.75] font-bold tracking-tighter uppercase text-white">
               Breathe.
             </h1>
-            <p className="font-serif italic text-2xl md:text-5xl mt-8 md:mt-12 text-white/90">
-              The Iceman method, reimagined.
-            </p>
+            <h2 className="font-serif italic text-2xl md:text-5xl mt-8 md:mt-12 text-white/90 max-w-4xl mx-auto font-normal">
+              The Iceman method, reimagined. Free Wim Hof breathing app &amp; timer.
+            </h2>
           </div>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -164,6 +209,7 @@ export default function App() {
 
       {/* Interactive Web Breathing Pacer */}
       <section className="py-16 px-6 md:px-20 max-w-7xl mx-auto">
+        <h2 className="sr-only">Free Online Wim Hof Breathing Pacer and Retention Timer</h2>
         <WebBreathingPacer />
       </section>
 
@@ -224,13 +270,13 @@ export default function App() {
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeIndex}
-                  src={sectionImages[activeIndex]}
+                  src={stickySectionImages[activeIndex].src}
+                  alt={stickySectionImages[activeIndex].alt}
                   initial={{ opacity: 0, scale: 1.05 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
                   className="w-full h-full object-cover"
-                  alt={`App screenshot ${activeIndex + 1}`}
                 />
               </AnimatePresence>
             </PhoneFrame>
@@ -241,8 +287,8 @@ export default function App() {
       {/* Horizontal Gallery Section */}
       <section className="py-24 overflow-hidden border-t border-white/10 bg-white/[0.02]">
         <div className="px-6 md:px-20 max-w-7xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">The Interface.</h2>
-          <p className="text-xl text-white/50 font-serif italic">Designed for clarity and focus.</p>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">The Interface: Wim Hof Breathwork Timer.</h2>
+          <p className="text-xl text-white/50 font-serif italic">Designed for clarity, deep focus, and seamless retention tracking.</p>
         </div>
         
         {/* Scrolling Track */}
@@ -254,10 +300,10 @@ export default function App() {
             style={{ width: "max-content" }}
           >
             {/* Double the array to create a seamless loop */}
-            {[...screenshots, ...screenshots].map((src, idx) => (
+            {[...screenshotItems, ...screenshotItems].map((item, idx) => (
               <div key={idx} className="shrink-0">
                 <PhoneFrame>
-                  <img src={src} alt={`Screenshot ${idx}`} className="w-full h-full object-cover" />
+                  <img src={item.src} alt={item.alt} className="w-full h-full object-cover" />
                 </PhoneFrame>
               </div>
             ))}
@@ -265,11 +311,12 @@ export default function App() {
         </div>
       </section>
 
+      {/* Appearance Customization Section */}
       <section className="border-t border-white/10 py-24 md:py-32 overflow-hidden bg-[radial-gradient(circle_at_top,#ffffff0d,transparent_35%),linear-gradient(180deg,#000000_0%,#050814_100%)]">
         <div className="px-6 md:px-20 max-w-7xl mx-auto">
           <div className="max-w-3xl mb-14 md:mb-20">
             <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 inline-flex">NEW / APPEARANCE</span>
-            <h2 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.95]">Change the mood, keep the flow.</h2>
+            <h2 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.95]">Change the mood, keep the flow. Customizable themes.</h2>
             <p className="mt-6 text-xl md:text-2xl text-white/55 font-serif italic leading-relaxed">Luma now lets you switch the app's visual theme without touching your practice. Pick the atmosphere that fits the session.</p>
           </div>
 
@@ -283,7 +330,7 @@ export default function App() {
                 </div>
                 <div className="self-center xl:self-start">
                   <PhoneFrame>
-                    <img src={appearanceSettings} alt="Appearance settings" className="w-full h-full object-cover" />
+                    <img src={appearanceSettings} alt="Luma appearance and theme settings for dark mode Wim Hof breathing" className="w-full h-full object-cover" />
                   </PhoneFrame>
                 </div>
               </div>
@@ -303,7 +350,7 @@ export default function App() {
                   </div>
                   <div className="absolute right-[-6%] bottom-[-10%] w-[62%] md:w-[58%] rotate-[12deg] group-hover:rotate-[7deg] transition-transform duration-700 ease-out drop-shadow-2xl">
                     <PhoneFrame>
-                      <img src={theme.image} alt={`${theme.name} theme`} className="w-full h-full object-cover" />
+                      <img src={theme.image} alt={`Luma ${theme.name} Wim Hof breathing app theme screenshot`} className="w-full h-full object-cover" />
                     </PhoneFrame>
                   </div>
                 </div>
@@ -318,46 +365,102 @@ export default function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10 border-b border-white/10">
           <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src={asset('screenshots/applewatch-icon.png')} alt="Apple Watch Icon" className="w-48 h-16 object-contain object-left group-hover:scale-110 transition-transform duration-500 invert origin-left" />
-              <h4 className="text-3xl font-bold tracking-tight">Apple Watch</h4>
+              <img src={asset('screenshots/applewatch-icon.png')} alt="Apple Watch App icon" className="w-48 h-16 object-contain object-left group-hover:scale-110 transition-transform duration-500 invert origin-left" />
+              <h3 className="text-3xl font-bold tracking-tight">Apple Watch</h3>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Standalone sessions directly from your wrist. Leave the phone behind.</p>
             </div>
             <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-20 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
-              <img src={asset('screenshots/watch-screen.png')} alt="Apple Watch" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
+              <img src={asset('screenshots/watch-screen.png')} alt="Luma standalone Apple Watch Wim Hof timer and haptics" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </div>
           <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src={asset('screenshots/liveactivity-icon.png')} alt="Widgets Icon" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
-              <h4 className="text-3xl font-bold tracking-tight">Widgets & Live Activities</h4>
+              <img src={asset('screenshots/liveactivity-icon.png')} alt="iOS Live Activities & Lock Screen Widgets icon" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
+              <h3 className="text-3xl font-bold tracking-tight">Widgets &amp; Live Activities</h3>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Track your session on the Lock Screen and customize your Home Screen with beautiful iOS widgets.</p>
             </div>
             <div className="absolute -bottom-24 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-20 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
-              <img src={asset('screenshots/home-widgets.png')} alt="Widgets" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
+              <img src={asset('screenshots/home-widgets.png')} alt="Luma iOS Home Screen and Lock Screen breathwork widgets" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10">
           <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src={asset('screenshots/ah-icon.png')} alt="Apple Health Icon" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
-              <h4 className="text-3xl font-bold tracking-tight">Apple Health</h4>
+              <img src={asset('screenshots/ah-icon.png')} alt="Apple Health Integration icon" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
+              <h3 className="text-3xl font-bold tracking-tight">Apple Health</h3>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Seamlessly sync your mindful minutes and heart rate data.</p>
             </div>
             <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-20 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
-              <img src={asset('screenshots/applehealth-screen.png')} alt="Apple Health" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
+              <img src={asset('screenshots/applehealth-screen.png')} alt="Luma Mindful Minutes syncing with Apple Health" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </div>
           <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src={asset('screenshots/haptics-icon.png')} alt="Haptics Icon" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
-              <h4 className="text-3xl font-bold tracking-tight">Haptics</h4>
+              <img src={asset('screenshots/haptics-icon.png')} alt="Haptic Vibration Feedback icon" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
+              <h3 className="text-3xl font-bold tracking-tight">Haptics</h3>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Feel every breath with custom-designed haptic feedback patterns.</p>
             </div>
             <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-20 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
-              <img src={asset('screenshots/haptics.png')} alt="Haptics" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
+              <img src={asset('screenshots/haptics.png')} alt="Luma custom haptic feedback patterns for Wim Hof breathing" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions Section */}
+      <section className="border-t border-white/10 py-24 md:py-32 px-6 md:px-20 max-w-7xl mx-auto">
+        <div className="max-w-3xl mb-14 md:mb-20">
+          <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 inline-flex">
+            FAQ / KNOWLEDGE
+          </span>
+          <h2 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.95]">
+            Wim Hof Method &amp; Luma FAQ.
+          </h2>
+          <p className="mt-6 text-xl md:text-2xl text-white/55 font-serif italic leading-relaxed">
+            Everything you need to know about Wim Hof breathwork, our retention timer, Apple Watch haptics, and our 100% free philosophy.
+          </p>
+        </div>
+
+        <div className="divide-y divide-white/10 border-y border-white/10">
+          {faqs.map((faq) => {
+            const isOpen = openFaq === faq.id;
+            return (
+              <div key={faq.id} className="py-6 md:py-8 transition-colors">
+                <button
+                  onClick={() => toggleFaq(faq.id)}
+                  className="flex justify-between items-center w-full text-left gap-6 cursor-pointer group"
+                  aria-expanded={isOpen}
+                >
+                  <span className="text-xl md:text-3xl font-bold tracking-tight text-white group-hover:text-[#d8d628] transition-colors">
+                    {faq.question}
+                  </span>
+                  <div className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center shrink-0 group-hover:border-[#d8d628]/40 group-hover:bg-[#d8d628]/10 transition-all">
+                    <ChevronDown
+                      className={`w-5 h-5 text-white/70 group-hover:text-[#d8d628] transition-transform duration-300 ${
+                        isOpen ? 'rotate-180 text-[#d8d628]' : ''
+                      }`}
+                    />
+                  </div>
+                </button>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
+                      <p className="mt-4 md:mt-6 text-base md:text-xl text-white/65 font-serif italic leading-relaxed max-w-4xl pr-12">
+                        {faq.answer}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -371,7 +474,7 @@ export default function App() {
           transition={{ duration: 0.8 }}
           className="z-10 flex flex-col items-center"
         >
-          <h2 className="text-5xl md:text-8xl font-bold tracking-tighter mb-6">Start breathing.</h2>
+          <h2 className="text-5xl md:text-8xl font-bold tracking-tighter mb-6">Start your Wim Hof practice.</h2>
           <p className="text-xl md:text-2xl text-white/50 font-serif italic mb-12 max-w-xl">
             Join thousands of others optimizing their mind and body. No paywalls. Free forever.
           </p>
@@ -390,8 +493,8 @@ export default function App() {
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           className="flex whitespace-nowrap text-[15vw] font-bold tracking-tighter leading-none uppercase items-center"
         >
-          <span className="pr-[4vw] flex items-center gap-[4vw]">Free Forever <img src={logoSrc} className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/> Get Luma <img src={logoSrc} className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/></span>
-          <span className="pr-[4vw] flex items-center gap-[4vw]">Free Forever <img src={logoSrc} className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/> Get Luma <img src={logoSrc} className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/></span>
+          <span className="pr-[4vw] flex items-center gap-[4vw]">Free Forever <img src={logoSrc} className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Luma Free Wim Hof App Logo"/> Get Luma <img src={logoSrc} className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Luma Free Wim Hof App Logo"/></span>
+          <span className="pr-[4vw] flex items-center gap-[4vw]">Free Forever <img src={logoSrc} className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Luma Free Wim Hof App Logo"/> Get Luma <img src={logoSrc} className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Luma Free Wim Hof App Logo"/></span>
         </motion.div>
 
         {/* Support Banner & Links */}
