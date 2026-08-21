@@ -246,7 +246,11 @@ export default function App() {
             <div className="flex flex-wrap items-center gap-3">
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">01 / RITUAL</span>
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-white/80">
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" /> Live Video Preview
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"></span>
+                </span>
+                Live Video Preview
               </span>
             </div>
             <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Your daily<br/>practice.</h3>
@@ -292,9 +296,12 @@ export default function App() {
               <AnimatePresence mode="wait">
                 {stickySectionItems[activeIndex].type === 'video' ? (
                   <div className="relative w-full h-full">
-                    {/* Live Video Indicator Badge */}
-                    <div className="absolute top-5 left-5 z-40 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/80 border border-white/20 backdrop-blur-md text-[10px] font-mono uppercase tracking-wider text-white shadow-2xl pointer-events-none">
-                      <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                    {/* Live Video Indicator Badge at Bottom Center */}
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/85 border border-white/20 backdrop-blur-xl text-[10px] font-mono uppercase tracking-wider text-white shadow-[0_4px_24px_rgba(0,0,0,0.8)] pointer-events-none whitespace-nowrap">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"></span>
+                      </span>
                       <span>Live App Session</span>
                     </div>
                     <motion.video
@@ -364,8 +371,12 @@ export default function App() {
                 <PhoneFrame>
                   {item.type === 'video' ? (
                     <div className="relative w-full h-full">
-                      <div className="absolute top-5 left-5 z-40 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/80 border border-white/20 backdrop-blur-md text-[9px] font-mono uppercase tracking-wider text-white shadow-xl pointer-events-none">
-                        <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                      {/* Video Badge at bottom */}
+                      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/85 border border-white/20 backdrop-blur-xl text-[9px] font-mono uppercase tracking-wider text-white shadow-xl pointer-events-none whitespace-nowrap">
+                        <span className="relative flex h-1.5 w-1.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500 shadow-[0_0_6px_rgba(239,68,68,0.8)]"></span>
+                        </span>
                         <span>Live Session</span>
                       </div>
                       <video
