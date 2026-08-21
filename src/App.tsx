@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, Suspense, lazy } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown, Play } from 'lucide-react';
 
 const WebBreathingPacer = lazy(() => import('./components/WebBreathingPacer'));
 const FooterWithSupport = lazy(() => import('./components/FooterWithSupport'));
@@ -138,6 +138,109 @@ const PhoneFrame = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
+const AppVideoPlayer = ({ src, poster }: { src: string; poster: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => setIsPlaying(true))
+        .catch(() => setIsPlaying(false));
+    }
+
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+
+    video.addEventListener('play', onPlay);
+    video.addEventListener('pause', onPause);
+
+    return () => {
+      video.removeEventListener('play', onPlay);
+      video.removeEventListener('pause', onPause);
+    };
+  }, [src]);
+
+  const togglePlay = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      video.muted = true;
+      video.play().then(() => setIsPlaying(true)).catch(() => {});
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  return (
+    <div 
+      className="relative w-full h-full cursor-pointer select-none group"
+      onClick={togglePlay}
+      role="button"
+      tabIndex={0}
+      aria-label={isPlaying ? "Pause app demonstration video" : "Play app demonstration video"}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') togglePlay(e as any); }}
+    >
+      <video
+        ref={videoRef}
+        src={src}
+        poster={poster}
+        preload="auto"
+        loop
+        muted
+        playsInline
+        className="w-full h-full object-cover"
+      />
+
+      {/* Floating Trigger Overlay (Visible when paused or blocked by Firefox mobile) */}
+      <AnimatePresence>
+        {!isPlaying && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.85 }}
+            transition={{ duration: 0.2 }}
+            className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-black/45 backdrop-blur-[2px] p-4 text-center"
+          >
+            <div className="w-16 h-16 rounded-full bg-[#d8d628] text-black flex items-center justify-center shadow-[0_0_35px_rgba(216,214,40,0.7)] group-hover:scale-110 transition-transform">
+              <Play className="w-7 h-7 ml-1 fill-current" />
+            </div>
+            <span className="mt-3.5 font-mono text-[11px] font-bold uppercase tracking-wider text-white bg-black/80 px-3.5 py-1.5 rounded-full border border-white/20 shadow-lg">
+              Tap to Play Demo ▶
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Live Badge Indicator at bottom */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/85 border border-white/20 backdrop-blur-xl text-[10px] font-mono uppercase tracking-wider text-white shadow-xl pointer-events-none whitespace-nowrap">
+        <span className="relative flex h-2 w-2">
+          {isPlaying ? (
+            <>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+            </>
+          ) : (
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-400"></span>
+          )}
+        </span>
+        <span>{isPlaying ? 'Live App Preview' : 'Tap Phone to Play'}</span>
+      </div>
+    </div>
+  );
+};
+
 export default function App() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -224,7 +327,7 @@ export default function App() {
         
         {/* Mobile View: High-visibility stacked cards with interactive video and screenshots */}
         <div className="flex flex-col gap-16 md:hidden">
-          {/* Mobile Card 1: Video */}
+          {/* Mobile Card 1: Video with Play/Tap trigger */}
           <div className="flex flex-col items-center gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/10">
             <div className="w-full flex flex-col gap-3">
               <div className="flex items-center gap-2">
@@ -239,20 +342,11 @@ export default function App() {
               </div>
               <h3 className="text-4xl font-bold tracking-tight">Your daily practice.</h3>
               <p className="text-base text-white/60 font-serif italic">
-                Fully customizable rounds, retention times, and recovery holds.
+                Fully customizable rounds, retention times, and recovery holds. Tap mockup to play.
               </p>
             </div>
             <PhoneFrame>
-              <video
-                src={sessionVideoSrc}
-                poster={sessionPosterSrc}
-                preload="auto"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover"
-              />
+              <AppVideoPlayer src={sessionVideoSrc} poster={sessionPosterSrc} />
             </PhoneFrame>
           </div>
 
@@ -354,35 +448,16 @@ export default function App() {
           </div>
 
           {/* Right: Sticky Phone Mockup */}
-          <div className="w-1/2 h-[100vh] sticky top-0 flex items-center justify-end pointer-events-none">
+          <div className="w-1/2 h-[100vh] sticky top-0 flex items-center justify-end">
             <motion.div style={{ y: y1 }}>
               <PhoneFrame>
                 <AnimatePresence mode="wait">
                   {stickySectionItems[activeIndex].type === 'video' ? (
-                    <div className="relative w-full h-full">
-                      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/85 border border-white/20 backdrop-blur-xl text-[10px] font-mono uppercase tracking-wider text-white shadow-2xl pointer-events-none whitespace-nowrap">
-                        <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
-                        </span>
-                        <span>Live App Session</span>
-                      </div>
-                      <motion.video
-                        key="sticky-session-video"
-                        src={stickySectionItems[activeIndex].src}
-                        poster={sessionPosterSrc}
-                        preload="auto"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                    <AppVideoPlayer
+                      key="sticky-session-video"
+                      src={stickySectionItems[activeIndex].src}
+                      poster={sessionPosterSrc}
+                    />
                   ) : (
                     <motion.img
                       key={`sticky-screenshot-${activeIndex}`}
