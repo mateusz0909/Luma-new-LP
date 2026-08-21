@@ -5,12 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="3Lp8xmpJBirPctDUZjUNoI6taGCiLxPM9t3WafXwtN8" />
     
-    <!-- Primary SEO Meta Tags (Laser-Targeted for Exact Match) -->
+    <!-- Primary SEO Meta Tags -->
     <title>Luma — Free Wim Hof Breathing App &amp; Online Guided Timer</title>
     <meta name="title" content="Luma — Free Wim Hof Breathing App &amp; Online Guided Timer" />
     <meta name="description" content="The #1 free Wim Hof Method guided breathing app &amp; online timer alternative. Fully customizable 30-40 power breaths, retention stopwatch, Apple Watch sync &amp; zero ads." />
     <meta name="keywords" content="wim hof breathing app, wim hof app free, wim hof timer online, free wim hof method, breath hold timer, retention stopwatch, iceman breathing, apple watch breathwork" />
     <link rel="canonical" href="https://luma-breath.work/" />
+
+    <!-- Resource Hints & Font Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cloud.umami.is" />
+
+    <!-- Non-render-blocking Google Fonts with swap -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" />
+    </noscript>
 
     <!-- Favicon & Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -32,6 +44,14 @@
     <meta name="twitter:title" content="Luma — Free Wim Hof Breathing App &amp; Online Guided Timer" />
     <meta name="twitter:description" content="The #1 free Wim Hof Method guided breathing app &amp; online timer alternative. Fully customizable 30-40 power breaths, retention stopwatch, Apple Watch sync &amp; zero ads." />
     <meta name="twitter:image" content="https://luma-breath.work/screenshots/1.png" />
+
+    <!-- Critical CSS for Instant 0ms Paint -->
+    <style>
+      body { background-color: #000; color: #fff; margin: 0; padding: 0; }
+      .luma-hero-init { height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; text-align: center; }
+      .luma-h1 { font-size: clamp(3.5rem, 18vw, 14rem); line-height: 0.8; font-weight: 800; letter-spacing: -0.05em; text-transform: uppercase; color: #fff; margin: 0; }
+      .luma-sub { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: clamp(1.2rem, 3.5vw, 2.5rem); margin-top: 1.5rem; color: rgba(255,255,255,0.9); font-weight: 400; max-width: 50rem; padding: 0 1rem; }
+    </style>
 
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -118,11 +138,39 @@
     }
     </script>
 
-    <!-- Umami Analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="eff5d569-0c29-4817-8496-5022b65906f4"></script>
+    <!-- Umami Analytics (Async non-blocking) -->
+    <script async defer src="https://cloud.umami.is/script.js" data-website-id="eff5d569-0c29-4817-8496-5022b65906f4"></script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Instant Static Prerendered Shell (Eliminates FCP / LCP Client Delay) -->
+      <div style="background-color:#000;color:#fff;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,Inter,sans-serif;">
+        <nav style="position:fixed;top:0;left:0;right:0;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;z-index:50;background:rgba(0,0,0,0.3);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.1);">
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            <img src="/screenshots/logo.webp" alt="Luma Free Wim Hof Timer Logo" width="40" height="40" style="object-fit:contain;width:32px;height:32px;" fetchpriority="high" />
+            <div style="font-weight:bold;font-size:1.5rem;letter-spacing:-0.05em;">LUMA.</div>
+          </div>
+          <a href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" target="_blank" rel="noopener noreferrer" style="font-family:monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:#fff;text-decoration:none;display:flex;align-items:center;gap:0.5rem;">
+            Download <span>→</span>
+          </a>
+        </nav>
+        
+        <section class="luma-hero-init">
+          <div style="position:absolute;width:60vw;height:60vw;max-width:700px;max-height:700px;border-radius:50%;background:#0012da;filter:blur(140px);opacity:0.6;pointer-events:none;"></div>
+          <div style="position:absolute;width:40vw;height:40vw;max-width:450px;max-height:450px;border-radius:50%;background:#d8d628;filter:blur(120px);opacity:0.3;pointer-events:none;"></div>
+          <div style="z-index:10;display:flex;flex-direction:column;align-items:center;width:100%;padding:0 1rem;">
+            <div style="margin-bottom:2.5rem;">
+              <h1 class="luma-h1">Breathe.</h1>
+              <h2 class="luma-sub">The Iceman method, reimagined. Free Wim Hof breathing app &amp; timer.</h2>
+            </div>
+            <a href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:1.5rem;border-radius:9999px;padding:0.5rem 1.75rem 0.5rem 0.5rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);text-decoration:none;color:#fff;">
+              <div style="width:3rem;height:3rem;border-radius:9999px;background:#d8d628;color:#000;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.1rem;">→</div>
+              <span style="font-family:monospace;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.2em;font-weight:bold;">Download for iOS</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
