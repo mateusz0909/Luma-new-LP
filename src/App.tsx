@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
+import { WebBreathingPacer } from './components/WebBreathingPacer';
+import { FooterWithSupport } from './components/FooterWithSupport';
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
 
@@ -147,6 +149,11 @@ export default function App() {
           We believe breath is the ultimate tool for human optimization. <br className="hidden md:block"/>
           <span className="text-white/30">No paywalls. No noise. Just pure focus.</span>
         </motion.h2>
+      </section>
+
+      {/* Interactive Web Breathing Pacer */}
+      <section className="py-16 px-6 md:px-20 max-w-7xl mx-auto">
+        <WebBreathingPacer />
       </section>
 
       {/* Sticky Scroll Showcase */}
@@ -361,8 +368,8 @@ export default function App() {
         </motion.div>
       </section>
 
-      {/* Massive Marquee Footer */}
-      <footer className="bg-[#d8d628] text-[#0012da] overflow-hidden pt-32 pb-24 flex flex-col items-center justify-center relative">
+      {/* Massive Marquee Footer with Support Banner */}
+      <footer className="bg-[#d8d628] text-[#0012da] overflow-hidden pt-32 pb-16 flex flex-col items-center justify-center relative">
         <motion.div
           animate={{ x: ["0%", "-50%"] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -372,7 +379,12 @@ export default function App() {
           <span className="pr-[4vw] flex items-center gap-[4vw]">Free Forever <img src={logoSrc} className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/> Get Luma <img src={logoSrc} className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Logo"/></span>
         </motion.div>
 
-        <div className="absolute bottom-6 w-full px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-xs font-bold text-[#0012da]">
+        {/* Support Banner & Links */}
+        <div className="w-full mt-12">
+          <FooterWithSupport />
+        </div>
+
+        <div className="w-full px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-xs font-bold text-[#0012da] pt-6 border-t border-black/10">
           <span>© {new Date().getFullYear()} LUMA BREATHWORK</span>
           <div className="flex gap-8 tracking-widest">
             <a href="#" className="hover:text-black transition-colors">PRIVACY</a>
