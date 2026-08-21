@@ -24,7 +24,8 @@ export function FooterWithSupport() {
 
         <button
           onClick={() => setShowModal(true)}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black text-[#d8d628] font-bold hover:bg-white hover:text-black transition-all shadow-md uppercase tracking-wider"
+          data-umami-event="Support Developer Modal Opened"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black text-[#d8d628] font-bold hover:bg-white hover:text-black transition-all shadow-md uppercase tracking-wider cursor-pointer"
         >
           <Coffee className="w-4 h-4" /> Support Developer ☕
         </button>
@@ -43,7 +44,7 @@ export function FooterWithSupport() {
               </div>
               <button
                 onClick={() => setShowModal(false)}
-                className="text-neutral-400 hover:text-white text-lg font-bold"
+                className="text-neutral-400 hover:text-white text-lg font-bold cursor-pointer"
               >
                 ✕
               </button>
@@ -59,14 +60,16 @@ export function FooterWithSupport() {
                 href={buyMeACoffeeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-4 rounded-2xl bg-[#d8d628] text-black font-bold font-mono text-sm uppercase tracking-wider text-center hover:bg-white transition-colors flex items-center justify-center gap-2"
+                data-umami-event="Buy Me a Coffee Outbound Click"
+                className="w-full py-4 rounded-2xl bg-[#d8d628] text-black font-bold font-mono text-sm uppercase tracking-wider text-center hover:bg-white transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Coffee className="w-4 h-4" /> Buy Me a Coffee (Web) →
               </a>
 
               <button
                 onClick={handleCopyLink}
-                className="w-full py-3 rounded-2xl bg-white/5 border border-white/10 text-neutral-300 font-mono text-xs uppercase tracking-wider hover:bg-white/10 transition-colors flex items-center justify-center gap-2"
+                data-umami-event="Support Link Copied"
+                className="w-full py-3 rounded-2xl bg-white/5 border border-white/10 text-neutral-300 font-mono text-xs uppercase tracking-wider hover:bg-white/10 transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
                 {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
                 {copied ? 'Link Copied to Clipboard!' : 'Copy Support Link'}
@@ -78,3 +81,5 @@ export function FooterWithSupport() {
     </div>
   );
 }
+
+export default FooterWithSupport;

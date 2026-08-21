@@ -44,12 +44,13 @@ const screenshots = [
   asset('screenshots/home-widgets.png')
 ];
 
-const CTAButton = ({ href, text, className = "" }: { href: string, text: string, className?: string }) => (
+const CTAButton = ({ href, text, eventName = "App Store Hero Click", className = "" }: { href: string, text: string, eventName?: string, className?: string }) => (
   <a 
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className={`group relative inline-flex items-center gap-6 rounded-full p-2 pr-8 bg-white/5 border border-white/10 backdrop-blur-xl transition-all duration-700 hover:bg-white hover:border-white hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:-translate-y-1 ${className}`}
+    data-umami-event={eventName}
+    className={`group relative inline-flex items-center gap-6 rounded-full p-2 pr-8 bg-white/5 border border-white/10 backdrop-blur-xl transition-all duration-700 hover:bg-white hover:border-white hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:-translate-y-1 cursor-pointer ${className}`}
   >
     <div className="relative z-10 flex items-center justify-center w-12 h-12 rounded-full bg-[#d8d628] text-black transition-all duration-700 group-hover:scale-90 group-hover:bg-black group-hover:text-white">
       <ArrowRight className="w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-700 ease-[cubic-bezier(0.87,0,0.13,1)]" />
@@ -100,7 +101,13 @@ export default function App() {
           <img src={logoSrc} alt="Luma Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
           <div className="font-bold text-2xl tracking-tighter">LUMA.</div>
         </div>
-        <a href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" target="_blank" rel="noopener noreferrer" className="font-mono text-xs uppercase tracking-widest hover:text-[#d8d628] transition-colors flex items-center gap-2">
+        <a 
+          href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          data-umami-event="App Store Nav Click"
+          className="font-mono text-xs uppercase tracking-widest hover:text-[#d8d628] transition-colors flex items-center gap-2"
+        >
           Download <ArrowRight className="w-4 h-4" />
         </a>
       </nav>
@@ -133,7 +140,11 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
           >
-            <CTAButton href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" text="Download for iOS" />
+            <CTAButton 
+              href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" 
+              text="Download for iOS" 
+              eventName="App Store Hero Click"
+            />
           </motion.div>
         </div>
       </section>
@@ -364,7 +375,11 @@ export default function App() {
           <p className="text-xl md:text-2xl text-white/50 font-serif italic mb-12 max-w-xl">
             Join thousands of others optimizing their mind and body. No paywalls. Free forever.
           </p>
-          <CTAButton href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" text="Get Luma Free" />
+          <CTAButton 
+            href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" 
+            text="Get Luma Free" 
+            eventName="App Store PreFooter Click"
+          />
         </motion.div>
       </section>
 

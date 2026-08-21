@@ -440,7 +440,8 @@ export function WebBreathingPacer() {
         {phase === 'idle' && (
           <button
             onClick={handleStart}
-            className="px-8 py-3.5 rounded-full bg-white text-black font-bold font-mono text-xs sm:text-sm tracking-wider uppercase flex items-center gap-3 hover:bg-[#d8d628] hover:scale-105 transition-all shadow-[0_0_40px_rgba(255,255,255,0.3)]"
+            data-umami-event="Wim Hof Session Started"
+            className="px-8 py-3.5 rounded-full bg-white text-black font-bold font-mono text-xs sm:text-sm tracking-wider uppercase flex items-center gap-3 hover:bg-[#d8d628] hover:scale-105 transition-all shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer"
           >
             <Play className="w-4 h-4 fill-current" /> Start Wim Hof Session
           </button>
@@ -457,7 +458,8 @@ export function WebBreathingPacer() {
               setRetentionSec(0);
               playTibetanBowl(216, 4.5, 0.35);
             }}
-            className="px-6 py-3 rounded-full bg-[#49cfff] text-black font-bold font-mono text-xs uppercase tracking-wider hover:bg-white transition-all shadow-lg flex items-center gap-2"
+            data-umami-event="Skip to Retention Clicked"
+            className="px-6 py-3 rounded-full bg-[#49cfff] text-black font-bold font-mono text-xs uppercase tracking-wider hover:bg-white transition-all shadow-lg flex items-center gap-2 cursor-pointer"
           >
             Skip to Breath Hold <ChevronRight className="w-4 h-4" />
           </button>
@@ -466,7 +468,8 @@ export function WebBreathingPacer() {
         {phase === 'retention' && (
           <button
             onClick={handleEndRetention}
-            className="px-8 py-4 rounded-full bg-[#d8d628] text-black font-bold font-mono text-xs sm:text-sm tracking-wider uppercase hover:bg-white hover:scale-105 transition-all shadow-[0_0_40px_rgba(216,214,40,0.4)]"
+            data-umami-event="Recovery Breath Clicked"
+            className="px-8 py-4 rounded-full bg-[#d8d628] text-black font-bold font-mono text-xs sm:text-sm tracking-wider uppercase hover:bg-white hover:scale-105 transition-all shadow-[0_0_40px_rgba(216,214,40,0.4)] cursor-pointer"
           >
             Take Recovery Breath (Inhale)
           </button>
@@ -475,7 +478,8 @@ export function WebBreathingPacer() {
         {phase === 'round_complete' && (
           <button
             onClick={handleNextRound}
-            className="px-8 py-3.5 rounded-full bg-white text-black font-bold font-mono text-xs sm:text-sm tracking-wider uppercase flex items-center gap-3 hover:bg-[#d8d628] hover:scale-105 transition-all shadow-lg"
+            data-umami-event="Start Next Round Clicked"
+            className="px-8 py-3.5 rounded-full bg-white text-black font-bold font-mono text-xs sm:text-sm tracking-wider uppercase flex items-center gap-3 hover:bg-[#d8d628] hover:scale-105 transition-all shadow-lg cursor-pointer"
           >
             Start Round {round + 1} <ChevronRight className="w-4 h-4" />
           </button>
@@ -484,7 +488,8 @@ export function WebBreathingPacer() {
         {phase !== 'idle' && (
           <button
             onClick={handleReset}
-            className="p-3.5 rounded-full bg-white/5 border border-white/10 text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
+            data-umami-event="Pacer Reset Clicked"
+            className="p-3.5 rounded-full bg-white/5 border border-white/10 text-neutral-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             title="Reset Session"
           >
             <RotateCcw className="w-5 h-5" />
@@ -493,7 +498,8 @@ export function WebBreathingPacer() {
 
         <button
           onClick={() => setSoundEnabled(!soundEnabled)}
-          className={`p-3.5 rounded-full border transition-colors ${
+          data-umami-event="Audio Mute Toggled"
+          className={`p-3.5 rounded-full border transition-colors cursor-pointer ${
             soundEnabled ? 'bg-white/10 border-white/20 text-white' : 'bg-white/5 border-white/10 text-neutral-500'
           }`}
           title={soundEnabled ? 'Mute Tibetan Bowl Sound' : 'Unmute Tibetan Bowl Sound'}
