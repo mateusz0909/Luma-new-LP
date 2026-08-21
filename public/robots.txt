@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://luma-breathwork.vercel.app/sitemap.xml
+Sitemap: https://luma-breath.work/sitemap.xml
