@@ -230,13 +230,7 @@ export default function App() {
         </motion.h2>
       </section>
 
-      {/* Interactive Web Breathing Pacer */}
-      <section className="py-16 px-6 md:px-20 max-w-7xl mx-auto">
-        <h2 className="sr-only">Free Online Wim Hof Breathing Pacer and Retention Timer</h2>
-        <WebBreathingPacer />
-      </section>
-
-      {/* Sticky Scroll Showcase */}
+      {/* Sticky Scroll Showcase with Live Video Preview */}
       <section ref={containerRef} className="relative px-6 md:px-20 max-w-7xl mx-auto flex flex-col md:flex-row gap-10 pb-[10vh]">
         
         {/* Left: Scrolling Text Blocks */}
@@ -249,7 +243,12 @@ export default function App() {
             transition={{ duration: 0.8 }}
             className="flex flex-col gap-8"
           >
-            <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">01 / RITUAL</span>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">01 / RITUAL</span>
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-white/80">
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" /> Live Video Preview
+              </span>
+            </div>
             <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Your daily<br/>practice.</h3>
             <p className="text-xl md:text-3xl text-white/50 font-serif italic leading-relaxed">
               Fully customizable rounds, retention times, and recovery holds. Tailored to your exact needs.
@@ -292,19 +291,26 @@ export default function App() {
             <PhoneFrame>
               <AnimatePresence mode="wait">
                 {stickySectionItems[activeIndex].type === 'video' ? (
-                  <motion.video
-                    key="sticky-session-video"
-                    src={stickySectionItems[activeIndex].src}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="w-full h-full object-cover"
-                  />
+                  <div className="relative w-full h-full">
+                    {/* Live Video Indicator Badge */}
+                    <div className="absolute top-5 left-5 z-40 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/80 border border-white/20 backdrop-blur-md text-[10px] font-mono uppercase tracking-wider text-white shadow-2xl pointer-events-none">
+                      <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                      <span>Live App Session</span>
+                    </div>
+                    <motion.video
+                      key="sticky-session-video"
+                      src={stickySectionItems[activeIndex].src}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      initial={{ opacity: 0, scale: 1.05 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 ) : (
                   <motion.img
                     key={`sticky-screenshot-${activeIndex}`}
@@ -321,6 +327,20 @@ export default function App() {
             </PhoneFrame>
           </motion.div>
         </div>
+      </section>
+
+      {/* Interactive Web Breathing Pacer (Positioned right after the live showcase) */}
+      <section className="py-20 px-6 md:px-20 max-w-7xl mx-auto border-t border-white/10">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <span className="text-[#49cfff] font-mono text-xs tracking-widest border border-[#49cfff]/30 rounded-full px-4 py-1.5 inline-flex mb-4">
+            ONLINE SIMULATOR
+          </span>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Try the Wim Hof Pacer now.</h2>
+          <p className="text-white/60 font-serif italic text-base md:text-lg mt-2">
+            Experience guided power breathing and empty-lung retention right in your browser.
+          </p>
+        </div>
+        <WebBreathingPacer />
       </section>
 
       {/* Horizontal Gallery Section */}
@@ -343,14 +363,20 @@ export default function App() {
               <div key={idx} className="shrink-0">
                 <PhoneFrame>
                   {item.type === 'video' ? (
-                    <video
-                      src={item.src}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover"
-                    />
+                    <div className="relative w-full h-full">
+                      <div className="absolute top-5 left-5 z-40 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/80 border border-white/20 backdrop-blur-md text-[9px] font-mono uppercase tracking-wider text-white shadow-xl pointer-events-none">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                        <span>Live Session</span>
+                      </div>
+                      <video
+                        src={item.src}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   ) : (
                     <img src={item.src} alt={item.alt} className="w-full h-full object-cover" />
                   )}
