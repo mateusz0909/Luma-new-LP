@@ -313,7 +313,8 @@ export function WebBreathingPacer() {
                 <button
                   key={count}
                   onClick={() => setTotalBreaths(count)}
-                  className={`px-2 py-0.5 rounded-md transition-all ${
+                  aria-label={`Set breathing cycle to ${count} breaths`}
+                  className={`px-2 py-0.5 rounded-md transition-all cursor-pointer ${
                     totalBreaths === count ? 'bg-[#d8d628] text-black font-bold' : 'text-neutral-400 hover:text-white'
                   }`}
                 >
@@ -328,7 +329,8 @@ export function WebBreathingPacer() {
                 <button
                   key={t}
                   onClick={() => setTempo(t)}
-                  className={`px-2 py-0.5 rounded-md capitalize transition-all ${
+                  aria-label={`Set breathing tempo to ${t}`}
+                  className={`px-2 py-0.5 rounded-md capitalize transition-all cursor-pointer ${
                     tempo === t ? 'bg-[#d8d628] text-black font-bold' : 'text-neutral-400 hover:text-white'
                   }`}
                 >
@@ -441,6 +443,7 @@ export function WebBreathingPacer() {
           <button
             onClick={handleStart}
             data-umami-event="Wim Hof Session Started"
+            aria-label="Start Wim Hof breathing session"
             className="px-8 py-3.5 rounded-full bg-white text-black font-bold font-mono text-xs sm:text-sm tracking-wider uppercase flex items-center gap-3 hover:bg-[#d8d628] hover:scale-105 transition-all shadow-[0_0_40px_rgba(255,255,255,0.3)] cursor-pointer"
           >
             <Play className="w-4 h-4 fill-current" /> Start Wim Hof Session
@@ -459,6 +462,7 @@ export function WebBreathingPacer() {
               playTibetanBowl(216, 4.5, 0.35);
             }}
             data-umami-event="Skip to Retention Clicked"
+            aria-label="Skip power breathing and start retention hold stopwatch"
             className="px-6 py-3 rounded-full bg-[#49cfff] text-black font-bold font-mono text-xs uppercase tracking-wider hover:bg-white transition-all shadow-lg flex items-center gap-2 cursor-pointer"
           >
             Skip to Breath Hold <ChevronRight className="w-4 h-4" />
@@ -469,6 +473,7 @@ export function WebBreathingPacer() {
           <button
             onClick={handleEndRetention}
             data-umami-event="Recovery Breath Clicked"
+            aria-label="Take recovery breath and start 15-second lung hold"
             className="px-8 py-4 rounded-full bg-[#d8d628] text-black font-bold font-mono text-xs sm:text-sm tracking-wider uppercase hover:bg-white hover:scale-105 transition-all shadow-[0_0_40px_rgba(216,214,40,0.4)] cursor-pointer"
           >
             Take Recovery Breath (Inhale)
@@ -479,6 +484,7 @@ export function WebBreathingPacer() {
           <button
             onClick={handleNextRound}
             data-umami-event="Start Next Round Clicked"
+            aria-label={`Start Round ${round + 1}`}
             className="px-8 py-3.5 rounded-full bg-white text-black font-bold font-mono text-xs sm:text-sm tracking-wider uppercase flex items-center gap-3 hover:bg-[#d8d628] hover:scale-105 transition-all shadow-lg cursor-pointer"
           >
             Start Round {round + 1} <ChevronRight className="w-4 h-4" />
@@ -489,6 +495,7 @@ export function WebBreathingPacer() {
           <button
             onClick={handleReset}
             data-umami-event="Pacer Reset Clicked"
+            aria-label="Reset Wim Hof breathing session"
             className="p-3.5 rounded-full bg-white/5 border border-white/10 text-neutral-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             title="Reset Session"
           >
@@ -499,6 +506,7 @@ export function WebBreathingPacer() {
         <button
           onClick={() => setSoundEnabled(!soundEnabled)}
           data-umami-event="Audio Mute Toggled"
+          aria-label={soundEnabled ? 'Mute Tibetan Bowl Sound' : 'Unmute Tibetan Bowl Sound'}
           className={`p-3.5 rounded-full border transition-colors cursor-pointer ${
             soundEnabled ? 'bg-white/10 border-white/20 text-white' : 'bg-white/5 border-white/10 text-neutral-500'
           }`}

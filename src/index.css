@@ -18,3 +18,74 @@ body {
   width: 0px;
   background: transparent;
 }
+
+/* Hardware-Accelerated Keyframes for Hero Breathing Orbs (0ms JS Main Thread overhead) */
+@keyframes luma-pulse-blue {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate3d(0, 0, 0) scale(1.35);
+    opacity: 0.85;
+  }
+}
+
+@keyframes luma-pulse-yellow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1.2);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.55;
+  }
+}
+
+.luma-orb-blue {
+  animation: luma-pulse-blue 8s ease-in-out infinite;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+  pointer-events: none;
+}
+
+.luma-orb-yellow {
+  animation: luma-pulse-yellow 8s ease-in-out infinite;
+  animation-delay: -4s;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+  pointer-events: none;
+}
+
+/* Hardware-Accelerated Keyframes for Marquee Tracks (0ms JS Main Thread overhead) */
+@keyframes luma-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.luma-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: luma-marquee 40s linear infinite;
+}
+
+.luma-marquee-footer {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: luma-marquee 20s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .luma-orb-blue,
+  .luma-orb-yellow,
+  .luma-marquee-track,
+  .luma-marquee-footer {
+    animation: none;
+  }
+}

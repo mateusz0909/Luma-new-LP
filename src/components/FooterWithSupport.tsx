@@ -25,6 +25,7 @@ export function FooterWithSupport() {
         <button
           onClick={() => setShowModal(true)}
           data-umami-event="Support Developer Modal Opened"
+          aria-label="Open developer support modal"
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black text-[#d8d628] font-bold hover:bg-white hover:text-black transition-all shadow-md uppercase tracking-wider cursor-pointer"
         >
           <Coffee className="w-4 h-4" /> Support Developer ☕
@@ -44,6 +45,7 @@ export function FooterWithSupport() {
               </div>
               <button
                 onClick={() => setShowModal(false)}
+                aria-label="Close support modal"
                 className="text-neutral-400 hover:text-white text-lg font-bold cursor-pointer"
               >
                 ✕
@@ -51,7 +53,7 @@ export function FooterWithSupport() {
             </div>
 
             <p className="text-sm text-neutral-300 font-serif italic leading-relaxed mb-6">
-              Luma was built out of frustration with \$80/year subscriptions for basic breathing clocks.
+              Luma was built out of frustration with $80/year subscriptions for basic breathing clocks.
               It is 100% free, private, and offline forever. If Luma brings calm to your day, you can support indie development by buying a coffee.
             </p>
 
@@ -61,6 +63,7 @@ export function FooterWithSupport() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-umami-event="Buy Me a Coffee Outbound Click"
+                aria-label="Buy Me a Coffee on external website"
                 className="w-full py-4 rounded-2xl bg-[#d8d628] text-black font-bold font-mono text-sm uppercase tracking-wider text-center hover:bg-white transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Coffee className="w-4 h-4" /> Buy Me a Coffee (Web) →
@@ -69,6 +72,7 @@ export function FooterWithSupport() {
               <button
                 onClick={handleCopyLink}
                 data-umami-event="Support Link Copied"
+                aria-label={copied ? 'Support link copied to clipboard' : 'Copy support link to clipboard'}
                 className="w-full py-3 rounded-2xl bg-white/5 border border-white/10 text-neutral-300 font-mono text-xs uppercase tracking-wider hover:bg-white/10 transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
                 {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}

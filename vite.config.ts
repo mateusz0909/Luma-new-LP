@@ -23,8 +23,17 @@ export default defineConfig(({ mode }) => {
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
+              if (id.includes('react/') || id.includes('react-dom/') || id.includes('scheduler/')) {
+                return 'vendor-react';
+              }
+              if (id.includes('motion')) {
+                return 'vendor-motion';
+              }
               if (id.includes('lucide-react')) {
                 return 'vendor-icons';
+              }
+              if (id.includes('@vercel/analytics')) {
+                return 'vendor-analytics';
               }
               return 'vendor';
             }

@@ -1,56 +1,56 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, Suspense, lazy } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
-import { WebBreathingPacer } from './components/WebBreathingPacer';
-import { FooterWithSupport } from './components/FooterWithSupport';
+
+const WebBreathingPacer = lazy(() => import('./components/WebBreathingPacer'));
+const FooterWithSupport = lazy(() => import('./components/FooterWithSupport'));
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
 
 const logoSrc = asset('screenshots/logo.webp');
-
-const appearanceSettings = asset('screenshots/appearance-settings.jpeg');
+const appearanceSettings = asset('screenshots/appearance-settings.webp');
 
 const appearanceThemes = [
   {
     name: 'Aurora Lab',
     description: 'Electric cyan glow with vivid magenta accents for a sharper night mode.',
-    image: asset('screenshots/Aurora Lab.jpeg'),
+    image: asset('screenshots/Aurora Lab.webp'),
     accent: '#49cfff'
   },
   {
     name: 'Plum Midnight',
     description: 'A softer violet palette that keeps the interface dark but less severe.',
-    image: asset('screenshots/Plum midnight.jpeg'),
+    image: asset('screenshots/Plum midnight.webp'),
     accent: '#d18dff'
   },
   {
     name: 'Ember Noir',
     description: 'Warm ember highlights for a darker, richer visual mood during sessions.',
-    image: asset('screenshots/ember.jpeg'),
+    image: asset('screenshots/ember.webp'),
     accent: '#ff9a5c'
   },
   {
     name: 'Forest Night',
     description: 'A calmer green look for people who want less glow and more depth.',
-    image: asset('screenshots/green.jpeg'),
+    image: asset('screenshots/green.webp'),
     accent: '#77d78a'
   }
 ];
 
 const screenshotItems = [
-  { src: asset('screenshots/1.png'), alt: 'Luma iOS Wim Hof breathing timer session overview and start screen' },
-  { src: asset('screenshots/2.png'), alt: 'Luma customizable breathing cycles and round duration settings' },
-  { src: asset('screenshots/3.png'), alt: 'Luma Wim Hof retention stopwatch and breath hold analytics' },
-  { src: asset('screenshots/4.png'), alt: 'Luma dark mode breathing session history and streak tracking' },
-  { src: asset('screenshots/5.png'), alt: 'Luma breathwork home dashboard and daily practice launcher' },
-  { src: asset('screenshots/6.png'), alt: 'Luma guided Wim Hof power breathing pacer with visual orb' },
-  { src: asset('screenshots/7.png'), alt: 'Luma recovery hold timer with 15-second lung hold countdown' },
-  { src: asset('screenshots/8.png'), alt: 'Luma audio presets and ambient meditation soundscapes' },
-  { src: asset('screenshots/9.png'), alt: 'Luma mindful minutes and breathwork statistics overview' },
-  { src: asset('screenshots/10.png'), alt: 'Luma complete breath session summary and retention records' },
-  { src: asset('screenshots/applehealth-screen.png'), alt: 'Luma Apple Health integration with mindful minutes logging' },
-  { src: asset('screenshots/haptics.png'), alt: 'Luma custom tactile haptic feedback for guided breathing' },
-  { src: asset('screenshots/home-widgets.png'), alt: 'Luma iOS Home Screen and Lock Screen breathwork widgets' }
+  { src: asset('screenshots/1.webp'), alt: 'Luma iOS Wim Hof breathing timer session overview and start screen' },
+  { src: asset('screenshots/2.webp'), alt: 'Luma customizable breathing cycles and round duration settings' },
+  { src: asset('screenshots/3.webp'), alt: 'Luma Wim Hof retention stopwatch and breath hold analytics' },
+  { src: asset('screenshots/4.webp'), alt: 'Luma dark mode breathing session history and streak tracking' },
+  { src: asset('screenshots/5.webp'), alt: 'Luma breathwork home dashboard and daily practice launcher' },
+  { src: asset('screenshots/6.webp'), alt: 'Luma guided Wim Hof power breathing pacer with visual orb' },
+  { src: asset('screenshots/7.webp'), alt: 'Luma recovery hold timer with 15-second lung hold countdown' },
+  { src: asset('screenshots/8.webp'), alt: 'Luma audio presets and ambient meditation soundscapes' },
+  { src: asset('screenshots/9.webp'), alt: 'Luma mindful minutes and breathwork statistics overview' },
+  { src: asset('screenshots/10.webp'), alt: 'Luma complete breath session summary and retention records' },
+  { src: asset('screenshots/applehealth-screen.webp'), alt: 'Luma Apple Health integration with mindful minutes logging' },
+  { src: asset('screenshots/haptics.webp'), alt: 'Luma custom tactile haptic feedback for guided breathing' },
+  { src: asset('screenshots/home-widgets.webp'), alt: 'Luma iOS Home Screen and Lock Screen breathwork widgets' }
 ];
 
 const sessionVideoSrc = asset('video/luma-video.mp4');
@@ -76,8 +76,8 @@ const stickySectionItems = [
 
 const galleryItems = [
   { 
-    type: 'video' as const, 
-    src: sessionVideoSrc, 
+    type: 'image' as const, 
+    src: sessionPosterSrc, 
     alt: 'Luma iOS actual Wim Hof breathing session recording in action' 
   },
   ...screenshotItems.map((item) => ({ type: 'image' as const, ...item }))
@@ -111,11 +111,12 @@ const faqs = [
   }
 ];
 
-const CTAButton = ({ href, text, eventName = "App Store Hero Click", className = "" }: { href: string, text: string, eventName?: string, className?: string }) => (
+const CTAButton = ({ href, text, ariaLabel, eventName = "App Store Hero Click", className = "" }: { href: string, text: string, ariaLabel?: string, eventName?: string, className?: string }) => (
   <a 
     href={href}
     target="_blank"
     rel="noopener noreferrer"
+    aria-label={ariaLabel || text}
     data-umami-event={eventName}
     className={`group relative inline-flex items-center gap-6 rounded-full p-2 pr-8 bg-white/5 border border-white/10 backdrop-blur-xl transition-all duration-700 hover:bg-white hover:border-white hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:-translate-y-1 cursor-pointer ${className}`}
   >
@@ -129,9 +130,9 @@ const CTAButton = ({ href, text, eventName = "App Store Hero Click", className =
 );
 
 const PhoneFrame = ({ children }: { children: React.ReactNode }) => (
-  <div className="relative w-[280px] md:w-[320px] aspect-[1170/2532] rounded-[48px] p-2 bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-3xl border border-white/10 shadow-[0_0_100px_rgba(0,18,218,0.4)]">
+  <div className="relative w-[260px] sm:w-[280px] md:w-[320px] aspect-[1170/2532] rounded-[44px] md:rounded-[48px] p-2 bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-3xl border border-white/10 shadow-[0_0_80px_rgba(0,18,218,0.3)]">
     <div className="absolute top-4 inset-x-0 mx-auto w-24 h-7 bg-black rounded-full z-50 border border-white/10" />
-    <div className="w-full h-full bg-black rounded-[40px] overflow-hidden relative border border-white/5 shadow-inner">
+    <div className="w-full h-full bg-black rounded-[36px] md:rounded-[40px] overflow-hidden relative border border-white/5 shadow-inner">
       {children}
     </div>
   </div>
@@ -145,8 +146,6 @@ export default function App() {
   });
 
   const y1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  
-  // Calculate which section is active (0, 1, or 2) based on scroll
   const activeSection = useTransform(scrollYProgress, [0.3, 0.5, 0.7], [0, 1, 2]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -174,6 +173,7 @@ export default function App() {
           href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" 
           target="_blank" 
           rel="noopener noreferrer" 
+          aria-label="Download Luma app from Apple App Store"
           data-umami-event="App Store Nav Click"
           className="font-mono text-xs uppercase tracking-widest hover:text-[#d8d628] transition-colors flex items-center gap-2"
         >
@@ -183,165 +183,228 @@ export default function App() {
 
       {/* Hero Section */}
       <section className="h-[100svh] relative flex flex-col items-center justify-center overflow-hidden">
-        {/* Breathing Orbs */}
-        <motion.div
-          animate={{ scale: [1, 1.4, 1], opacity: [0.5, 0.9, 0.5] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] rounded-full bg-[#0012da] blur-[120px] md:blur-[180px] mix-blend-screen"
-        />
-        <motion.div
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.6, 0.2] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-          className="absolute w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full bg-[#d8d628] blur-[100px] md:blur-[150px] mix-blend-screen"
-        />
+        {/* Hardware-accelerated CSS breathing orbs (0ms JS main-thread cost) */}
+        <div className="absolute w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] rounded-full bg-[#0012da] blur-[100px] md:blur-[160px] mix-blend-screen luma-orb-blue" />
+        <div className="absolute w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full bg-[#d8d628] blur-[80px] md:blur-[140px] mix-blend-screen luma-orb-yellow" />
         
-        <div className="z-10 flex flex-col items-center w-full px-4">
-          <div className="text-center mix-blend-difference mb-12">
-            <h1 className="text-[22vw] md:text-[18vw] leading-[0.75] font-bold tracking-tighter uppercase text-white">
+        <div className="z-10 flex flex-col items-center w-full px-4 text-center">
+          <div className="mb-8 md:mb-12">
+            <h1 className="text-[20vw] md:text-[18vw] leading-[0.8] font-bold tracking-tighter uppercase text-white">
               Breathe.
             </h1>
-            <h2 className="font-serif italic text-2xl md:text-5xl mt-8 md:mt-12 text-white/90 max-w-4xl mx-auto font-normal">
+            <h2 className="font-serif italic text-xl sm:text-2xl md:text-5xl mt-6 md:mt-10 text-white/90 max-w-4xl mx-auto font-normal">
               The Iceman method, reimagined. Free Wim Hof breathing app &amp; timer.
             </h2>
           </div>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 1 }}
-          >
-            <CTAButton 
-              href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" 
-              text="Download for iOS" 
-              eventName="App Store Hero Click"
-            />
-          </motion.div>
+          <CTAButton 
+            href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" 
+            text="Download for iOS" 
+            ariaLabel="Download Luma for iOS from App Store"
+            eventName="App Store Hero Click"
+          />
         </div>
       </section>
 
       {/* Editorial Statement */}
-      <section className="py-[15vh] px-6 md:px-20 max-w-7xl mx-auto">
+      <section className="py-[12vh] md:py-[15vh] px-6 md:px-20 max-w-7xl mx-auto">
         <motion.h2
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-20%" }}
-          className="text-4xl md:text-6xl lg:text-8xl font-serif leading-[1.1] tracking-tight"
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.7 }}
+          className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.15] tracking-tight"
         >
           We believe breath is the ultimate tool for human optimization. <br className="hidden md:block"/>
           <span className="text-white/30">No paywalls. No noise. Just pure focus.</span>
         </motion.h2>
       </section>
 
-      {/* Sticky Scroll Showcase with Live Video Preview */}
-      <section ref={containerRef} className="relative px-6 md:px-20 max-w-7xl mx-auto flex flex-col md:flex-row gap-10 pb-[10vh]">
+      {/* Showcase Section (Responsive: Clean pinned view on Desktop, inline visual cards on Mobile) */}
+      <section ref={containerRef} className="relative px-6 md:px-20 max-w-7xl mx-auto pb-[10vh]">
         
-        {/* Left: Scrolling Text Blocks */}
-        <div className="w-full md:w-1/2 flex flex-col gap-[40vh] pt-[10vh] pb-[40vh] z-10">
-          
-          <motion.div
-            initial={{ opacity: 0, filter: "blur(10px)", y: 40 }}
-            whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-            viewport={{ margin: "-40%" }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col gap-8"
-          >
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">01 / RITUAL</span>
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-white/80">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"></span>
+        {/* Mobile View: High-visibility stacked cards with interactive video and screenshots */}
+        <div className="flex flex-col gap-16 md:hidden">
+          {/* Mobile Card 1: Video */}
+          <div className="flex flex-col items-center gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/10">
+            <div className="w-full flex flex-col gap-3">
+              <div className="flex items-center gap-2">
+                <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-3 py-1">01 / RITUAL</span>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono text-white/80">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                  </span>
+                  Live Preview
                 </span>
-                Live Video Preview
-              </span>
+              </div>
+              <h3 className="text-4xl font-bold tracking-tight">Your daily practice.</h3>
+              <p className="text-base text-white/60 font-serif italic">
+                Fully customizable rounds, retention times, and recovery holds.
+              </p>
             </div>
-            <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Your daily<br/>practice.</h3>
-            <p className="text-xl md:text-3xl text-white/50 font-serif italic leading-relaxed">
-              Fully customizable rounds, retention times, and recovery holds. Tailored to your exact needs.
-            </p>
-          </motion.div>
+            <PhoneFrame>
+              <video
+                src={sessionVideoSrc}
+                poster={sessionPosterSrc}
+                preload="auto"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+              />
+            </PhoneFrame>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, filter: "blur(10px)", y: 40 }}
-            whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-            viewport={{ margin: "-40%" }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col gap-8"
-          >
-            <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">02 / IMMERSION</span>
-            <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Deep<br/>focus.</h3>
-            <p className="text-xl md:text-3xl text-white/50 font-serif italic leading-relaxed">
-              Immersive audio, haptic feedback, and distraction-free timers. Add your own custom tracks.
-            </p>
-          </motion.div>
+          {/* Mobile Card 2: Guided Pacer Screen */}
+          <div className="flex flex-col items-center gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/10">
+            <div className="w-full flex flex-col gap-3">
+              <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-3 py-1 w-fit">02 / IMMERSION</span>
+              <h3 className="text-4xl font-bold tracking-tight">Deep focus.</h3>
+              <p className="text-base text-white/60 font-serif italic">
+                Immersive audio, haptic feedback, and distraction-free visual timers.
+              </p>
+            </div>
+            <PhoneFrame>
+              <img
+                src={screenshotItems[6].src}
+                alt={screenshotItems[6].alt}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
+            </PhoneFrame>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, filter: "blur(10px)", y: 40 }}
-            whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-            viewport={{ margin: "-40%" }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col gap-8"
-          >
-            <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">03 / INSIGHT</span>
-            <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Track<br/>everything.</h3>
-            <p className="text-xl md:text-3xl text-white/50 font-serif italic leading-relaxed">
-              Detailed analytics, best holds, and streak tracking. Watch yourself grow over time.
-            </p>
-          </motion.div>
-
+          {/* Mobile Card 3: Analytics Screen */}
+          <div className="flex flex-col items-center gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/10">
+            <div className="w-full flex flex-col gap-3">
+              <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-3 py-1 w-fit">03 / INSIGHT</span>
+              <h3 className="text-4xl font-bold tracking-tight">Track everything.</h3>
+              <p className="text-base text-white/60 font-serif italic">
+                Detailed analytics, personal records, and streak tracking.
+              </p>
+            </div>
+            <PhoneFrame>
+              <img
+                src={screenshotItems[3].src}
+                alt={screenshotItems[3].alt}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
+            </PhoneFrame>
+          </div>
         </div>
 
-        {/* Right: Sticky Phone Mockup */}
-        <div className="w-full md:w-1/2 h-[100vh] sticky top-0 flex items-center justify-center md:justify-end pointer-events-none">
-          <motion.div style={{ y: y1 }}>
-            <PhoneFrame>
-              <AnimatePresence mode="wait">
-                {stickySectionItems[activeIndex].type === 'video' ? (
-                  <div className="relative w-full h-full">
-                    {/* Live Video Indicator Badge at Bottom Center */}
-                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/85 border border-white/20 backdrop-blur-xl text-[10px] font-mono uppercase tracking-wider text-white shadow-[0_4px_24px_rgba(0,0,0,0.8)] pointer-events-none whitespace-nowrap">
-                      <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"></span>
-                      </span>
-                      <span>Live App Session</span>
+        {/* Desktop View: Smooth sticky scroll showcase */}
+        <div className="hidden md:flex flex-row gap-10">
+          {/* Left: Scrolling Text Blocks */}
+          <div className="w-1/2 flex flex-col gap-[40vh] pt-[10vh] pb-[40vh] z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ margin: "-30%" }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col gap-8"
+            >
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">01 / RITUAL</span>
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-white/80">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                  </span>
+                  Live Video Preview
+                </span>
+              </div>
+              <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Your daily<br/>practice.</h3>
+              <p className="text-xl md:text-3xl text-white/50 font-serif italic leading-relaxed">
+                Fully customizable rounds, retention times, and recovery holds. Tailored to your exact needs.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ margin: "-30%" }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col gap-8"
+            >
+              <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">02 / IMMERSION</span>
+              <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Deep<br/>focus.</h3>
+              <p className="text-xl md:text-3xl text-white/50 font-serif italic leading-relaxed">
+                Immersive audio, haptic feedback, and distraction-free timers. Add your own custom tracks.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ margin: "-30%" }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col gap-8"
+            >
+              <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">03 / INSIGHT</span>
+              <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Track<br/>everything.</h3>
+              <p className="text-xl md:text-3xl text-white/50 font-serif italic leading-relaxed">
+                Detailed analytics, best holds, and streak tracking. Watch yourself grow over time.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Right: Sticky Phone Mockup */}
+          <div className="w-1/2 h-[100vh] sticky top-0 flex items-center justify-end pointer-events-none">
+            <motion.div style={{ y: y1 }}>
+              <PhoneFrame>
+                <AnimatePresence mode="wait">
+                  {stickySectionItems[activeIndex].type === 'video' ? (
+                    <div className="relative w-full h-full">
+                      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/85 border border-white/20 backdrop-blur-xl text-[10px] font-mono uppercase tracking-wider text-white shadow-2xl pointer-events-none whitespace-nowrap">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                        </span>
+                        <span>Live App Session</span>
+                      </div>
+                      <motion.video
+                        key="sticky-session-video"
+                        src={stickySectionItems[activeIndex].src}
+                        poster={sessionPosterSrc}
+                        preload="auto"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                    <motion.video
-                      key="sticky-session-video"
+                  ) : (
+                    <motion.img
+                      key={`sticky-screenshot-${activeIndex}`}
                       src={stickySectionItems[activeIndex].src}
-                      poster={sessionPosterSrc}
-                      preload="metadata"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      initial={{ opacity: 0, scale: 1.05 }}
-                      animate={{ opacity: 1, scale: 1 }}
+                      alt={stickySectionItems[activeIndex].alt}
+                      loading="lazy"
+                      decoding="async"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 0.4 }}
+                      transition={{ duration: 0.3 }}
                       className="w-full h-full object-cover"
                     />
-                  </div>
-                ) : (
-                  <motion.img
-                    key={`sticky-screenshot-${activeIndex}`}
-                    src={stickySectionItems[activeIndex].src}
-                    alt={stickySectionItems[activeIndex].alt}
-                    loading="lazy"
-                    decoding="async"
-                    initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="w-full h-full object-cover"
-                  />
-                )}
-              </AnimatePresence>
-            </PhoneFrame>
-          </motion.div>
+                  )}
+                </AnimatePresence>
+              </PhoneFrame>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Interactive Web Breathing Pacer (Positioned right after the live showcase) */}
+      {/* Interactive Web Breathing Pacer */}
       <section className="py-20 px-6 md:px-20 max-w-7xl mx-auto border-t border-white/10">
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-[#49cfff] font-mono text-xs tracking-widest border border-[#49cfff]/30 rounded-full px-4 py-1.5 inline-flex mb-4">
@@ -352,7 +415,14 @@ export default function App() {
             Experience guided power breathing and empty-lung retention right in your browser.
           </p>
         </div>
-        <WebBreathingPacer />
+        <Suspense fallback={
+          <div className="w-full max-w-4xl mx-auto h-[480px] rounded-[32px] bg-white/[0.02] border border-white/10 flex flex-col items-center justify-center gap-4 text-white/40 font-mono text-sm">
+            <div className="w-8 h-8 rounded-full border-2 border-[#49cfff] border-t-transparent animate-spin" />
+            <span>Loading Web Breathing Pacer...</span>
+          </div>
+        }>
+          <WebBreathingPacer />
+        </Suspense>
       </section>
 
       {/* Horizontal Gallery Section */}
@@ -362,46 +432,23 @@ export default function App() {
           <p className="text-xl text-white/50 font-serif italic">Designed for clarity, deep focus, and seamless retention tracking.</p>
         </div>
         
-        {/* Scrolling Track */}
+        {/* Hardware-accelerated Scrolling Track */}
         <div className="relative w-full flex overflow-x-hidden">
-          <motion.div 
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ duration: 40, ease: "linear", repeat: Infinity }}
-            className="flex gap-8 px-8"
-            style={{ width: "max-content" }}
-          >
-            {/* Double the array to create a seamless loop */}
+          <div className="luma-marquee-track gap-8 px-8">
             {[...galleryItems, ...galleryItems].map((item, idx) => (
               <div key={idx} className="shrink-0">
                 <PhoneFrame>
-                  {item.type === 'video' ? (
-                    <div className="relative w-full h-full">
-                      {/* Video Badge at bottom */}
-                      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/85 border border-white/20 backdrop-blur-xl text-[9px] font-mono uppercase tracking-wider text-white shadow-xl pointer-events-none whitespace-nowrap">
-                        <span className="relative flex h-1.5 w-1.5">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500 shadow-[0_0_6px_rgba(239,68,68,0.8)]"></span>
-                        </span>
-                        <span>Live Session</span>
-                      </div>
-                      <video
-                        src={item.src}
-                        poster={sessionPosterSrc}
-                        preload="none"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ) : (
-                    <img src={item.src} alt={item.alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
-                  )}
+                  <img 
+                    src={item.src} 
+                    alt={item.alt} 
+                    loading="lazy" 
+                    decoding="async" 
+                    className="w-full h-full object-cover" 
+                  />
                 </PhoneFrame>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -434,13 +481,13 @@ export default function App() {
               {appearanceThemes.map((theme) => (
                 <div
                   key={theme.name}
-                  className="relative min-h-[520px] rounded-[2rem] border border-white/10 overflow-hidden bg-white/[0.03] group"
+                  className="relative min-h-[480px] sm:min-h-[520px] rounded-[2rem] border border-white/10 overflow-hidden bg-white/[0.03] group"
                   style={{ background: `radial-gradient(circle at top left, ${theme.accent}22, transparent 35%), linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)` }}
                 >
-                  <div className="relative z-10 p-7 md:p-8 max-w-[70%]">
+                  <div className="relative z-10 p-7 md:p-8 max-w-[75%] sm:max-w-[70%]">
                     <div className="w-3 h-3 rounded-full mb-5" style={{ backgroundColor: theme.accent }} />
-                    <h3 className="text-3xl md:text-4xl font-bold tracking-tight leading-none">{theme.name}</h3>
-                    <p className="mt-4 text-base md:text-lg text-white/60 font-serif italic leading-relaxed">{theme.description}</p>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-none">{theme.name}</h3>
+                    <p className="mt-4 text-sm sm:text-base md:text-lg text-white/60 font-serif italic leading-relaxed">{theme.description}</p>
                   </div>
                   <div className="absolute right-[-6%] bottom-[-10%] w-[62%] md:w-[58%] rotate-[12deg] group-hover:rotate-[7deg] transition-transform duration-700 ease-out drop-shadow-2xl">
                     <PhoneFrame>
@@ -457,46 +504,46 @@ export default function App() {
       {/* Brutalist Grid Section */}
       <section className="border-t border-white/10">
         <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10 border-b border-white/10">
-          <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
+          <div className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src={asset('screenshots/applewatch-icon.png')} alt="Apple Watch App icon" width="192" height="64" loading="lazy" decoding="async" className="w-48 h-16 object-contain object-left group-hover:scale-110 transition-transform duration-500 invert origin-left" />
+              <img src={asset('screenshots/applewatch-icon.webp')} alt="Apple Watch App icon" width="192" height="64" loading="lazy" decoding="async" className="w-48 h-16 object-contain object-left group-hover:scale-110 transition-transform duration-500 invert origin-left" />
               <h3 className="text-3xl font-bold tracking-tight">Apple Watch</h3>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Standalone sessions directly from your wrist. Leave the phone behind.</p>
             </div>
-            <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-20 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
-              <img src={asset('screenshots/watch-screen.png')} alt="Luma standalone Apple Watch Wim Hof timer and haptics" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
+            <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-25 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
+              <img src={asset('screenshots/watch-screen.webp')} alt="Luma standalone Apple Watch Wim Hof timer and haptics" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </div>
-          <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
+          <div className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src={asset('screenshots/liveactivity-icon.png')} alt="iOS Live Activities & Lock Screen Widgets icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
+              <img src={asset('screenshots/liveactivity-icon.webp')} alt="iOS Live Activities & Lock Screen Widgets icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
               <h3 className="text-3xl font-bold tracking-tight">Widgets &amp; Live Activities</h3>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Track your session on the Lock Screen and customize your Home Screen with beautiful iOS widgets.</p>
             </div>
-            <div className="absolute -bottom-24 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-20 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
-              <img src={asset('screenshots/home-widgets.png')} alt="Luma iOS Home Screen and Lock Screen breathwork widgets" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
+            <div className="absolute -bottom-24 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-25 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
+              <img src={asset('screenshots/home-widgets.webp')} alt="Luma iOS Home Screen and Lock Screen breathwork widgets" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10">
-          <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
+          <div className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src={asset('screenshots/ah-icon.png')} alt="Apple Health Integration icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
+              <img src={asset('screenshots/ah-icon.webp')} alt="Apple Health Integration icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
               <h3 className="text-3xl font-bold tracking-tight">Apple Health</h3>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Seamlessly sync your mindful minutes and heart rate data.</p>
             </div>
-            <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-20 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
-              <img src={asset('screenshots/applehealth-screen.png')} alt="Luma Mindful Minutes syncing with Apple Health" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
+            <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-25 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
+              <img src={asset('screenshots/applehealth-screen.webp')} alt="Luma Mindful Minutes syncing with Apple Health" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </div>
-          <div className="p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
+          <div className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src={asset('screenshots/haptics-icon.png')} alt="Haptic Vibration Feedback icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
+              <img src={asset('screenshots/haptics-icon.webp')} alt="Haptic Vibration Feedback icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
               <h3 className="text-3xl font-bold tracking-tight">Haptics</h3>
               <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Feel every breath with custom-designed haptic feedback patterns.</p>
             </div>
-            <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-20 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
-              <img src={asset('screenshots/haptics.png')} alt="Luma custom haptic feedback patterns for Wim Hof breathing" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
+            <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-25 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
+              <img src={asset('screenshots/haptics.webp')} alt="Luma custom haptic feedback patterns for Wim Hof breathing" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </div>
         </div>
@@ -525,6 +572,7 @@ export default function App() {
                   onClick={() => toggleFaq(faq.id)}
                   className="flex justify-between items-center w-full text-left gap-6 cursor-pointer group"
                   aria-expanded={isOpen}
+                  aria-label={`Toggle FAQ: ${faq.question}`}
                 >
                   <span className="text-xl md:text-3xl font-bold tracking-tight text-white group-hover:text-[#d8d628] transition-colors">
                     {faq.question}
@@ -575,6 +623,7 @@ export default function App() {
           <CTAButton 
             href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" 
             text="Get Luma Free" 
+            ariaLabel="Get Luma Free for iOS from Apple App Store"
             eventName="App Store PreFooter Click"
           />
         </motion.div>
@@ -582,26 +631,24 @@ export default function App() {
 
       {/* Massive Marquee Footer with Support Banner */}
       <footer className="bg-[#d8d628] text-[#0012da] overflow-hidden pt-32 pb-16 flex flex-col items-center justify-center relative">
-        <motion.div
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="flex whitespace-nowrap text-[15vw] font-bold tracking-tighter leading-none uppercase items-center"
-        >
+        <div className="luma-marquee-footer whitespace-nowrap text-[15vw] font-bold tracking-tighter leading-none uppercase items-center">
           <span className="pr-[4vw] flex items-center gap-[4vw]">Free Forever <img src={logoSrc} loading="lazy" decoding="async" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Luma Free Wim Hof App Logo"/> Get Luma <img src={logoSrc} loading="lazy" decoding="async" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Luma Free Wim Hof App Logo"/></span>
           <span className="pr-[4vw] flex items-center gap-[4vw]">Free Forever <img src={logoSrc} loading="lazy" decoding="async" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Luma Free Wim Hof App Logo"/> Get Luma <img src={logoSrc} loading="lazy" decoding="async" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Luma Free Wim Hof App Logo"/></span>
-        </motion.div>
+        </div>
 
         {/* Support Banner & Links */}
         <div className="w-full mt-12">
-          <FooterWithSupport />
+          <Suspense fallback={null}>
+            <FooterWithSupport />
+          </Suspense>
         </div>
 
         <div className="w-full px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-xs font-bold text-[#0012da] pt-6 border-t border-black/10">
           <span>© {new Date().getFullYear()} LUMA BREATHWORK</span>
           <div className="flex gap-8 tracking-widest">
-            <a href="#" className="hover:text-black transition-colors">PRIVACY</a>
-            <a href="#" className="hover:text-black transition-colors">TERMS</a>
-            <a href="#" className="hover:text-black transition-colors">CONTACT</a>
+            <a href="#" aria-label="Privacy Policy" className="hover:text-black transition-colors">PRIVACY</a>
+            <a href="#" aria-label="Terms of Service" className="hover:text-black transition-colors">TERMS</a>
+            <a href="#" aria-label="Contact Support" className="hover:text-black transition-colors">CONTACT</a>
           </div>
         </div>
       </footer>
