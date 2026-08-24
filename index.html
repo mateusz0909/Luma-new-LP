@@ -6,10 +6,9 @@
     <meta name="google-site-verification" content="3Lp8xmpJBirPctDUZjUNoI6taGCiLxPM9t3WafXwtN8" />
     
     <!-- Primary SEO Meta Tags -->
-    <title>Luma — Free Wim Hof Breathing App &amp; Online Guided Timer</title>
-    <meta name="title" content="Luma — Free Wim Hof Breathing App &amp; Online Guided Timer" />
-    <meta name="description" content="The #1 free Wim Hof Method guided breathing app &amp; online timer alternative. Fully customizable 30-40 power breaths, retention stopwatch, Apple Watch sync &amp; zero ads." />
-    <meta name="keywords" content="wim hof breathing app, wim hof app free, wim hof timer online, free wim hof method, breath hold timer, retention stopwatch, iceman breathing, apple watch breathwork" />
+    <title>Luma — Free Breathwork App &amp; Online Guided Retention Timer</title>
+    <meta name="title" content="Luma — Free Breathwork App &amp; Online Guided Retention Timer" />
+    <meta name="description" content="The #1 free breathwork app &amp; online guided timer. Compatible with Wim Hof Method 30-40 power breaths, retention stopwatch, Apple Watch haptics &amp; zero ads." />
     <link rel="canonical" href="https://luma-breath.work/" />
 
     <!-- Resource Hints & Font Preconnect -->
@@ -30,19 +29,20 @@
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Facebook (1200x630 format) -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Luma" />
+    <meta property="og:site_name" content="Luma Breathwork" />
     <meta property="og:url" content="https://luma-breath.work/" />
-    <meta property="og:title" content="Luma — Free Wim Hof Breathing App &amp; Online Guided Timer" />
-    <meta property="og:description" content="The #1 free Wim Hof Method guided breathing app &amp; online timer alternative. Fully customizable 30-40 power breaths, retention stopwatch, Apple Watch sync &amp; zero ads." />
+    <meta property="og:title" content="Luma — Free Breathwork App &amp; Online Guided Retention Timer" />
+    <meta property="og:description" content="100% free breathwork app &amp; online guided timer. Customizable 30-40 power breaths, retention stopwatch, Apple Watch standalone haptics &amp; zero ads." />
     <meta property="og:image" content="https://luma-breath.work/screenshots/1.webp" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://luma-breath.work/" />
-    <meta name="twitter:title" content="Luma — Free Wim Hof Breathing App &amp; Online Guided Timer" />
-    <meta name="twitter:description" content="The #1 free Wim Hof Method guided breathing app &amp; online timer alternative. Fully customizable 30-40 power breaths, retention stopwatch, Apple Watch sync &amp; zero ads." />
+    <meta name="twitter:title" content="Luma — Free Breathwork App &amp; Online Guided Retention Timer" />
+    <meta name="twitter:description" content="100% free breathwork app &amp; online guided timer. Customizable 30-40 power breaths, retention stopwatch, Apple Watch standalone haptics &amp; zero ads." />
     <meta name="twitter:image" content="https://luma-breath.work/screenshots/1.webp" />
 
     <!-- Critical CSS for Instant 0ms Paint -->
@@ -59,38 +59,41 @@
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "SoftwareApplication",
-          "name": "Luma — Wim Hof Breathing App",
-          "operatingSystem": "iOS, watchOS",
-          "applicationCategory": "HealthApplication",
-          "applicationSubCategory": "Breathing & Meditation",
-          "offers": {
-            "@type": "Offer",
-            "price": "0.00",
-            "priceCurrency": "USD"
-          },
-          "url": "https://apps.apple.com/app/id6737122722",
-          "image": "https://luma-breath.work/screenshots/logo.webp",
-          "screenshot": "https://luma-breath.work/screenshots/1.webp",
-          "description": "100% free Wim Hof Method breathing app and timer for iOS & Apple Watch. Guided 30-40 power breaths, retention stopwatch, Apple Watch haptics, and zero subscriptions."
+          "@type": "WebSite",
+          "@id": "https://luma-breath.work/#website",
+          "url": "https://luma-breath.work/",
+          "name": "Luma Breathwork",
+          "description": "Free breathwork app, online guided timer and retention stopwatch for iOS and Apple Watch.",
+          "publisher": {
+            "@type": "Person",
+            "name": "Mateusz Byrtus",
+            "url": "https://luma-breath.work/about"
+          }
         },
         {
-          "@type": "WebApplication",
-          "name": "Luma Web Breathing Pacer",
-          "operatingSystem": "All",
-          "browserRequirements": "Requires JavaScript. Requires HTML5.",
+          "@type": "SoftwareApplication",
+          "@id": "https://luma-breath.work/#app",
+          "name": "Luma — Breathwork & Retention Timer",
+          "operatingSystem": "iOS, watchOS",
           "applicationCategory": "HealthApplication",
           "offers": {
             "@type": "Offer",
             "price": "0.00",
             "priceCurrency": "USD"
           },
-          "url": "https://luma-breath.work/",
+          "url": "https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722",
           "image": "https://luma-breath.work/screenshots/logo.webp",
-          "description": "Free interactive online Wim Hof Method breathing pacer and retention stopwatch in your web browser."
+          "screenshot": "https://luma-breath.work/screenshots/1.webp",
+          "author": {
+            "@type": "Person",
+            "name": "Mateusz Byrtus",
+            "url": "https://luma-breath.work/about"
+          },
+          "description": "100% free Wim Hof Method compatible breathing app and timer for iOS & Apple Watch. Guided 30-40 power breaths, retention stopwatch, Apple Watch haptics, and zero subscriptions."
         },
         {
           "@type": "FAQPage",
+          "@id": "https://luma-breath.work/#faq",
           "mainEntity": [
             {
               "@type": "Question",
@@ -129,7 +132,7 @@
               "name": "Can I practice Wim Hof breathing in my web browser?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes, Luma includes an interactive Web Breathing Pacer right on this website, allowing you to practice guided breathing and retention holds without installing an app."
+                "text": "Yes, Luma includes an interactive Web Breathing Pacer at https://luma-breath.work/timer, allowing you to practice guided breathing and retention holds without installing an app."
               }
             }
           ]
@@ -142,35 +145,7 @@
     <script async defer src="https://cloud.umami.is/script.js" data-website-id="eff5d569-0c29-4817-8496-5022b65906f4"></script>
   </head>
   <body>
-    <div id="root">
-      <!-- Instant Static Prerendered Shell (Eliminates FCP / LCP Client Delay) -->
-      <div style="background-color:#000;color:#fff;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,Inter,sans-serif;">
-        <nav style="position:fixed;top:0;left:0;right:0;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;z-index:50;background:rgba(0,0,0,0.3);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.1);">
-          <div style="display:flex;align-items:center;gap:0.75rem;">
-            <img src="/screenshots/logo.webp" alt="Luma Free Wim Hof Timer Logo" width="40" height="40" style="object-fit:contain;width:32px;height:32px;" fetchpriority="high" />
-            <div style="font-weight:bold;font-size:1.5rem;letter-spacing:-0.05em;">LUMA.</div>
-          </div>
-          <a href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" target="_blank" rel="noopener noreferrer" aria-label="Download Luma for iOS from App Store" style="font-family:monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:#fff;text-decoration:none;display:flex;align-items:center;gap:0.5rem;">
-            Download <span>→</span>
-          </a>
-        </nav>
-        
-        <section class="luma-hero-init">
-          <div style="position:absolute;width:60vw;height:60vw;max-width:700px;max-height:700px;border-radius:50%;background:#0012da;filter:blur(140px);opacity:0.6;pointer-events:none;"></div>
-          <div style="position:absolute;width:40vw;height:40vw;max-width:450px;max-height:450px;border-radius:50%;background:#d8d628;filter:blur(120px);opacity:0.3;pointer-events:none;"></div>
-          <div style="z-index:10;display:flex;flex-direction:column;align-items:center;width:100%;padding:0 1rem;">
-            <div style="margin-bottom:2.5rem;">
-              <h1 class="luma-h1">Breathe.</h1>
-              <h2 class="luma-sub">The Iceman method, reimagined. Free Wim Hof breathing app &amp; timer.</h2>
-            </div>
-            <a href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" target="_blank" rel="noopener noreferrer" aria-label="Download Luma for iOS from App Store" style="display:inline-flex;align-items:center;gap:1.5rem;border-radius:9999px;padding:0.5rem 1.75rem 0.5rem 0.5rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);text-decoration:none;color:#fff;">
-              <div style="width:3rem;height:3rem;border-radius:9999px;background:#d8d628;color:#000;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.1rem;">→</div>
-              <span style="font-family:monospace;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.2em;font-weight:bold;">Download for iOS</span>
-            </a>
-          </div>
-        </section>
-      </div>
-    </div>
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
