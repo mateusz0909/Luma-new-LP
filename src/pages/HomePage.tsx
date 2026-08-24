@@ -95,8 +95,8 @@ const faqs = [
   },
   {
     id: 3,
-    question: "Can I use Luma standalone on my Apple Watch?",
-    answer: "Yes! Luma includes a native, standalone Apple Watch app with custom haptic vibration feedback. You can perform your entire Wim Hof breathwork session with tactile pulses directly from your wrist without your iPhone nearby."
+    question: "Can I use Luma on my Apple Watch?",
+    answer: "Yes! Luma includes an Apple Watch companion app with custom tactile wrist haptics paired with your iPhone. Feel every breath pulse on your wrist while your session runs on iPhone."
   },
   {
     id: 4,
@@ -286,7 +286,12 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <div className="absolute w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] rounded-full bg-[#0012da] blur-[100px] md:blur-[160px] mix-blend-screen luma-orb-blue" />
         <div className="absolute w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full bg-[#d8d628] blur-[80px] md:blur-[140px] mix-blend-screen luma-orb-yellow" />
         
-        <div className="z-10 flex flex-col items-center w-full px-4 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="z-10 flex flex-col items-center w-full px-4 text-center"
+        >
           <div className="mb-8 md:mb-12">
             <h1 className="text-[20vw] md:text-[18vw] leading-[0.8] font-bold tracking-tighter uppercase text-white">
               Breathe.
@@ -310,28 +315,46 @@ export function HomePage({ onNavigate }: HomePageProps) {
               Try Web Timer &rarr;
             </a>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Editorial Statement (Blockquote semantic tag) */}
       <section className="py-[12vh] md:py-[15vh] px-6 md:px-20 max-w-7xl mx-auto">
-        <blockquote className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.15] tracking-tight">
+        <motion.blockquote 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.15] tracking-tight"
+        >
           We believe breath is the ultimate tool for human optimization. <br className="hidden md:block"/>
           <span className="text-white/30">No paywalls. No noise. Just pure focus.</span>
-        </blockquote>
+        </motion.blockquote>
       </section>
 
       {/* Showcase Section */}
       <section ref={containerRef} className="relative px-6 md:px-20 max-w-7xl mx-auto pb-[10vh]">
-        <div className="mb-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.5 }}
+          className="mb-10"
+        >
           <h2 className="text-xs font-mono uppercase tracking-widest text-[#d8d628] border border-[#d8d628]/30 rounded-full px-4 py-1.5 inline-block">
             PRACTICE ARCHITECTURE
           </h2>
-        </div>
+        </motion.div>
         
         {/* Mobile View: Cards */}
         <div className="flex flex-col gap-16 md:hidden">
-          <div className="flex flex-col items-center gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/10">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-15%" }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-center gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/10"
+          >
             <div className="w-full flex flex-col gap-3">
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-3 py-1 w-fit">01 / RITUAL</span>
               <h3 className="text-3xl font-bold tracking-tight">Your daily practice.</h3>
@@ -342,9 +365,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <PhoneFrame>
               <AppVideoPlayer src={sessionVideoSrc} poster={sessionPosterSrc} />
             </PhoneFrame>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col items-center gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/10">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-15%" }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-center gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/10"
+          >
             <div className="w-full flex flex-col gap-3">
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-3 py-1 w-fit">02 / IMMERSION</span>
               <h3 className="text-3xl font-bold tracking-tight">Deep focus.</h3>
@@ -355,9 +384,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <PhoneFrame>
               <img src={screenshotItems[6].src} alt={screenshotItems[6].alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
             </PhoneFrame>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col items-center gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/10">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-15%" }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col items-center gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/10"
+          >
             <div className="w-full flex flex-col gap-3">
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-3 py-1 w-fit">03 / INSIGHT</span>
               <h3 className="text-3xl font-bold tracking-tight">Track everything.</h3>
@@ -368,35 +403,53 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <PhoneFrame>
               <img src={screenshotItems[3].src} alt={screenshotItems[3].alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
             </PhoneFrame>
-          </div>
+          </motion.div>
         </div>
 
         {/* Desktop View: Sticky scroll */}
         <div className="hidden md:flex flex-row gap-10">
           <div className="w-1/2 flex flex-col gap-[40vh] pt-[10vh] pb-[40vh] z-10">
-            <div className="flex flex-col gap-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-20%" }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col gap-8"
+            >
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">01 / RITUAL</span>
               <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Your daily<br/>practice.</h3>
               <p className="text-xl md:text-3xl text-white/50 font-serif italic leading-relaxed">
                 Fully customizable rounds, retention times, and recovery holds.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col gap-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-20%" }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col gap-8"
+            >
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">02 / IMMERSION</span>
               <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Deep<br/>focus.</h3>
               <p className="text-xl md:text-3xl text-white/50 font-serif italic leading-relaxed">
                 Immersive audio, haptic feedback, and distraction-free timers.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col gap-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-20%" }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col gap-8"
+            >
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">03 / INSIGHT</span>
               <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Track<br/>everything.</h3>
               <p className="text-xl md:text-3xl text-white/50 font-serif italic leading-relaxed">
                 Detailed analytics, best holds, and streak tracking.
               </p>
-            </div>
+            </motion.div>
           </div>
 
           <div className="w-1/2 h-[100vh] sticky top-0 flex items-center justify-end">
@@ -404,11 +457,19 @@ export function HomePage({ onNavigate }: HomePageProps) {
               <PhoneFrame>
                 <AnimatePresence mode="wait">
                   {stickySectionItems[activeIndex].type === 'video' ? (
-                    <AppVideoPlayer
+                    <motion.div
                       key="sticky-session-video"
-                      src={stickySectionItems[activeIndex].src}
-                      poster={sessionPosterSrc}
-                    />
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-full h-full"
+                    >
+                      <AppVideoPlayer
+                        src={stickySectionItems[activeIndex].src}
+                        poster={sessionPosterSrc}
+                      />
+                    </motion.div>
                   ) : (
                     <motion.img
                       key={`sticky-screenshot-${activeIndex}`}
@@ -432,7 +493,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
       {/* Interactive Web Breathing Pacer Section */}
       <section className="py-20 px-6 md:px-20 max-w-7xl mx-auto border-t border-white/10">
-        <div className="text-center max-w-2xl mx-auto mb-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto mb-10"
+        >
           <span className="text-[#49cfff] font-mono text-xs tracking-widest border border-[#49cfff]/30 rounded-full px-4 py-1.5 inline-flex mb-4">
             ONLINE SIMULATOR
           </span>
@@ -440,25 +507,44 @@ export function HomePage({ onNavigate }: HomePageProps) {
           <p className="text-white/60 font-serif italic text-base md:text-lg mt-2">
             Experience guided power breathing and empty-lung retention right in your browser.
           </p>
-        </div>
-        <Suspense fallback={
-          <div className="w-full max-w-4xl mx-auto h-[480px] rounded-[32px] bg-white/[0.02] border border-white/10 flex flex-col items-center justify-center gap-4 text-white/40 font-mono text-sm">
-            <div className="w-8 h-8 rounded-full border-2 border-[#49cfff] border-t-transparent animate-spin" />
-            <span>Loading Web Breathing Pacer...</span>
-          </div>
-        }>
-          <WebBreathingPacer />
-        </Suspense>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
+          <Suspense fallback={
+            <div className="w-full max-w-4xl mx-auto h-[480px] rounded-[32px] bg-white/[0.02] border border-white/10 flex flex-col items-center justify-center gap-4 text-white/40 font-mono text-sm">
+              <div className="w-8 h-8 rounded-full border-2 border-[#49cfff] border-t-transparent animate-spin" />
+              <span>Loading Web Breathing Pacer...</span>
+            </div>
+          }>
+            <WebBreathingPacer />
+          </Suspense>
+        </motion.div>
       </section>
 
       {/* Gallery Section */}
       <section className="py-24 overflow-hidden border-t border-white/10 bg-white/[0.02]">
-        <div className="px-6 md:px-20 max-w-7xl mx-auto mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.6 }}
+          className="px-6 md:px-20 max-w-7xl mx-auto mb-16"
+        >
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">The Interface: Breathwork &amp; Retention Timer.</h2>
           <p className="text-xl text-white/50 font-serif italic">Designed for clarity, deep focus, and seamless retention tracking.</p>
-        </div>
+        </motion.div>
         
-        <div className="relative w-full flex overflow-x-hidden">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.8 }}
+          className="relative w-full flex overflow-x-hidden"
+        >
           <div className="luma-marquee-track gap-8 px-8">
             {[...galleryItems, ...galleryItems].map((item, idx) => (
               <div key={idx} className="shrink-0">
@@ -468,20 +554,32 @@ export function HomePage({ onNavigate }: HomePageProps) {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Appearance Themes Section */}
       <section className="border-t border-white/10 py-24 md:py-32 overflow-hidden bg-[radial-gradient(circle_at_top,#ffffff0d,transparent_35%),linear-gradient(180deg,#000000_0%,#050814_100%)]">
         <div className="px-6 md:px-20 max-w-7xl mx-auto">
-          <div className="max-w-3xl mb-14 md:mb-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-15%" }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mb-14 md:mb-20"
+          >
             <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 inline-flex">NEW / APPEARANCE</span>
             <h2 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.95]">Change the mood, keep the flow. Customizable themes.</h2>
             <p className="mt-6 text-xl md:text-2xl text-white/55 font-serif italic leading-relaxed">Switch visual themes without disrupting your practice.</p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-10 md:gap-12 items-start">
-            <div className="relative rounded-[2rem] border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8 md:p-10 overflow-hidden">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-15%" }}
+              transition={{ duration: 0.6 }}
+              className="relative rounded-[2rem] border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8 md:p-10 overflow-hidden"
+            >
               <div className="relative z-10 flex flex-col gap-8">
                 <div>
                   <div className="text-white/40 font-mono text-xs tracking-[0.2em] uppercase mb-4">Theme Settings</div>
@@ -493,12 +591,16 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   </PhoneFrame>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-              {appearanceThemes.map((theme) => (
-                <div
+              {appearanceThemes.map((theme, i) => (
+                <motion.div
                   key={theme.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
                   className="relative min-h-[480px] sm:min-h-[520px] rounded-[2rem] border border-white/10 overflow-hidden bg-white/[0.03] group"
                   style={{ background: `radial-gradient(circle at top left, ${theme.accent}22, transparent 35%), linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)` }}
                 >
@@ -512,7 +614,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                       <img src={theme.image} alt={`Luma ${theme.name} theme screenshot`} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                     </PhoneFrame>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -521,28 +623,46 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
       {/* Brutalist Grid Section */}
       <section className="border-t border-white/10">
-        <div className="px-6 md:px-20 py-8 max-w-7xl mx-auto border-b border-white/10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.5 }}
+          className="px-6 md:px-20 py-8 max-w-7xl mx-auto border-b border-white/10"
+        >
           <h2 className="text-xs font-mono uppercase tracking-widest text-[#49cfff] border border-[#49cfff]/30 rounded-full px-4 py-1.5 inline-block">
             ECOSYSTEM &amp; SENSORY INTEGRATION
           </h2>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10 border-b border-white/10">
-          <div className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-15%" }}
+            transition={{ duration: 0.6 }}
+            className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden"
+          >
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
               <img src={asset('screenshots/applewatch-icon.webp')} alt="Apple Watch App icon" width="192" height="64" loading="lazy" decoding="async" className="w-48 h-16 object-contain object-left group-hover:scale-110 transition-transform duration-500 invert origin-left" />
-              <h3 className="text-3xl font-bold tracking-tight">Apple Watch</h3>
-              <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Standalone sessions directly from your wrist. Leave the phone behind.</p>
+              <h3 className="text-3xl font-bold tracking-tight">Apple Watch Companion</h3>
+              <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Tactile wrist haptics companion paired with your iPhone. Feel every breath pulse.</p>
               <a href="/apple-watch" onClick={(e) => handleLinkClick(e, '/apple-watch')} className="font-mono text-xs uppercase tracking-wider text-[#d8d628] group-hover:text-white flex items-center gap-1">
                 Learn more &rarr;
               </a>
             </div>
             <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-25 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
-              <img src={asset('screenshots/watch-screen.webp')} alt="Luma standalone Apple Watch timer and haptics" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
+              <img src={asset('screenshots/watch-screen.webp')} alt="Luma Apple Watch companion app timer and haptics" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
-          </div>
+          </motion.div>
 
-          <div className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-15%" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden"
+          >
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
               <img src={asset('screenshots/liveactivity-icon.webp')} alt="iOS Live Activities & Lock Screen Widgets icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
               <h3 className="text-3xl font-bold tracking-tight">Widgets &amp; Live Activities</h3>
@@ -551,11 +671,17 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <div className="absolute -bottom-24 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-25 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
               <img src={asset('screenshots/home-widgets.webp')} alt="Luma iOS Home Screen and Lock Screen breathwork widgets" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10">
-          <div className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-15%" }}
+            transition={{ duration: 0.6 }}
+            className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden"
+          >
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
               <img src={asset('screenshots/ah-icon.webp')} alt="Apple Health Integration icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
               <h3 className="text-3xl font-bold tracking-tight">Apple Health</h3>
@@ -564,9 +690,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-25 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
               <img src={asset('screenshots/applehealth-screen.webp')} alt="Luma Mindful Minutes syncing with Apple Health" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
-          </div>
+          </motion.div>
 
-          <div className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-15%" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden"
+          >
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
               <img src={asset('screenshots/haptics-icon.webp')} alt="Haptic Vibration Feedback icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
               <h3 className="text-3xl font-bold tracking-tight">Haptics</h3>
@@ -575,13 +707,19 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-25 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
               <img src={asset('screenshots/haptics.webp')} alt="Luma custom haptic feedback patterns for breathing" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* FAQ Section */}
       <section className="border-t border-white/10 py-24 md:py-32 px-6 md:px-20 max-w-7xl mx-auto">
-        <div className="max-w-3xl mb-14 md:mb-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mb-14 md:mb-20"
+        >
           <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 inline-flex">
             FAQ / KNOWLEDGE
           </span>
@@ -591,9 +729,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
           <p className="mt-6 text-xl md:text-2xl text-white/55 font-serif italic leading-relaxed">
             Everything you need to know about breathwork, retention timer, Apple Watch haptics, and our 100% free philosophy.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="divide-y divide-white/10 border-y border-white/10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.6 }}
+          className="divide-y divide-white/10 border-y border-white/10"
+        >
           {faqs.map((faq) => {
             const isOpen = openFaq === faq.id;
             return (
@@ -633,7 +777,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               </div>
             );
           })}
-        </div>
+        </motion.div>
 
         <div className="mt-10 text-center">
           <a
@@ -649,7 +793,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
       {/* Pre-Footer CTA */}
       <section className="py-32 px-6 flex flex-col items-center justify-center text-center border-t border-white/10 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0012da]/10 pointer-events-none" />
-        <div className="z-10 flex flex-col items-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="z-10 flex flex-col items-center"
+        >
           <h2 className="text-5xl md:text-8xl font-bold tracking-tighter mb-6">Start your breath practice.</h2>
           <p className="text-xl md:text-2xl text-white/50 font-serif italic mb-12 max-w-xl">
             Join thousands of others optimizing their mind and body. No paywalls. Free forever.
@@ -660,7 +810,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             ariaLabel="Get Luma Free for iOS from Apple App Store"
             eventName="App Store PreFooter Click"
           />
-        </div>
+        </motion.div>
       </section>
 
       {/* Massive Marquee Banner */}

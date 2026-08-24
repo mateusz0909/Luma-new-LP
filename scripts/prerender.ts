@@ -99,8 +99,8 @@ const routes: RouteMeta[] = [
   },
   {
     path: '/apple-watch',
-    title: 'Standalone Wim Hof Breathwork App for Apple Watch | Luma',
-    description: '100% standalone Apple Watch breathwork app with custom tactile haptic pulses, Apple HealthKit mindful minutes sync, and zero phone requirements.',
+    title: 'Apple Watch Companion Breathwork App | Luma',
+    description: 'Tactile wrist haptics breathwork companion paired with your iPhone. Custom Taptic pulses, Apple HealthKit mindful minutes sync, and zero ads.',
     schema: {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
@@ -113,7 +113,7 @@ const routes: RouteMeta[] = [
         "priceCurrency": "USD"
       },
       "url": "https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722",
-      "description": "Standalone watchOS breathwork timer with tailored haptic engine patterns and Apple Health integration."
+      "description": "Apple Watch companion breathwork timer with tailored haptic engine patterns paired with your iPhone and Apple Health integration."
     }
   },
   {
@@ -131,7 +131,7 @@ const routes: RouteMeta[] = [
           "name": "Is Luma really 100% free with no subscriptions?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Luma has zero paywalls, zero ads, and zero locked features. All visual themes, Tibetan singing bowl acoustics, and Apple Watch standalone tools are completely free forever."
+            "text": "Yes. Luma has zero paywalls, zero ads, and zero locked features. All visual themes, Tibetan singing bowl acoustics, and Apple Watch companion features are completely free forever."
           }
         },
         {
@@ -144,10 +144,10 @@ const routes: RouteMeta[] = [
         },
         {
           "@type": "Question",
-          "name": "Can I use Luma standalone on Apple Watch?",
+          "name": "Can I use Luma on Apple Watch?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, Luma runs natively on Apple Watch with custom haptic vibration pulses, allowing phone-free breathwork sessions."
+            "text": "Yes, Luma includes an Apple Watch companion app with custom haptic vibration pulses paired with your iPhone, feeling every breath pulse on your wrist while your session runs."
           }
         }
       ]
@@ -167,16 +167,15 @@ const routes: RouteMeta[] = [
   },
   {
     path: '/about',
-    title: 'About Luma & Developer Mission | Mateusz Byrtus',
+    title: 'About Luma & Mission | Luma Team',
     description: 'The story behind Luma: an independent, ad-free biohacking project created to make breathwork timers 100% free and accessible to all.',
     schema: {
       "@context": "https://schema.org",
       "@type": "ProfilePage",
-      "name": "About Luma & Developer Mission",
+      "name": "About Luma & Project Mission",
       "mainEntity": {
-        "@type": "Person",
-        "name": "Mateusz Byrtus",
-        "jobTitle": "Indie Developer & Creator of Luma",
+        "@type": "Organization",
+        "name": "Luma Team",
         "url": "https://luma-breath.work/about"
       }
     }

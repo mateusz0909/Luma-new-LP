@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { Play, ArrowRight, ShieldAlert, CheckCircle2, HeartPulse, Brain, Zap, Clock, BookOpen, AlertTriangle } from 'lucide-react';
 
 interface GuidePageProps {
@@ -21,7 +22,12 @@ export function GuidePage({ onNavigate }: GuidePageProps) {
     <article className="pt-24 pb-20 px-4 sm:px-6 md:px-12 max-w-4xl mx-auto text-white leading-relaxed">
       
       {/* Header & Meta */}
-      <header className="mb-12 border-b border-white/10 pb-8">
+      <motion.header 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-12 border-b border-white/10 pb-8"
+      >
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#d8d628] mb-4">
           <BookOpen className="w-3.5 h-3.5" /> PILLAR GUIDE &bull; TECHNIQUE &amp; PHYSIOLOGY
         </div>
@@ -33,16 +39,22 @@ export function GuidePage({ onNavigate }: GuidePageProps) {
         </p>
 
         <div className="flex flex-wrap items-center gap-6 font-mono text-xs text-white/50 border-t border-white/5 pt-4">
-          <span>Author: Mateusz Byrtus</span>
+          <span>Author: Luma Team</span>
           <span>&bull;</span>
           <span>Reading Time: 8 min</span>
           <span>&bull;</span>
           <span>Evidence-Based &bull; Clinically Verified</span>
         </div>
-      </header>
+      </motion.header>
 
       {/* Critical Medical Disclaimer Box */}
-      <section className="mb-12 p-6 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        className="mb-12 p-6 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200"
+      >
         <div className="flex items-start gap-3">
           <AlertTriangle className="w-6 h-6 text-amber-400 shrink-0 mt-0.5" />
           <div className="text-sm">
@@ -50,10 +62,17 @@ export function GuidePage({ onNavigate }: GuidePageProps) {
             Never practice Wim Hof Method breathing in or near water (bathtubs, swimming pools, open water) or while driving or standing up. The temporary drop in carbon dioxide ($CO_2$) can suppress your urge to breathe and cause sudden syncope (*Shallow Water Blackout*). Always practice while sitting or lying down on a soft, safe surface.
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Table of Contents */}
-      <nav aria-label="Table of Contents" className="mb-14 p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+      <motion.nav 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        aria-label="Table of Contents" 
+        className="mb-14 p-6 rounded-2xl bg-white/[0.03] border border-white/10"
+      >
         <div className="font-mono text-xs uppercase tracking-widest text-[#d8d628] mb-3 font-bold">
           Table of Contents
         </div>
@@ -65,10 +84,17 @@ export function GuidePage({ onNavigate }: GuidePageProps) {
           <li><a href="#routine" className="text-white/80 hover:text-[#d8d628] transition-colors">5. Ideal Practice Routine &amp; Best Timing</a></li>
           <li><a href="#contraindications" className="text-white/80 hover:text-[#d8d628] transition-colors">6. Contraindications &amp; When Not to Practice</a></li>
         </ul>
-      </nav>
+      </motion.nav>
 
       {/* Main Content Sections */}
-      <section id="what-is-wim-hof" className="mb-14">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        id="what-is-wim-hof" 
+        className="mb-14"
+      >
         <h2 className="text-3xl font-bold tracking-tight mb-4 text-white">1. What is the Wim Hof Method?</h2>
         <p className="text-base text-white/80 mb-4 leading-relaxed font-serif">
           The Wim Hof Method (WHM), popularized by Dutch extreme athlete Wim Hof ("The Iceman"), is a powerful biohacking and mindfulness discipline built on three pillars: <strong>specialized cyclic breathing</strong>, <strong>cold exposure</strong>, and <strong>mindset / commitment</strong>.
@@ -76,10 +102,16 @@ export function GuidePage({ onNavigate }: GuidePageProps) {
         <p className="text-base text-white/80 mb-4 leading-relaxed font-serif">
           Rooted in ancient Tibetan <em>Tummo</em> (inner fire yoga) and <em>Pranayama</em> traditions, the breathing component combines controlled cyclic hyperventilation with intermittent hypoxia (breath retention on empty lungs). Unlike gentle relaxation breathing, WHM breathing is an active, stimulating practice designed to temporarily modulate the autonomic nervous system and trigger anti-inflammatory immune responses.
         </p>
-      </section>
+      </motion.section>
 
       {/* Interactive Tool CTA Banner */}
-      <div className="mb-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#0012da]/30 to-[#d8d628]/10 border border-white/15 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        className="mb-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#0012da]/30 to-[#d8d628]/10 border border-white/15 flex flex-col sm:flex-row items-center justify-between gap-6"
+      >
         <div>
           <span className="font-mono text-xs uppercase tracking-widest text-[#d8d628] block mb-1">INTERACTIVE PACER</span>
           <h3 className="text-xl sm:text-2xl font-bold tracking-tight">Practice along with the guided online timer</h3>
@@ -94,10 +126,17 @@ export function GuidePage({ onNavigate }: GuidePageProps) {
         >
           <Play className="w-4 h-4 fill-current" /> Open Free Web Timer &rarr;
         </a>
-      </div>
+      </motion.div>
 
       {/* Step by Step Section */}
-      <section id="5-step-protocol" className="mb-14">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        id="5-step-protocol" 
+        className="mb-14"
+      >
         <h2 className="text-3xl font-bold tracking-tight mb-6 text-white">2. The 5-Step Breathing Protocol</h2>
         <p className="text-base text-white/80 mb-8 font-serif">
           A standard session consists of <strong>3 to 4 consecutive rounds</strong>. Here is the exact breakdown of how to perform each round:
@@ -166,10 +205,17 @@ export function GuidePage({ onNavigate }: GuidePageProps) {
           </div>
 
         </div>
-      </section>
+      </motion.section>
 
       {/* Physiology Section */}
-      <section id="physiology" className="mb-14">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        id="physiology" 
+        className="mb-14"
+      >
         <h2 className="text-3xl font-bold tracking-tight mb-4 text-white">3. What Happens in the Body? (Physiology &amp; Chemistry)</h2>
         <p className="text-base text-white/80 mb-4 font-serif leading-relaxed">
           The power of the Wim Hof Method is rooted in precise physiological biochemistry:
@@ -208,10 +254,17 @@ export function GuidePage({ onNavigate }: GuidePageProps) {
             </p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Sensations Section */}
-      <section id="sensations" className="mb-14">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        id="sensations" 
+        className="mb-14"
+      >
         <h2 className="text-3xl font-bold tracking-tight mb-4 text-white">4. Common Sensations: Tingling, Lightheadedness &amp; Warmth</h2>
         <p className="text-base text-white/80 mb-4 font-serif leading-relaxed">
           During your first sessions, you will likely experience several distinct physical sensations:
@@ -230,10 +283,17 @@ export function GuidePage({ onNavigate }: GuidePageProps) {
             <div><strong>Internal heat or cold waves:</strong> Autonomic nervous system activation regulating peripheral blood flow.</div>
           </li>
         </ul>
-      </section>
+      </motion.section>
 
       {/* Routine & Best Time Section */}
-      <section id="routine" className="mb-14">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        id="routine" 
+        className="mb-14"
+      >
         <h2 className="text-3xl font-bold tracking-tight mb-4 text-white">5. Ideal Practice Routine &amp; Best Timing</h2>
         <p className="text-base text-white/80 mb-4 font-serif leading-relaxed">
           For maximum physiological benefit, practice <strong>first thing in the morning on an empty stomach</strong> before eating breakfast or drinking caffeine. Digestion diverts blood flow to the GI tract and reduces diaphragm mobility.
@@ -241,10 +301,17 @@ export function GuidePage({ onNavigate }: GuidePageProps) {
         <p className="text-base text-white/80 mb-4 font-serif leading-relaxed">
           A full 3–4 round session takes approximately <strong>12 to 15 minutes</strong>. If you incorporate cold showers, always perform the breathing session <em>before</em> entering the cold water.
         </p>
-      </section>
+      </motion.section>
 
       {/* Contraindications Section */}
-      <section id="contraindications" className="mb-14 p-8 rounded-3xl bg-red-950/20 border border-red-500/30">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        id="contraindications" 
+        className="mb-14 p-8 rounded-3xl bg-red-950/20 border border-red-500/30"
+      >
         <h2 className="text-2xl font-bold tracking-tight mb-3 text-red-400">6. Contraindications &amp; Safety Precautions</h2>
         <p className="text-sm text-white/80 font-serif leading-relaxed mb-4">
           While Wim Hof breathing is safe for healthy adults, it causes significant acute cardiovascular and neurochemical shifts. <strong>Do NOT practice</strong> if you have:
@@ -259,7 +326,7 @@ export function GuidePage({ onNavigate }: GuidePageProps) {
         <p className="text-xs text-white/60 font-serif italic">
           Always consult your physician before undertaking intense breath retention protocols if you have pre-existing medical conditions.
         </p>
-      </section>
+      </motion.section>
 
       {/* Footer Navigation Silo */}
       <footer className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -285,3 +352,4 @@ export function GuidePage({ onNavigate }: GuidePageProps) {
 }
 
 export default GuidePage;
+

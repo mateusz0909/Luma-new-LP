@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { Timer, Clock, Award, ShieldAlert, CheckCircle2, TrendingUp, Zap, ArrowRight, HelpCircle } from 'lucide-react';
 
 interface RetentionTimesPageProps {
@@ -52,7 +53,12 @@ export function RetentionTimesPage({ onNavigate }: RetentionTimesPageProps) {
     <article className="pt-24 pb-20 px-4 sm:px-6 md:px-12 max-w-4xl mx-auto text-white leading-relaxed">
       
       {/* Header */}
-      <header className="mb-12 border-b border-white/10 pb-8">
+      <motion.header 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-12 border-b border-white/10 pb-8"
+      >
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#49cfff] mb-4">
           <Clock className="w-3.5 h-3.5" /> RETENTION BENCHMARKS &bull; DATA &amp; PHYSIOLOGY
         </div>
@@ -64,16 +70,22 @@ export function RetentionTimesPage({ onNavigate }: RetentionTimesPageProps) {
         </p>
 
         <div className="flex flex-wrap items-center gap-6 font-mono text-xs text-white/50 border-t border-white/5 pt-4">
-          <span>Author: Mateusz Byrtus</span>
+          <span>Author: Luma Team</span>
           <span>&bull;</span>
           <span>Updated for 2026</span>
           <span>&bull;</span>
           <span>Evidence-Based Norms</span>
         </div>
-      </header>
+      </motion.header>
 
       {/* Quick Summary Card */}
-      <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 mb-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 mb-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+      >
         <div>
           <div className="text-xs font-mono uppercase tracking-widest text-[#d8d628] mb-1">Quick Answer</div>
           <p className="text-sm font-serif text-white/80">
@@ -87,10 +99,16 @@ export function RetentionTimesPage({ onNavigate }: RetentionTimesPageProps) {
         >
           <Timer className="w-4 h-4" /> Track Your Retention &rarr;
         </a>
-      </div>
+      </motion.div>
 
       {/* Benchmark Reference Table */}
-      <section className="mb-14">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        className="mb-14"
+      >
         <h2 className="text-3xl font-bold tracking-tight mb-4 text-white">
           Wim Hof Retention Time Benchmarks (Round by Round)
         </h2>
@@ -120,10 +138,16 @@ export function RetentionTimesPage({ onNavigate }: RetentionTimesPageProps) {
             </tbody>
           </table>
         </div>
-      </section>
+      </motion.section>
 
       {/* Why Does Retention Increase in Later Rounds? */}
-      <section className="mb-14">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        className="mb-14"
+      >
         <h2 className="text-3xl font-bold tracking-tight mb-4 text-white">
           Why Does Your Breath Hold Double in Later Rounds?
         </h2>
@@ -171,10 +195,16 @@ export function RetentionTimesPage({ onNavigate }: RetentionTimesPageProps) {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Factors Affecting Retention Times */}
-      <section className="mb-14">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        className="mb-14"
+      >
         <h2 className="text-3xl font-bold tracking-tight mb-4 text-white">
           Key Factors That Influence Your Breath Hold Daily
         </h2>
@@ -200,10 +230,16 @@ export function RetentionTimesPage({ onNavigate }: RetentionTimesPageProps) {
             <span className="text-white/60 text-xs">Lying down flat reduces cardiovascular workload compared to upright sitting, allowing longer relaxed holds.</span>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* The Danger of the "Ego Trap" */}
-      <section className="mb-14 p-8 rounded-3xl bg-amber-950/20 border border-amber-500/30">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        className="mb-14 p-8 rounded-3xl bg-amber-950/20 border border-amber-500/30"
+      >
         <div className="flex items-center gap-3 mb-3 text-amber-400">
           <ShieldAlert className="w-6 h-6" />
           <h2 className="text-2xl font-bold tracking-tight">The Ego Trap: Why Longer is Not Always Better</h2>
@@ -214,7 +250,7 @@ export function RetentionTimesPage({ onNavigate }: RetentionTimesPageProps) {
         <p className="text-sm text-white/80 font-serif leading-relaxed">
           The primary benefit comes from the <em>quality of relaxation</em> during the hold. When your body signals a clear urge to breathe, honor it without hesitation and take your 15-second recovery inhale.
         </p>
-      </section>
+      </motion.section>
 
       {/* Bottom CTA */}
       <footer className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -240,3 +276,4 @@ export function RetentionTimesPage({ onNavigate }: RetentionTimesPageProps) {
 }
 
 export default RetentionTimesPage;
+

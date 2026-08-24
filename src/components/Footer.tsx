@@ -9,7 +9,7 @@ export function Footer({ onNavigate }: FooterProps) {
   const [showModal, setShowModal] = useState(false);
   const [copied, setCopied] = useState(false);
   const logoSrc = `${import.meta.env.BASE_URL}screenshots/logo.webp`;
-  const buyMeACoffeeUrl = "https://buymeacoffee.com/mateuszbyrtus";
+  const buyMeACoffeeUrl = "https://buymeacoffee.com/lumabreathwork";
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     if (path.startsWith('http')) return;
@@ -97,7 +97,7 @@ export function Footer({ onNavigate }: FooterProps) {
               Ecosystem
             </div>
             <a href="/apple-watch" onClick={(e) => handleLinkClick(e, '/apple-watch')} className="text-white/70 hover:text-white transition-colors">
-              Apple Watch Standalone App
+              Apple Watch Companion App
             </a>
             <a 
               href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" 
@@ -118,7 +118,7 @@ export function Footer({ onNavigate }: FooterProps) {
               Trust &amp; Legal
             </div>
             <a href="/about" onClick={(e) => handleLinkClick(e, '/about')} className="text-white/70 hover:text-white transition-colors">
-              About the Developer
+              About Luma &amp; Mission
             </a>
             <a href="/medical-disclaimer" onClick={(e) => handleLinkClick(e, '/medical-disclaimer')} className="text-white/70 hover:text-white transition-colors">
               Medical Disclaimer

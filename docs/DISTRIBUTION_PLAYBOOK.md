@@ -11,7 +11,7 @@ Społeczność subreddita **`r/becomingtheiceman`** (~120k członków), **`r/Bio
 ### Zasady Publikacji na Reddit:
 * **Zero agresywnego marketingu / corporate speak.**
 * Pisz z perspektywy niezależnego programisty (Indie Hacker / Biohacker), który rozwiązał własny problem.
-* Akcentuj: **100% Free Forever, Zero Paywalls, Zero Ads, Standalone Apple Watch haptics, Web Pacer with Tibetan singing bowl acoustic synth.**
+* Akcentuj: **100% Free Forever, Zero Paywalls, Zero Ads, Apple Watch Companion wrist haptics, Web Pacer with Tibetan singing bowl acoustic synth.**
 
 ---
 
@@ -31,7 +31,7 @@ So I built **Luma** (https://luma-breath.work) as a 100% free, ad-free indie pro
 
 ### What makes it different:
 1. **Interactive Web Pacer:** You can practice directly in your browser without installing anything (https://luma-breath.work/timer). It features custom Tibetan singing bowl acoustic synthesized tones (no annoying digital beeps) and customizable tempo.
-2. **Standalone Apple Watch App:** Runs natively on watchOS with tailored Taptic Engine vibration pulses, so you can leave your phone in another room and do your session with closed eyes.
+2. **Apple Watch Companion App:** Tactile wrist haptics companion paired with your iPhone. Feel every breath pulse on your wrist while your session runs on iPhone.
 3. **Apple HealthKit Sync:** Automatically logs Mindful Minutes and active heart rate.
 4. **Custom Themes:** Dark mode aesthetics with customized glow palettes (Aurora, Plum, Ember, Forest).
 5. **Zero Data Tracking:** 100% offline-first. Your retention records stay on your device.
@@ -47,18 +47,18 @@ I’d love to hear your feedback on the pacing, sounds, and watch haptics! What 
 
 ### Szablon Postu 2: `r/AppleWatch`
 **Title:**
-> *I built a standalone Apple Watch breathwork timer with custom haptic feedback patterns (100% free, no subscriptions)*
+> *I built an Apple Watch breathwork companion app with custom tactile wrist haptics (100% free, no subscriptions)*
 
 **Body:**
 ```markdown
 Hey r/AppleWatch,
 
-Most breathwork apps on the App Store either treat watchOS as a basic remote control for the iPhone app or lock watch features behind expensive subscriptions.
+Most breathwork apps on the App Store either lack precise haptic guidance or lock watch features behind expensive subscriptions.
 
-I wanted something I could use completely standalone when waking up or doing morning breathwork without touching my phone.
+I wanted tactile wrist feedback to feel every breath pulse while my session runs.
 
 I built **Luma**:
-- Native standalone watchOS app
+- Native Apple Watch companion app
 - Custom tactile haptic vibrations for Inhale, Exhale, Retention Hold, and 15s Recovery countdown
 - Mindful Minutes and heart rate integration with Apple Health
 - Completely free with zero ads and zero paywalls
@@ -88,8 +88,8 @@ Would love to know how the haptics feel on your wrist during breath holds!
   - *Oak - Meditation & Breathing*
   - *Prana Breath*
 * **Opis (Short):**
-  > *100% free, ad-free breathwork timer and Wim Hof Method pacer for iOS, Apple Watch, and web. Features acoustic Tibetan singing bowls, standalone haptics, retention stopwatch, and Apple HealthKit integration.*
-* **Kluczowe Tagi:** `breathwork`, `wim-hof-method`, `apple-watch-app`, `healthkit`, `meditation-timer`, `offline-first`, `no-ads`.
+  > *100% free, ad-free breathwork timer and Wim Hof Method pacer for iOS, Apple Watch, and web. Features acoustic Tibetan singing bowls, wrist companion haptics, retention stopwatch, and Apple HealthKit integration.*
+* **Kluczowe Tagi:** `breathwork`, `wim-hof-method`, `apple-watch-companion`, `healthkit`, `meditation-timer`, `offline-first`, `no-ads`.
 
 ---
 
@@ -104,7 +104,7 @@ Would love to know how the haptics feel on your wrist during breath holds!
 > *Show HN: Luma – Free, client-side Wim Hof breathwork timer with Web Audio synthesizers and Apple Watch haptics*
 
 **Body:**
-> *I built Luma (https://luma-breath.work) as a privacy-first, zero-telemetry breathwork pacer. It includes an in-browser pacer using Web Audio API lowpass-filtered sine wave partials for Tibetan singing bowl acoustics, an SSG pre-rendered knowledge hub, and a standalone SwiftUI watchOS app with Taptic Engine patterns.*
+> *I built Luma (https://luma-breath.work) as a privacy-first, zero-telemetry breathwork pacer. It includes an in-browser pacer using Web Audio API lowpass-filtered sine wave partials for Tibetan singing bowl acoustics, an SSG pre-rendered knowledge hub, and a SwiftUI watchOS companion app with Taptic Engine patterns.*
 
 ---
 
@@ -125,7 +125,7 @@ I'm an indie developer and daily breathwork practitioner. I noticed that many st
 
 I built Luma (https://luma-breath.work) as a 100% free, private tool:
 - Free in-browser breathing pacer with Tibetan singing bowl sounds (https://luma-breath.work/timer)
-- Native standalone Apple Watch app with haptics
+- Apple Watch companion app with tactile wrist haptics
 - Free embeddable widget if you'd like to provide an interactive pacer directly on your blog/website for your students:
   <iframe src="https://luma-breath.work/timer?embed=true" width="100%" height="560" frameborder="0"></iframe>
 
@@ -134,8 +134,8 @@ There are zero ads, zero accounts, and zero paywalls forever.
 Hope this serves as a helpful free resource for your community!
 
 Warm regards,
-Mateusz Byrtus
-Creator of Luma (https://luma-breath.work)
+Luma Team
+Luma Breathwork (https://luma-breath.work)
 ```
 
 ---

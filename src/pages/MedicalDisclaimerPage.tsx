@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { AlertTriangle, ShieldAlert, HeartPulse, CheckCircle2 } from 'lucide-react';
 
 interface MedicalDisclaimerPageProps {
@@ -20,7 +21,12 @@ export function MedicalDisclaimerPage({ onNavigate }: MedicalDisclaimerPageProps
   return (
     <article className="pt-24 pb-20 px-4 sm:px-6 md:px-12 max-w-4xl mx-auto text-white leading-relaxed font-sans">
       
-      <header className="mb-12 border-b border-white/10 pb-8">
+      <motion.header 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-12 border-b border-white/10 pb-8"
+      >
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-xs font-mono text-amber-400 mb-4">
           <AlertTriangle className="w-3.5 h-3.5" /> MEDICAL &amp; SAFETY POLICY
         </div>
@@ -30,9 +36,15 @@ export function MedicalDisclaimerPage({ onNavigate }: MedicalDisclaimerPageProps
         <p className="text-base sm:text-lg text-white/70 font-serif italic">
           Important health disclosures regarding the Wim Hof Method, breath retention, and physiological contraindications.
         </p>
-      </header>
+      </motion.header>
 
-      <section className="mb-10 p-8 rounded-3xl bg-red-950/20 border-2 border-red-500/30 text-red-100">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        className="mb-10 p-8 rounded-3xl bg-red-950/20 border-2 border-red-500/30 text-red-100"
+      >
         <h2 className="text-2xl font-bold text-red-400 mb-3 uppercase tracking-wider">
           1. Never Practice In or Near Water (Shallow Water Blackout)
         </h2>
@@ -42,7 +54,7 @@ export function MedicalDisclaimerPage({ onNavigate }: MedicalDisclaimerPageProps
         <p className="text-xs font-mono text-red-200">
           <strong>ABSOLUTE PROHIBITION:</strong> Never practice while swimming, in a bathtub, pool, shower, freediving, or while operating a motor vehicle or heavy machinery. Always practice while seated or lying down in a safe, dry environment.
         </p>
-      </section>
+      </motion.section>
 
       <section className="mb-10 space-y-6">
         <div>

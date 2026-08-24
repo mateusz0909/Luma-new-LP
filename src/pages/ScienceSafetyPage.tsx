@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { ShieldAlert, BookOpen, ExternalLink, Activity, Heart, AlertOctagon, CheckCircle2, Zap, Brain, Microscope } from 'lucide-react';
 
 interface ScienceSafetyPageProps {
@@ -21,7 +22,12 @@ export function ScienceSafetyPage({ onNavigate }: ScienceSafetyPageProps) {
     <article className="pt-24 pb-20 px-4 sm:px-6 md:px-12 max-w-4xl mx-auto text-white leading-relaxed">
       
       {/* Header */}
-      <header className="mb-12 border-b border-white/10 pb-8">
+      <motion.header 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-12 border-b border-white/10 pb-8"
+      >
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-green-400 mb-4">
           <Microscope className="w-3.5 h-3.5" /> CLINICAL EVIDENCE &bull; BIOCHEMISTRY &bull; SAFETY
         </div>
@@ -33,16 +39,22 @@ export function ScienceSafetyPage({ onNavigate }: ScienceSafetyPageProps) {
         </p>
 
         <div className="flex flex-wrap items-center gap-6 font-mono text-xs text-white/50 border-t border-white/5 pt-4">
-          <span>Author: Mateusz Byrtus</span>
+          <span>Author: Luma Team</span>
           <span>&bull;</span>
           <span>Peer-Reviewed Citations Included</span>
           <span>&bull;</span>
           <span>YMYL Health Compliance</span>
         </div>
-      </header>
+      </motion.header>
 
       {/* Critical Shallow Water Blackout Warning */}
-      <section className="mb-14 p-8 rounded-3xl bg-red-950/30 border-2 border-red-500/40 text-red-100 shadow-2xl">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        className="mb-14 p-8 rounded-3xl bg-red-950/30 border-2 border-red-500/40 text-red-100 shadow-2xl"
+      >
         <div className="flex items-start gap-4">
           <AlertOctagon className="w-8 h-8 text-red-400 shrink-0 mt-1" />
           <div>
@@ -59,10 +71,16 @@ export function ScienceSafetyPage({ onNavigate }: ScienceSafetyPageProps) {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Section 1: Landmark Clinical Research */}
-      <section className="mb-14">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        className="mb-14"
+      >
         <h2 className="text-3xl font-bold tracking-tight mb-6 text-white">
           1. Landmark Clinical Studies: Radboud University &amp; Beyond
         </h2>
@@ -116,10 +134,16 @@ export function ScienceSafetyPage({ onNavigate }: ScienceSafetyPageProps) {
             fMRI and PET scans demonstrated that WHM practices activate the <strong>periaqueductal gray (PAG)</strong> and anterior insula—brain regions responsible for endogenous pain suppression, stress resilience, and thermo-regulation.
           </p>
         </div>
-      </section>
+      </motion.section>
 
       {/* Section 2: The Biochemistry (Alkalosis, Bohr Effect, Hypoxia) */}
-      <section className="mb-14">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        className="mb-14"
+      >
         <h2 className="text-3xl font-bold tracking-tight mb-6 text-white">
           2. The Biochemistry: Why Hands Tingle &amp; Blood Alkalinity
         </h2>
@@ -145,10 +169,16 @@ export function ScienceSafetyPage({ onNavigate }: ScienceSafetyPageProps) {
             </p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Section 3: Absolute Contraindications */}
-      <section className="mb-14 p-8 rounded-3xl bg-white/[0.02] border border-white/10">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        className="mb-14 p-8 rounded-3xl bg-white/[0.02] border border-white/10"
+      >
         <h2 className="text-2xl font-bold tracking-tight mb-4 text-white">
           3. Absolute Contraindications &amp; Medical Disclaimer
         </h2>
@@ -176,10 +206,16 @@ export function ScienceSafetyPage({ onNavigate }: ScienceSafetyPageProps) {
             &bull; Severe kidney disease or chronic metabolic illness
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Section 4: Academic Citations */}
-      <section className="mb-14 p-6 rounded-2xl bg-white/[0.02] border border-white/10 text-xs font-mono text-white/60">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.6 }}
+        className="mb-14 p-6 rounded-2xl bg-white/[0.02] border border-white/10 text-xs font-mono text-white/60"
+      >
         <div className="font-bold text-white uppercase tracking-wider mb-3">Academic References &amp; Clinical Citations:</div>
         <ol className="list-decimal list-inside space-y-2 leading-relaxed">
           <li>Kox M, et al. (2014). <em>Voluntary activation of the sympathetic nervous system and attenuation of the innate immune response in humans.</em> Proc Natl Acad Sci USA, 111(20):7379-7384.</li>
@@ -187,7 +223,7 @@ export function ScienceSafetyPage({ onNavigate }: ScienceSafetyPageProps) {
           <li>Muzik O, et al. (2018). <em>"Brain over body"–A study on the willful regulation of autonomic function during cold exposure.</em> NeuroImage, 172:632-641.</li>
           <li>van Middendorp H, et al. (2016). <em>The role of self-efficacy in voluntary immune modulation.</em> Psychoneuroendocrinology, 68:1-8.</li>
         </ol>
-      </section>
+      </motion.section>
 
       {/* Footer */}
       <footer className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { HelpCircle, ChevronDown, Sparkles, ArrowRight, ShieldAlert } from 'lucide-react';
 
 interface FAQPageProps {
@@ -30,12 +31,12 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
         {
           id: 1,
           q: 'Is Luma really 100% free with no subscriptions or ads?',
-          a: 'Yes. Luma was created as an indie biohacking project born out of frustration with commercial apps charging $50–$80/year for simple breathing clocks. There are zero subscriptions, no hidden paywalls, no tracking, and no advertisements. All features, audio synthesizers, Apple Watch standalone mode, and custom themes are unlocked forever.'
+          a: 'Yes. Luma was created as an indie biohacking project born out of frustration with commercial apps charging $50–$80/year for simple breathing clocks. There are zero subscriptions, no hidden paywalls, no tracking, and no advertisements. All features, audio synthesizers, Apple Watch companion mode, and custom themes are unlocked forever.'
         },
         {
           id: 2,
-          q: 'Can I use Luma standalone on my Apple Watch without an iPhone?',
-          a: 'Yes. Luma features a native watchOS application that runs independently on your wrist with tactile Taptic Engine vibration cues, allowing you to leave your iPhone in another room or practice in nature.'
+          q: 'Can I use Luma on my Apple Watch?',
+          a: 'Yes. Luma includes a dedicated Apple Watch companion app. It pairs directly with your iPhone to deliver tactile wrist haptics for every inhale, exhale, retention hold, and recovery breath so you can feel every breath pulse on your wrist while your session runs on iPhone.'
         },
         {
           id: 3,
@@ -120,7 +121,12 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
     <article className="pt-24 pb-20 px-4 sm:px-6 md:px-12 max-w-4xl mx-auto text-white leading-relaxed">
       
       {/* Header */}
-      <header className="mb-12 border-b border-white/10 pb-8">
+      <motion.header 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-12 border-b border-white/10 pb-8"
+      >
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#d8d628] mb-4">
           <HelpCircle className="w-3.5 h-3.5" /> KNOWLEDGE BASE &bull; FREQUENTLY ASKED QUESTIONS
         </div>
@@ -130,18 +136,30 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
         <p className="text-lg sm:text-xl text-white/70 font-serif italic mb-6">
           Everything you need to know about cyclic hyperventilation, retention stopwatch timing, Apple Watch haptics, tingling sensations, and safety rules.
         </p>
-      </header>
+      </motion.header>
 
       {/* Safety Warning */}
-      <div className="mb-12 p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-sm font-serif">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.5 }}
+        className="mb-12 p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-sm font-serif"
+      >
         <strong className="text-amber-400 font-mono text-xs uppercase block mb-1">Safety Note:</strong>
         Always practice seated or lying down in a safe, dry environment. Never practice in water or while driving.
-      </div>
+      </motion.div>
 
       {/* Categorized FAQ Accordion */}
       <div className="space-y-12 mb-16">
         {faqCategories.map((group) => (
-          <section key={group.category}>
+          <motion.section 
+            key={group.category}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-3">
               {group.category}
             </h2>
@@ -162,16 +180,26 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
                         <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#d8d628]' : 'text-white/70'}`} />
                       </div>
                     </button>
-                    {isOpen && (
-                      <p className="mt-4 text-sm sm:text-base text-white/70 font-serif italic leading-relaxed animate-in fade-in duration-200 pr-6">
-                        {item.a}
-                      </p>
-                    )}
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3, ease: 'easeInOut' }}
+                          className="overflow-hidden"
+                        >
+                          <p className="mt-4 text-sm sm:text-base text-white/70 font-serif italic leading-relaxed pr-6">
+                            {item.a}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 );
               })}
             </div>
-          </section>
+          </motion.section>
         ))}
       </div>
 
@@ -199,3 +227,4 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
 }
 
 export default FAQPage;
+

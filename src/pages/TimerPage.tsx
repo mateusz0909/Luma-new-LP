@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { Sparkles, Code2, Copy, Check, ArrowRight, BookOpen, ShieldAlert, Zap } from 'lucide-react';
 import WebBreathingPacer from '../components/WebBreathingPacer';
 
@@ -52,7 +53,12 @@ export function TimerPage({ onNavigate }: TimerPageProps) {
     <div className="pt-24 pb-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
       
       {/* Above-the-Fold: Main Web Breathing Pacer */}
-      <section className="mb-16">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-16"
+      >
         <div className="text-center max-w-3xl mx-auto mb-8">
           <span className="text-[#49cfff] font-mono text-xs tracking-widest border border-[#49cfff]/30 rounded-full px-4 py-1.5 inline-flex mb-4">
             ONLINE BREATHWORK PACER &bull; ZERO ADS &bull; 100% FREE
@@ -79,11 +85,17 @@ export function TimerPage({ onNavigate }: TimerPageProps) {
             <ShieldAlert className="w-3.5 h-3.5 text-amber-400" /> Never practice in water or while driving
           </span>
         </div>
-      </section>
+      </motion.section>
 
       {/* Instructions & Features Grid */}
       <section className="border-t border-white/10 pt-16 grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/10 flex flex-col gap-4">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.5, delay: 0 }}
+          className="p-8 rounded-3xl bg-white/[0.02] border border-white/10 flex flex-col gap-4"
+        >
           <div className="w-10 h-10 rounded-2xl bg-[#d8d628]/10 border border-[#d8d628]/30 flex items-center justify-center font-bold text-[#d8d628]">
             01
           </div>
@@ -91,9 +103,15 @@ export function TimerPage({ onNavigate }: TimerPageProps) {
           <p className="text-sm text-white/60 font-serif italic leading-relaxed">
             Follow the expanding visual sphere: inhale deeply through nose or mouth into the belly and chest, then let go passively without forcing the exhale.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/10 flex flex-col gap-4">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="p-8 rounded-3xl bg-white/[0.02] border border-white/10 flex flex-col gap-4"
+        >
           <div className="w-10 h-10 rounded-2xl bg-[#49cfff]/10 border border-[#49cfff]/30 flex items-center justify-center font-bold text-[#49cfff]">
             02
           </div>
@@ -101,9 +119,15 @@ export function TimerPage({ onNavigate }: TimerPageProps) {
           <p className="text-sm text-white/60 font-serif italic leading-relaxed">
             After the last breath, exhale gently and hold your breath on unforced empty lungs. The stopwatch counts up your retention record without pressure.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/10 flex flex-col gap-4">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="p-8 rounded-3xl bg-white/[0.02] border border-white/10 flex flex-col gap-4"
+        >
           <div className="w-10 h-10 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center font-bold text-white">
             03
           </div>
@@ -111,11 +135,17 @@ export function TimerPage({ onNavigate }: TimerPageProps) {
           <p className="text-sm text-white/60 font-serif italic leading-relaxed">
             When you feel the urge to breathe, take one full deep breath and hold for 15 seconds to reoxygenate and reset your nervous system for the next round.
           </p>
-        </div>
+        </motion.div>
       </section>
 
       {/* Embeddable Widget Generator for Biohackers & Bloggers */}
-      <section className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-blue-950/40 via-purple-950/20 to-black border border-white/15 mb-16">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-15%" }}
+        transition={{ duration: 0.6 }}
+        className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-blue-950/40 via-purple-950/20 to-black border border-white/15 mb-16"
+      >
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#d8d628] mb-3">
             <Code2 className="w-3.5 h-3.5" /> FREE EMBEDDABLE WIDGET
@@ -140,10 +170,16 @@ export function TimerPage({ onNavigate }: TimerPageProps) {
             {embedCopied ? 'Embed Snippet Copied to Clipboard!' : 'Copy Embed Code (HTML)'}
           </button>
         </div>
-      </section>
+      </motion.section>
 
       {/* Internal Link to Full Guide */}
-      <section className="text-center py-10 border-t border-white/10">
+      <motion.section 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-15%" }}
+        transition={{ duration: 0.6 }}
+        className="text-center py-10 border-t border-white/10"
+      >
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">Want to master the physiology and safety rules?</h2>
         <p className="text-white/60 font-serif italic mb-6 max-w-xl mx-auto">
           Read our in-depth step-by-step tutorial covering round pacing, hypocapnia, and clinical trials.
@@ -164,7 +200,7 @@ export function TimerPage({ onNavigate }: TimerPageProps) {
             See Average Retention Times &rarr;
           </a>
         </div>
-      </section>
+      </motion.section>
 
     </div>
   );

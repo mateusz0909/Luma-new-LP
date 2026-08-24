@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { FileText } from 'lucide-react';
 
 interface TermsPageProps {
@@ -20,7 +21,12 @@ export function TermsPage({ onNavigate }: TermsPageProps) {
   return (
     <article className="pt-24 pb-20 px-4 sm:px-6 md:px-12 max-w-4xl mx-auto text-white leading-relaxed font-sans">
       
-      <header className="mb-12 border-b border-white/10 pb-8">
+      <motion.header 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-12 border-b border-white/10 pb-8"
+      >
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-white/60 mb-4">
           <FileText className="w-3.5 h-3.5" /> LEGAL AGREEMENT
         </div>
@@ -30,7 +36,7 @@ export function TermsPage({ onNavigate }: TermsPageProps) {
         <p className="text-base sm:text-lg text-white/70 font-serif italic">
           Terms and conditions for using Luma web tools and iOS/watchOS applications.
         </p>
-      </header>
+      </motion.header>
 
       <section className="space-y-6 text-sm text-white/80 font-serif leading-relaxed mb-14">
         <div>
@@ -53,7 +59,7 @@ export function TermsPage({ onNavigate }: TermsPageProps) {
         <div>
           <h2 className="text-xl font-bold text-white mb-2 font-sans">3. Intellectual Property</h2>
           <p>
-            Luma's software code, visual design, and acoustic Tibetan bowl audio synthesizers are the intellectual property of Mateusz Byrtus. "Wim Hof" and "Wim Hof Method" are registered trademarks of Innerfire B.V. Luma is an independent application compatible with breathwork methods and is not officially affiliated with or endorsed by Innerfire B.V.
+            Luma's software code, visual design, and acoustic Tibetan bowl audio synthesizers are the intellectual property of Luma Breathwork. "Wim Hof" and "Wim Hof Method" are registered trademarks of Innerfire B.V. Luma is an independent application compatible with breathwork methods and is not officially affiliated with or endorsed by Innerfire B.V.
           </p>
         </div>
 

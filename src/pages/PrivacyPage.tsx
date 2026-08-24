@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { ShieldCheck, Lock, EyeOff } from 'lucide-react';
 
 interface PrivacyPageProps {
@@ -20,7 +21,12 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
   return (
     <article className="pt-24 pb-20 px-4 sm:px-6 md:px-12 max-w-4xl mx-auto text-white leading-relaxed font-sans">
       
-      <header className="mb-12 border-b border-white/10 pb-8">
+      <motion.header 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="mb-12 border-b border-white/10 pb-8"
+      >
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-green-500/10 border border-green-500/30 text-xs font-mono text-green-400 mb-4">
           <ShieldCheck className="w-3.5 h-3.5" /> PRIVACY POLICY &bull; ZERO DATA COLLECTION
         </div>
@@ -30,7 +36,7 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
         <p className="text-base sm:text-lg text-white/70 font-serif italic">
           Luma is designed with strict offline-first principles. We do not collect, sell, track, or transmit your personal or health data.
         </p>
-      </header>
+      </motion.header>
 
       <section className="space-y-6 text-sm text-white/80 font-serif leading-relaxed mb-14">
         <div>
@@ -57,7 +63,7 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
         <div>
           <h2 className="text-xl font-bold text-white mb-2 font-sans">4. Contact Information</h2>
           <p>
-            If you have questions regarding this privacy policy, you may contact the indie developer directly at: <code className="text-[#d8d628] font-mono">mateusz@luma-breath.work</code>.
+            If you have questions regarding this privacy policy, you may contact the Luma Team directly at: <code className="text-[#d8d628] font-mono">contact@luma-breath.work</code>.
           </p>
         </div>
       </section>
