@@ -9,7 +9,7 @@ export function Footer({ onNavigate }: FooterProps) {
   const [showModal, setShowModal] = useState(false);
   const [copied, setCopied] = useState(false);
   const logoSrc = `${import.meta.env.BASE_URL}screenshots/logo.webp`;
-  const buyMeACoffeeUrl = "https://buymeacoffee.com/lumabreathwork";
+  const supportUrl = "https://ko-fi.com/mateusz_b";
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     if (path.startsWith('http')) return;
@@ -23,7 +23,7 @@ export function Footer({ onNavigate }: FooterProps) {
   };
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(buyMeACoffeeUrl);
+    navigator.clipboard.writeText(supportUrl);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -184,14 +184,14 @@ export function Footer({ onNavigate }: FooterProps) {
 
             <div className="flex flex-col gap-3">
               <a
-                href={buyMeACoffeeUrl}
+                href={supportUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                data-umami-event="Buy Me a Coffee Outbound Click"
-                aria-label="Buy Me a Coffee on external website"
+                data-umami-event="Ko-fi Outbound Click"
+                aria-label="Support on Ko-fi"
                 className="w-full py-4 rounded-2xl bg-[#d8d628] text-black font-bold font-mono text-sm uppercase tracking-wider text-center hover:bg-white transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-lg"
               >
-                <Coffee className="w-4 h-4" /> Buy Me a Coffee (Web) &rarr;
+                <Coffee className="w-4 h-4" /> Support on Ko-fi &rarr;
               </a>
 
               <button

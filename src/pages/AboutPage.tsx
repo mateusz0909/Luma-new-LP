@@ -18,7 +18,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
     }
   };
 
-  const buyMeACoffeeUrl = "https://buymeacoffee.com/lumabreathwork";
+  const supportUrl = "https://ko-fi.com/mateusz_b";
 
   return (
     <article className="pt-24 pb-20 px-4 sm:px-6 md:px-12 max-w-4xl mx-auto text-white leading-relaxed font-sans">
@@ -94,12 +94,13 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             Luma is independently maintained and funded. If this app helps you find stillness, energy, or resilience in your daily routine, you can support future development and server costs by buying a coffee.
           </p>
           <a
-            href={buyMeACoffeeUrl}
+            href={supportUrl}
             target="_blank"
             rel="noopener noreferrer"
+            data-umami-event="Ko-fi Outbound Click"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#d8d628] text-black font-mono text-xs font-bold uppercase tracking-wider hover:bg-white transition-all shadow-lg cursor-pointer"
           >
-            <Coffee className="w-4 h-4" /> Support on Buy Me a Coffee &rarr;
+            <Coffee className="w-4 h-4" /> Support on Ko-fi &rarr;
           </a>
         </motion.div>
       </section>
