@@ -4,6 +4,11 @@
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-serif: "Playfair Display", Georgia, Cambria, serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-luma-yellow: #d8d628;
+  --color-luma-cobalt: #0012da;
+  --color-luma-cyan: #49cfff;
+  --color-luma-green: #4ade80;
 }
 
 body {
@@ -78,7 +83,7 @@ body {
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: luma-marquee 20s linear infinite;
+  animation: luma-marquee 60s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

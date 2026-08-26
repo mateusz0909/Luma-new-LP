@@ -89,6 +89,8 @@ export function Navbar({ currentPath = '/', onNavigate }: NavbarProps) {
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-menu"
           className="lg:hidden p-2 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors cursor-pointer"
         >
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -97,7 +99,10 @@ export function Navbar({ currentPath = '/', onNavigate }: NavbarProps) {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-x-0 top-[65px] bg-black/95 backdrop-blur-2xl border-b border-white/10 p-6 flex flex-col gap-4 lg:hidden z-50 animate-in fade-in slide-in-from-top-4 duration-200">
+        <div 
+          id="mobile-menu"
+          className="fixed inset-x-0 top-[65px] bg-black/95 backdrop-blur-2xl border-b border-white/10 p-6 flex flex-col gap-4 lg:hidden z-50 animate-in fade-in slide-in-from-top-4 duration-200"
+        >
           <div className="flex flex-col gap-3 font-mono text-sm tracking-wider uppercase">
             <a
               href="/"
@@ -118,16 +123,28 @@ export function Navbar({ currentPath = '/', onNavigate }: NavbarProps) {
             ))}
           </div>
 
-          <a
-            href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-umami-event="App Store Mobile Menu Click"
-            className="w-full py-3 rounded-xl bg-[#d8d628] text-black font-bold font-mono text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 mt-2"
-          >
-            <span>Download for iOS & Apple Watch</span>
-            <ArrowRight className="w-4 h-4" />
-          </a>
+          <div className="flex flex-col gap-2.5 mt-2">
+            <a
+              href="/timer"
+              onClick={(e) => handleLinkClick(e, '/timer')}
+              data-umami-event="Mobile Menu Timer CTA Click"
+              className="w-full py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold font-mono text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-colors"
+            >
+              <span>Try Free Web Timer</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+
+            <a
+              href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-umami-event="App Store Mobile Menu Click"
+              className="w-full py-3 rounded-xl bg-[#d8d628] text-black font-bold font-mono text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-all hover:bg-white"
+            >
+              <span>Download for iOS & Apple Watch</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
         </div>
       )}
     </nav>

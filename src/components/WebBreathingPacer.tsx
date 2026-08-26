@@ -383,6 +383,24 @@ export function WebBreathingPacer() {
   const circumference = 2 * Math.PI * 136; // radius 136
   const strokeDashoffset = circumference - progressRatio * circumference;
 
+  // Screen Reader Live Announcement
+  const liveAnnouncement = useMemo(() => {
+    switch (phase) {
+      case 'idle':
+        return `Breathing session ready. Round ${round}. ${totalBreaths} breaths configured.`;
+      case 'breathing':
+        return `${isInhaling ? 'Inhaling' : 'Exhaling'}, breath ${breathCount} of ${totalBreaths}`;
+      case 'retention':
+        return 'Breath retention started. Hold on empty lungs.';
+      case 'recovery':
+        return 'Recovery breath hold for 15 seconds';
+      case 'round_complete':
+        return `Round complete. Retention hold: ${formatTimer(lastHoldTime)}`;
+      default:
+        return '';
+    }
+  }, [phase, isInhaling, breathCount, totalBreaths, round, lastHoldTime]);
+
   return (
     <div
       ref={containerRef}
@@ -390,6 +408,11 @@ export function WebBreathingPacer() {
         isFullscreen ? 'fixed inset-0 z-50 rounded-none max-w-none p-6 sm:p-12 justify-center gap-8' : 'p-6 sm:p-10 md:p-12'
       }`}
     >
+      {/* Visually hidden screen reader live announcer */}
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        {liveAnnouncement}
+      </div>
+
       {/* Subtle Background Radial Glow */}
       <div
         className="absolute inset-0 pointer-events-none transition-all duration-1000 opacity-40 blur-[100px]"
@@ -448,7 +471,7 @@ export function WebBreathingPacer() {
           className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-6 z-10 font-mono text-xs"
         >
           <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
-            <span className="text-white/40 uppercase tracking-wider text-[10px]">Breaths:</span>
+            <span className="text-white/60 uppercase tracking-wider text-[10px]">Breaths:</span>
             {[20, 30, 40].map((count) => (
               <button
                 key={count}
@@ -466,7 +489,7 @@ export function WebBreathingPacer() {
           </div>
 
           <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
-            <span className="text-white/40 uppercase tracking-wider text-[10px]">Pace:</span>
+            <span className="text-white/60 uppercase tracking-wider text-[10px]">Pace:</span>
             {(['slow', 'normal', 'fast'] as const).map((t) => (
               <button
                 key={t}
@@ -590,9 +613,9 @@ export function WebBreathingPacer() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 className="text-center px-4"
               >
-                <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-white/50 block">READY</span>
+                <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-white/60 block">READY</span>
                 <span className="text-xl sm:text-3xl font-bold tracking-tight text-white mt-1 block">Round {round}</span>
-                <span className="text-[11px] sm:text-xs text-white/40 font-mono mt-1 block">{totalBreaths} Breaths</span>
+                <span className="text-[11px] sm:text-xs text-white/60 font-mono mt-1 block">{totalBreaths} Breaths</span>
               </motion.div>
             )}
 
@@ -608,7 +631,7 @@ export function WebBreathingPacer() {
                   {isInhaling ? 'Fully In' : 'Let Go'}
                 </span>
                 <span className="text-3xl sm:text-5xl font-mono font-bold mt-1 text-[#d8d628] block tabular-nums">
-                  {breathCount} <span className="text-sm sm:text-base text-white/40 font-normal">/ {totalBreaths}</span>
+                  {breathCount} <span className="text-sm sm:text-base text-white/60 font-normal">/ {totalBreaths}</span>
                 </span>
               </motion.div>
             )}
@@ -627,8 +650,8 @@ export function WebBreathingPacer() {
                 <span className="text-3xl sm:text-5xl md:text-6xl font-mono font-bold mt-1 text-white block tabular-nums">
                   {formatTimer(retentionSec)}
                 </span>
-                <span className="text-[10px] sm:text-[11px] text-white/40 font-serif italic mt-1 block">
-                  Hold on empty lungs
+                <span className="text-[10px] sm:text-[11px] text-white/60 font-serif italic mt-1 block max-w-[200px] sm:max-w-[230px] mx-auto leading-tight">
+                  Hold on empty lungs. Your body is resetting its carbon dioxide tolerance.
                 </span>
               </motion.div>
             )}
@@ -647,7 +670,7 @@ export function WebBreathingPacer() {
                 <span className="text-3xl sm:text-5xl md:text-6xl font-mono font-bold mt-1 text-white block tabular-nums">
                   {recoverySecLeft}s
                 </span>
-                <span className="text-[10px] sm:text-[11px] text-white/40 font-serif italic mt-1 block">
+                <span className="text-[10px] sm:text-[11px] text-white/60 font-serif italic mt-1 block">
                   Hold full for 15s
                 </span>
               </motion.div>
@@ -742,28 +765,28 @@ export function WebBreathingPacer() {
       {/* Completed Rounds History */}
       {roundHistory.length > 0 && (
         <div className="flex flex-wrap items-center justify-center gap-2 mt-4 z-10 animate-in fade-in duration-300">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-white/40 mr-1">Session Holds:</span>
+          <span className="text-[10px] font-mono uppercase tracking-widest text-white/60 mr-1">Session Holds:</span>
           {roundHistory.map((item) => (
             <span
               key={item.round}
               className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 font-mono text-[11px] text-[#49cfff]"
             >
-              <span className="text-white/40">R{item.round}:</span> {formatTimer(item.holdSec)}
+              <span className="text-white/60">R{item.round}:</span> {formatTimer(item.holdSec)}
             </span>
           ))}
         </div>
       )}
 
       {/* Keyboard Shortcut Footer Pill */}
-      <div className="mt-4 sm:mt-6 pt-3 border-t border-white/5 flex items-center justify-center gap-4 text-[11px] font-mono text-white/30">
+      <div className="mt-4 sm:mt-6 pt-3 border-t border-white/10 flex items-center justify-center gap-4 text-[11px] font-mono text-white/60">
         <span className="inline-flex items-center gap-1.5">
-          <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/60 text-[10px]">Space</kbd> Action
+          <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/80 text-[10px]">Space</kbd> Action
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/60 text-[10px]">M</kbd> Mute
+          <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/80 text-[10px]">M</kbd> Mute
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/60 text-[10px]">R</kbd> Reset
+          <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-white/80 text-[10px]">R</kbd> Reset
         </span>
       </div>
 

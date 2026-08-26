@@ -328,7 +328,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.15] tracking-tight"
         >
           We believe breath is the ultimate tool for human optimization. <br className="hidden md:block"/>
-          <span className="text-white/30">No paywalls. No noise. Just pure focus.</span>
+          <span className="text-white/60">No paywalls. No noise. Just pure focus.</span>
         </motion.blockquote>
       </section>
 
@@ -418,7 +418,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             >
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">01 / RITUAL</span>
               <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Your daily<br/>practice.</h3>
-              <p className="text-xl md:text-3xl text-white/50 font-serif italic leading-relaxed">
+              <p className="text-xl md:text-3xl text-white/70 font-serif italic leading-relaxed">
                 Fully customizable rounds, retention times, and recovery holds.
               </p>
             </motion.div>
@@ -432,7 +432,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             >
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">02 / IMMERSION</span>
               <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Deep<br/>focus.</h3>
-              <p className="text-xl md:text-3xl text-white/50 font-serif italic leading-relaxed">
+              <p className="text-xl md:text-3xl text-white/70 font-serif italic leading-relaxed">
                 Immersive audio, haptic feedback, and distraction-free timers.
               </p>
             </motion.div>
@@ -446,7 +446,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             >
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">03 / INSIGHT</span>
               <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Track<br/>everything.</h3>
-              <p className="text-xl md:text-3xl text-white/50 font-serif italic leading-relaxed">
+              <p className="text-xl md:text-3xl text-white/70 font-serif italic leading-relaxed">
                 Detailed analytics, best holds, and streak tracking.
               </p>
             </motion.div>
@@ -504,7 +504,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             ONLINE SIMULATOR
           </span>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Try the Guided Pacer now.</h2>
-          <p className="text-white/60 font-serif italic text-base md:text-lg mt-2">
+          <p className="text-white/70 font-serif italic text-base md:text-lg mt-2">
             Experience guided power breathing and empty-lung retention right in your browser.
           </p>
         </motion.div>
@@ -515,7 +515,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           transition={{ duration: 0.7, delay: 0.1 }}
         >
           <Suspense fallback={
-            <div className="w-full max-w-4xl mx-auto h-[480px] rounded-[32px] bg-white/[0.02] border border-white/10 flex flex-col items-center justify-center gap-4 text-white/40 font-mono text-sm">
+            <div className="w-full max-w-4xl mx-auto h-[480px] rounded-[32px] bg-white/[0.02] border border-white/10 flex flex-col items-center justify-center gap-4 text-white/70 font-mono text-sm">
               <div className="w-8 h-8 rounded-full border-2 border-[#49cfff] border-t-transparent animate-spin" />
               <span>Loading Web Breathing Pacer...</span>
             </div>
@@ -535,7 +535,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           className="px-6 md:px-20 max-w-7xl mx-auto mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">The Interface: Breathwork &amp; Retention Timer.</h2>
-          <p className="text-xl text-white/50 font-serif italic">Designed for clarity, deep focus, and seamless retention tracking.</p>
+          <p className="text-xl text-white/70 font-serif italic">Designed for clarity, deep focus, and seamless retention tracking.</p>
         </motion.div>
         
         <motion.div 
@@ -546,10 +546,17 @@ export function HomePage({ onNavigate }: HomePageProps) {
           className="relative w-full flex overflow-x-hidden"
         >
           <div className="luma-marquee-track gap-8 px-8">
-            {[...galleryItems, ...galleryItems].map((item, idx) => (
-              <div key={idx} className="shrink-0">
+            {galleryItems.map((item, idx) => (
+              <div key={`gallery-primary-${idx}`} className="shrink-0">
                 <PhoneFrame>
                   <img src={item.src} alt={item.alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                </PhoneFrame>
+              </div>
+            ))}
+            {galleryItems.map((item, idx) => (
+              <div key={`gallery-dup-${idx}`} className="shrink-0" aria-hidden="true">
+                <PhoneFrame>
+                  <img src={item.src} alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </PhoneFrame>
               </div>
             ))}
@@ -569,7 +576,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           >
             <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 inline-flex">NEW / APPEARANCE</span>
             <h2 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.95]">Change the mood, keep the flow. Customizable themes.</h2>
-            <p className="mt-6 text-xl md:text-2xl text-white/55 font-serif italic leading-relaxed">Switch visual themes without disrupting your practice.</p>
+            <p className="mt-6 text-xl md:text-2xl text-white/70 font-serif italic leading-relaxed">Switch visual themes without disrupting your practice.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-10 md:gap-12 items-start">
@@ -582,7 +589,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             >
               <div className="relative z-10 flex flex-col gap-8">
                 <div>
-                  <div className="text-white/40 font-mono text-xs tracking-[0.2em] uppercase mb-4">Theme Settings</div>
+                  <div className="text-white/70 font-mono text-xs tracking-[0.2em] uppercase mb-4">Theme Settings</div>
                   <h3 className="text-3xl md:text-5xl font-bold tracking-tighter leading-none">One tap, completely different feel.</h3>
                 </div>
                 <div className="self-center xl:self-start">
@@ -607,7 +614,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <div className="relative z-10 p-7 md:p-8 max-w-[75%] sm:max-w-[70%]">
                     <div className="w-3 h-3 rounded-full mb-5" style={{ backgroundColor: theme.accent }} />
                     <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-none">{theme.name}</h3>
-                    <p className="mt-4 text-sm sm:text-base md:text-lg text-white/60 font-serif italic leading-relaxed">{theme.description}</p>
+                    <p className="mt-4 text-sm sm:text-base md:text-lg text-white/70 font-serif italic leading-relaxed">{theme.description}</p>
                   </div>
                   <div className="absolute right-[-6%] bottom-[-10%] w-[62%] md:w-[58%] rotate-[12deg] group-hover:rotate-[7deg] transition-transform duration-700 ease-out drop-shadow-2xl">
                     <PhoneFrame>
@@ -641,17 +648,18 @@ export function HomePage({ onNavigate }: HomePageProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
             transition={{ duration: 0.6 }}
-            className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden"
+            className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-white/[0.04] transition-colors duration-500 group relative overflow-hidden"
           >
+            <div className="absolute top-0 right-0 w-96 h-96 bg-white/[0.01] group-hover:bg-[#49cfff]/[0.06] rounded-full blur-3xl pointer-events-none transition-colors duration-700" />
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src={asset('screenshots/applewatch-icon.webp')} alt="Apple Watch App icon" width="192" height="64" loading="lazy" decoding="async" className="w-48 h-16 object-contain object-left group-hover:scale-110 transition-transform duration-500 invert origin-left" />
+              <img src={asset('screenshots/applewatch-icon.webp')} alt="Apple Watch App icon" width="192" height="64" loading="lazy" decoding="async" className="w-48 h-16 object-contain object-left group-hover:scale-105 transition-transform duration-500 invert origin-left" />
               <h3 className="text-3xl font-bold tracking-tight">Apple Watch Companion</h3>
-              <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Tactile wrist haptics companion paired with your iPhone. Feel every breath pulse.</p>
+              <p className="text-lg text-white/70 group-hover:text-white transition-colors font-serif italic">Tactile wrist haptics companion paired with your iPhone. Feel every breath pulse.</p>
               <a href="/apple-watch" onClick={(e) => handleLinkClick(e, '/apple-watch')} className="font-mono text-xs uppercase tracking-wider text-[#d8d628] group-hover:text-white flex items-center gap-1">
                 Learn more &rarr;
               </a>
             </div>
-            <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-25 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
+            <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-40 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
               <img src={asset('screenshots/watch-screen.webp')} alt="Luma Apple Watch companion app timer and haptics" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </motion.div>
@@ -661,14 +669,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden"
+            className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-white/[0.04] transition-colors duration-500 group relative overflow-hidden"
           >
+            <div className="absolute top-0 right-0 w-96 h-96 bg-white/[0.01] group-hover:bg-[#49cfff]/[0.06] rounded-full blur-3xl pointer-events-none transition-colors duration-700" />
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src={asset('screenshots/liveactivity-icon.webp')} alt="iOS Live Activities & Lock Screen Widgets icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
+              <img src={asset('screenshots/liveactivity-icon.webp')} alt="iOS Live Activities & Lock Screen Widgets icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-105 transition-transform duration-500" />
               <h3 className="text-3xl font-bold tracking-tight">Widgets &amp; Live Activities</h3>
-              <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Track your session on the Lock Screen and customize your Home Screen with beautiful iOS widgets.</p>
+              <p className="text-lg text-white/70 group-hover:text-white transition-colors font-serif italic">Track your session on the Lock Screen and customize your Home Screen with beautiful iOS widgets.</p>
             </div>
-            <div className="absolute -bottom-24 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-25 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
+            <div className="absolute -bottom-24 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-40 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
               <img src={asset('screenshots/home-widgets.webp')} alt="Luma iOS Home Screen and Lock Screen breathwork widgets" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </motion.div>
@@ -680,14 +689,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
             transition={{ duration: 0.6 }}
-            className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden"
+            className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-white/[0.04] transition-colors duration-500 group relative overflow-hidden"
           >
+            <div className="absolute top-0 right-0 w-96 h-96 bg-white/[0.01] group-hover:bg-[#49cfff]/[0.06] rounded-full blur-3xl pointer-events-none transition-colors duration-700" />
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src={asset('screenshots/ah-icon.webp')} alt="Apple Health Integration icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
+              <img src={asset('screenshots/ah-icon.webp')} alt="Apple Health Integration icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-105 transition-transform duration-500" />
               <h3 className="text-3xl font-bold tracking-tight">Apple Health</h3>
-              <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Seamlessly sync your mindful minutes and heart rate data.</p>
+              <p className="text-lg text-white/70 group-hover:text-white transition-colors font-serif italic">Seamlessly sync your mindful minutes and heart rate data.</p>
             </div>
-            <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-25 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
+            <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-40 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
               <img src={asset('screenshots/applehealth-screen.webp')} alt="Luma Mindful Minutes syncing with Apple Health" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </motion.div>
@@ -697,14 +707,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-[#0012da] transition-colors duration-500 group relative overflow-hidden"
+            className="p-10 sm:p-12 md:p-20 flex flex-col gap-6 hover:bg-white/[0.04] transition-colors duration-500 group relative overflow-hidden"
           >
+            <div className="absolute top-0 right-0 w-96 h-96 bg-white/[0.01] group-hover:bg-[#49cfff]/[0.06] rounded-full blur-3xl pointer-events-none transition-colors duration-700" />
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
-              <img src={asset('screenshots/haptics-icon.webp')} alt="Haptic Vibration Feedback icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-500" />
+              <img src={asset('screenshots/haptics-icon.webp')} alt="Haptic Vibration Feedback icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-105 transition-transform duration-500" />
               <h3 className="text-3xl font-bold tracking-tight">Haptics</h3>
-              <p className="text-lg text-white/50 group-hover:text-white/80 transition-colors font-serif italic">Feel every breath with custom-designed haptic feedback patterns.</p>
+              <p className="text-lg text-white/70 group-hover:text-white transition-colors font-serif italic">Feel every breath with custom-designed haptic feedback patterns.</p>
             </div>
-            <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-25 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
+            <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-40 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
               <img src={asset('screenshots/haptics.webp')} alt="Luma custom haptic feedback patterns for breathing" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
           </motion.div>
@@ -726,7 +737,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           <h2 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.95]">
             Breathwork &amp; Luma FAQ.
           </h2>
-          <p className="mt-6 text-xl md:text-2xl text-white/55 font-serif italic leading-relaxed">
+          <p className="mt-6 text-xl md:text-2xl text-white/70 font-serif italic leading-relaxed">
             Everything you need to know about breathwork, retention timer, Apple Watch haptics, and our 100% free philosophy.
           </p>
         </motion.div>
@@ -768,7 +779,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <p className="mt-4 md:mt-6 text-base md:text-xl text-white/65 font-serif italic leading-relaxed max-w-4xl pr-12">
+                      <p className="mt-4 md:mt-6 text-base md:text-xl text-white/75 font-serif italic leading-relaxed max-w-4xl pr-12">
                         {faq.answer}
                       </p>
                     </motion.div>
@@ -801,7 +812,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           className="z-10 flex flex-col items-center"
         >
           <h2 className="text-5xl md:text-8xl font-bold tracking-tighter mb-6">Start your breath practice.</h2>
-          <p className="text-xl md:text-2xl text-white/50 font-serif italic mb-12 max-w-xl">
+          <p className="text-xl md:text-2xl text-white/70 font-serif italic mb-12 max-w-xl">
             Join thousands of others optimizing their mind and body. No paywalls. Free forever.
           </p>
           <CTAButton 
@@ -814,10 +825,16 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* Massive Marquee Banner */}
-      <div className="bg-[#d8d628] text-[#0012da] overflow-hidden py-16 flex flex-col items-center justify-center relative">
-        <div className="luma-marquee-footer whitespace-nowrap text-[15vw] font-bold tracking-tighter leading-none uppercase items-center">
-          <span className="pr-[4vw] flex items-center gap-[4vw]">Free Forever <img src={logoSrc} loading="lazy" decoding="async" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Luma App Logo"/> Get Luma <img src={logoSrc} loading="lazy" decoding="async" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Luma App Logo"/></span>
-          <span className="pr-[4vw] flex items-center gap-[4vw]">Free Forever <img src={logoSrc} loading="lazy" decoding="async" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Luma App Logo"/> Get Luma <img src={logoSrc} loading="lazy" decoding="async" className="w-[10vw] h-[10vw] object-contain shrink-0" alt="Luma App Logo"/></span>
+      <div className="bg-black border-y border-white/10 overflow-hidden py-12 md:py-16 flex flex-col items-center justify-center relative">
+        <div className="luma-marquee-footer whitespace-nowrap text-[10vw] md:text-[8vw] font-bold tracking-tighter leading-none uppercase items-center text-white/20 select-none">
+          <span className="pr-[4vw] flex items-center gap-[4vw]">
+            Free Forever <img src={logoSrc} loading="lazy" decoding="async" className="w-[6vw] h-[6vw] object-contain shrink-0 opacity-40" alt="Luma App Logo"/> 
+            Get Luma <img src={logoSrc} loading="lazy" decoding="async" className="w-[6vw] h-[6vw] object-contain shrink-0 opacity-40" alt="Luma App Logo"/>
+          </span>
+          <span className="pr-[4vw] flex items-center gap-[4vw]" aria-hidden="true">
+            Free Forever <img src={logoSrc} loading="lazy" decoding="async" className="w-[6vw] h-[6vw] object-contain shrink-0 opacity-40" alt=""/> 
+            Get Luma <img src={logoSrc} loading="lazy" decoding="async" className="w-[6vw] h-[6vw] object-contain shrink-0 opacity-40" alt=""/>
+          </span>
         </div>
       </div>
 
