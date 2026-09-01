@@ -76,8 +76,8 @@ export function TimerPage({ onNavigate }: TimerPageProps) {
           <WebBreathingPacer />
         </div>
 
-        {/* Keyboard Shortcuts Helper */}
-        <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-white/50 mt-6 text-center">
+      {/* Keyboard Shortcuts Helper */}
+        <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-white/50 mt-6 text-center mb-10">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
             <Zap className="w-3.5 h-3.5 text-[#d8d628]" /> Web Audio Synthesizer Enabled
           </span>
@@ -85,9 +85,24 @@ export function TimerPage({ onNavigate }: TimerPageProps) {
             <ShieldAlert className="w-3.5 h-3.5 text-amber-400" /> Never practice in water or while driving
           </span>
         </div>
+
+        {/* SEO Explanatory Content for Top Queries */}
+        <div className="max-w-3xl mx-auto p-8 rounded-3xl bg-white/[0.02] border border-white/10 mt-12 text-left">
+          <h2 className="text-2xl font-bold tracking-tight mb-4">How to Use This Free Wim Hof Timer</h2>
+          <p className="text-white/70 leading-relaxed mb-6">
+            This 100% free online Wim Hof method breathing timer is designed to guide your daily practice directly in your browser without requiring you to download an app or pay for expensive subscriptions. The rhythmic pacer automatically counts your power breaths and records your retention stopwatch metrics.
+          </p>
+          <h3 className="text-lg font-bold tracking-tight mb-3">Customizing Your Breathing Setup</h3>
+          <ul className="list-disc list-inside text-white/70 space-y-2 mb-6">
+            <li><strong>Power Breaths:</strong> Tap the settings gear to adjust the number of breaths per round (default is 30, but many practitioners prefer 35 or 40).</li>
+            <li><strong>Retention Stopwatch:</strong> After your last exhalation, simply tap the screen or hit Spacebar to start the breath hold stopwatch. Tap again when you feel the urge to breathe.</li>
+            <li><strong>Acoustic Sounds:</strong> The pacer features custom Tibetan singing bowl audio synthesized in real-time. Ensure your volume is up.</li>
+          </ul>
+        </div>
       </motion.section>
 
       {/* Instructions & Features Grid */}
+
       <section className="border-t border-white/10 pt-16 grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}

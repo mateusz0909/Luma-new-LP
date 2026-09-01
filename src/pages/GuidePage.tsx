@@ -32,7 +32,7 @@ export function GuidePage({ onNavigate }: GuidePageProps) {
           <BookOpen className="w-3.5 h-3.5" /> PILLAR GUIDE &bull; TECHNIQUE &amp; PHYSIOLOGY
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4 text-white leading-[1.05]">
-          How to Do Wim Hof Method Breathing: The Definitive Step-by-Step Guide
+          How to Do Wim Hof Breathing Method: Step-by-Step Guide
         </h1>
         <p className="text-lg sm:text-xl text-white/70 font-serif italic mb-6">
           Master the art of cyclic hyperventilation, empty-lung retention, and recovery holds. Learn the exact 5-step protocol, underlying physiology, and critical safety guidelines.
@@ -216,7 +216,7 @@ export function GuidePage({ onNavigate }: GuidePageProps) {
         id="physiology" 
         className="mb-14"
       >
-        <h2 className="text-3xl font-bold tracking-tight mb-4 text-white">3. What Happens in the Body? (Physiology &amp; Chemistry)</h2>
+        <h2 className="text-3xl font-bold tracking-tight mb-4 text-white">3. Wim Hof Breathing Explained: What Happens in the Body?</h2>
         <p className="text-base text-white/80 mb-4 font-serif leading-relaxed">
           The power of the Wim Hof Method is rooted in precise physiological biochemistry:
         </p>
