@@ -7,7 +7,7 @@ interface AppleWatchPageProps {
 }
 
 export function AppleWatchPage({ onNavigate }: AppleWatchPageProps) {
-  const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+  const asset = (path: string) => `${import.meta.env?.BASE_URL || '/'}${path.startsWith('/') ? path.slice(1) : path}`;
 
   return (
     <div className="pt-24 pb-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto text-white">

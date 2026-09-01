@@ -1,0 +1,1122 @@
+{
+  "timestamp": "2026-09-01T18:41:57.488Z",
+  "total": 159,
+  "passed": 159,
+  "failed": 0,
+  "verdict": "APPROVE",
+  "results": [
+    {
+      "suite": "SUITE 1",
+      "testId": "R-EXIST-/",
+      "name": "Route static file exists: /",
+      "pass": true,
+      "details": "dist/index.html size: 91722 bytes"
+    },
+    {
+      "suite": "SUITE 1",
+      "testId": "R-EXIST-/timer",
+      "name": "Route static file exists: /timer",
+      "pass": true,
+      "details": "dist/timer/index.html size: 30093 bytes"
+    },
+    {
+      "suite": "SUITE 1",
+      "testId": "R-EXIST-/guide/wim-hof-method",
+      "name": "Route static file exists: /guide/wim-hof-method",
+      "pass": true,
+      "details": "dist/guide/wim-hof-method/index.html size: 32272 bytes"
+    },
+    {
+      "suite": "SUITE 1",
+      "testId": "R-EXIST-/retention-times",
+      "name": "Route static file exists: /retention-times",
+      "pass": true,
+      "details": "dist/retention-times/index.html size: 25896 bytes"
+    },
+    {
+      "suite": "SUITE 1",
+      "testId": "R-EXIST-/science-and-safety",
+      "name": "Route static file exists: /science-and-safety",
+      "pass": true,
+      "details": "dist/science-and-safety/index.html size: 25414 bytes"
+    },
+    {
+      "suite": "SUITE 1",
+      "testId": "R-EXIST-/apple-watch",
+      "name": "Route static file exists: /apple-watch",
+      "pass": true,
+      "details": "dist/apple-watch/index.html size: 22162 bytes"
+    },
+    {
+      "suite": "SUITE 1",
+      "testId": "R-EXIST-/faq",
+      "name": "Route static file exists: /faq",
+      "pass": true,
+      "details": "dist/faq/index.html size: 35536 bytes"
+    },
+    {
+      "suite": "SUITE 1",
+      "testId": "R-EXIST-/about",
+      "name": "Route static file exists: /about",
+      "pass": true,
+      "details": "dist/about/index.html size: 19308 bytes"
+    },
+    {
+      "suite": "SUITE 1",
+      "testId": "R-EXIST-/medical-disclaimer",
+      "name": "Route static file exists: /medical-disclaimer",
+      "pass": true,
+      "details": "dist/medical-disclaimer/index.html size: 17724 bytes"
+    },
+    {
+      "suite": "SUITE 1",
+      "testId": "R-EXIST-/privacy",
+      "name": "Route static file exists: /privacy",
+      "pass": true,
+      "details": "dist/privacy/index.html size: 16277 bytes"
+    },
+    {
+      "suite": "SUITE 1",
+      "testId": "R-EXIST-/terms",
+      "name": "Route static file exists: /terms",
+      "pass": true,
+      "details": "dist/terms/index.html size: 16353 bytes"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "TITLE-MULT-/",
+      "name": "Single <title> tag on /",
+      "pass": true,
+      "details": "Found 1 <title> tag(s). Title text: \"Luma — Free Breathwork App & Online Guided Retention Timer\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "DESC-MULT-/",
+      "name": "Single <meta name=\"description\"> tag on /",
+      "pass": true,
+      "details": "Found 1 description tag(s). Length: 154"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "CANONICAL-/",
+      "name": "Single exact <link rel=\"canonical\"> on /",
+      "pass": true,
+      "details": "Canonical: \"https://luma-breath.work/\" (Expected: \"https://luma-breath.work/\", Count: 1)"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "ROBOTS-/",
+      "name": "Robots meta tag specifies index, follow on /",
+      "pass": true,
+      "details": "Robots content: \"index, follow\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "OG-TW-SYNC-/",
+      "name": "OG/Twitter Title, Desc & URL sync on /",
+      "pass": true,
+      "details": "OG URL: \"https://luma-breath.work/\" | Canonical: \"https://luma-breath.work/\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "TITLE-MULT-/timer",
+      "name": "Single <title> tag on /timer",
+      "pass": true,
+      "details": "Found 1 <title> tag(s). Title text: \"Free Wim Hof Breathing Timer & Retention Stopwatch | Luma\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "DESC-MULT-/timer",
+      "name": "Single <meta name=\"description\"> tag on /timer",
+      "pass": true,
+      "details": "Found 1 description tag(s). Length: 152"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "CANONICAL-/timer",
+      "name": "Single exact <link rel=\"canonical\"> on /timer",
+      "pass": true,
+      "details": "Canonical: \"https://luma-breath.work/timer\" (Expected: \"https://luma-breath.work/timer\", Count: 1)"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "ROBOTS-/timer",
+      "name": "Robots meta tag specifies index, follow on /timer",
+      "pass": true,
+      "details": "Robots content: \"index, follow\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "OG-TW-SYNC-/timer",
+      "name": "OG/Twitter Title, Desc & URL sync on /timer",
+      "pass": true,
+      "details": "OG URL: \"https://luma-breath.work/timer\" | Canonical: \"https://luma-breath.work/timer\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "TITLE-MULT-/guide/wim-hof-method",
+      "name": "Single <title> tag on /guide/wim-hof-method",
+      "pass": true,
+      "details": "Found 1 <title> tag(s). Title text: \"How to Do Wim Hof Breathing Method: Step-by-Step Guide | Luma\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "DESC-MULT-/guide/wim-hof-method",
+      "name": "Single <meta name=\"description\"> tag on /guide/wim-hof-method",
+      "pass": true,
+      "details": "Found 1 description tag(s). Length: 150"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "CANONICAL-/guide/wim-hof-method",
+      "name": "Single exact <link rel=\"canonical\"> on /guide/wim-hof-method",
+      "pass": true,
+      "details": "Canonical: \"https://luma-breath.work/guide/wim-hof-method\" (Expected: \"https://luma-breath.work/guide/wim-hof-method\", Count: 1)"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "ROBOTS-/guide/wim-hof-method",
+      "name": "Robots meta tag specifies index, follow on /guide/wim-hof-method",
+      "pass": true,
+      "details": "Robots content: \"index, follow\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "OG-TW-SYNC-/guide/wim-hof-method",
+      "name": "OG/Twitter Title, Desc & URL sync on /guide/wim-hof-method",
+      "pass": true,
+      "details": "OG URL: \"https://luma-breath.work/guide/wim-hof-method\" | Canonical: \"https://luma-breath.work/guide/wim-hof-method\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "TITLE-MULT-/retention-times",
+      "name": "Single <title> tag on /retention-times",
+      "pass": true,
+      "details": "Found 1 <title> tag(s). Title text: \"Wim Hof Retention Times: Benchmarks & Physiology | Luma\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "DESC-MULT-/retention-times",
+      "name": "Single <meta name=\"description\"> tag on /retention-times",
+      "pass": true,
+      "details": "Found 1 description tag(s). Length: 152"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "CANONICAL-/retention-times",
+      "name": "Single exact <link rel=\"canonical\"> on /retention-times",
+      "pass": true,
+      "details": "Canonical: \"https://luma-breath.work/retention-times\" (Expected: \"https://luma-breath.work/retention-times\", Count: 1)"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "ROBOTS-/retention-times",
+      "name": "Robots meta tag specifies index, follow on /retention-times",
+      "pass": true,
+      "details": "Robots content: \"index, follow\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "OG-TW-SYNC-/retention-times",
+      "name": "OG/Twitter Title, Desc & URL sync on /retention-times",
+      "pass": true,
+      "details": "OG URL: \"https://luma-breath.work/retention-times\" | Canonical: \"https://luma-breath.work/retention-times\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "TITLE-MULT-/science-and-safety",
+      "name": "Single <title> tag on /science-and-safety",
+      "pass": true,
+      "details": "Found 1 <title> tag(s). Title text: \"Science of Wim Hof Breathwork: Studies & Safety | Luma\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "DESC-MULT-/science-and-safety",
+      "name": "Single <meta name=\"description\"> tag on /science-and-safety",
+      "pass": true,
+      "details": "Found 1 description tag(s). Length: 158"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "CANONICAL-/science-and-safety",
+      "name": "Single exact <link rel=\"canonical\"> on /science-and-safety",
+      "pass": true,
+      "details": "Canonical: \"https://luma-breath.work/science-and-safety\" (Expected: \"https://luma-breath.work/science-and-safety\", Count: 1)"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "ROBOTS-/science-and-safety",
+      "name": "Robots meta tag specifies index, follow on /science-and-safety",
+      "pass": true,
+      "details": "Robots content: \"index, follow\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "OG-TW-SYNC-/science-and-safety",
+      "name": "OG/Twitter Title, Desc & URL sync on /science-and-safety",
+      "pass": true,
+      "details": "OG URL: \"https://luma-breath.work/science-and-safety\" | Canonical: \"https://luma-breath.work/science-and-safety\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "TITLE-MULT-/apple-watch",
+      "name": "Single <title> tag on /apple-watch",
+      "pass": true,
+      "details": "Found 1 <title> tag(s). Title text: \"Apple Watch Companion Breathwork App | Luma\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "DESC-MULT-/apple-watch",
+      "name": "Single <meta name=\"description\"> tag on /apple-watch",
+      "pass": true,
+      "details": "Found 1 description tag(s). Length: 141"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "CANONICAL-/apple-watch",
+      "name": "Single exact <link rel=\"canonical\"> on /apple-watch",
+      "pass": true,
+      "details": "Canonical: \"https://luma-breath.work/apple-watch\" (Expected: \"https://luma-breath.work/apple-watch\", Count: 1)"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "ROBOTS-/apple-watch",
+      "name": "Robots meta tag specifies index, follow on /apple-watch",
+      "pass": true,
+      "details": "Robots content: \"index, follow\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "OG-TW-SYNC-/apple-watch",
+      "name": "OG/Twitter Title, Desc & URL sync on /apple-watch",
+      "pass": true,
+      "details": "OG URL: \"https://luma-breath.work/apple-watch\" | Canonical: \"https://luma-breath.work/apple-watch\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "TITLE-MULT-/faq",
+      "name": "Single <title> tag on /faq",
+      "pass": true,
+      "details": "Found 1 <title> tag(s). Title text: \"Wim Hof Breathwork FAQ: Technique & Safety | Luma\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "DESC-MULT-/faq",
+      "name": "Single <meta name=\"description\"> tag on /faq",
+      "pass": true,
+      "details": "Found 1 description tag(s). Length: 146"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "CANONICAL-/faq",
+      "name": "Single exact <link rel=\"canonical\"> on /faq",
+      "pass": true,
+      "details": "Canonical: \"https://luma-breath.work/faq\" (Expected: \"https://luma-breath.work/faq\", Count: 1)"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "ROBOTS-/faq",
+      "name": "Robots meta tag specifies index, follow on /faq",
+      "pass": true,
+      "details": "Robots content: \"index, follow\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "OG-TW-SYNC-/faq",
+      "name": "OG/Twitter Title, Desc & URL sync on /faq",
+      "pass": true,
+      "details": "OG URL: \"https://luma-breath.work/faq\" | Canonical: \"https://luma-breath.work/faq\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "TITLE-MULT-/about",
+      "name": "Single <title> tag on /about",
+      "pass": true,
+      "details": "Found 1 <title> tag(s). Title text: \"About Luma & Mission | Luma Team\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "DESC-MULT-/about",
+      "name": "Single <meta name=\"description\"> tag on /about",
+      "pass": true,
+      "details": "Found 1 description tag(s). Length: 132"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "CANONICAL-/about",
+      "name": "Single exact <link rel=\"canonical\"> on /about",
+      "pass": true,
+      "details": "Canonical: \"https://luma-breath.work/about\" (Expected: \"https://luma-breath.work/about\", Count: 1)"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "ROBOTS-/about",
+      "name": "Robots meta tag specifies index, follow on /about",
+      "pass": true,
+      "details": "Robots content: \"index, follow\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "OG-TW-SYNC-/about",
+      "name": "OG/Twitter Title, Desc & URL sync on /about",
+      "pass": true,
+      "details": "OG URL: \"https://luma-breath.work/about\" | Canonical: \"https://luma-breath.work/about\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "TITLE-MULT-/medical-disclaimer",
+      "name": "Single <title> tag on /medical-disclaimer",
+      "pass": true,
+      "details": "Found 1 <title> tag(s). Title text: \"Medical Disclaimer & Safety Guidelines | Luma Breathwork\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "DESC-MULT-/medical-disclaimer",
+      "name": "Single <meta name=\"description\"> tag on /medical-disclaimer",
+      "pass": true,
+      "details": "Found 1 description tag(s). Length: 152"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "CANONICAL-/medical-disclaimer",
+      "name": "Single exact <link rel=\"canonical\"> on /medical-disclaimer",
+      "pass": true,
+      "details": "Canonical: \"https://luma-breath.work/medical-disclaimer\" (Expected: \"https://luma-breath.work/medical-disclaimer\", Count: 1)"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "ROBOTS-/medical-disclaimer",
+      "name": "Robots meta tag specifies index, follow on /medical-disclaimer",
+      "pass": true,
+      "details": "Robots content: \"index, follow\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "OG-TW-SYNC-/medical-disclaimer",
+      "name": "OG/Twitter Title, Desc & URL sync on /medical-disclaimer",
+      "pass": true,
+      "details": "OG URL: \"https://luma-breath.work/medical-disclaimer\" | Canonical: \"https://luma-breath.work/medical-disclaimer\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "TITLE-MULT-/privacy",
+      "name": "Single <title> tag on /privacy",
+      "pass": true,
+      "details": "Found 1 <title> tag(s). Title text: \"Privacy Policy | Luma Breathwork (Zero Data Collection)\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "DESC-MULT-/privacy",
+      "name": "Single <meta name=\"description\"> tag on /privacy",
+      "pass": true,
+      "details": "Found 1 description tag(s). Length: 127"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "CANONICAL-/privacy",
+      "name": "Single exact <link rel=\"canonical\"> on /privacy",
+      "pass": true,
+      "details": "Canonical: \"https://luma-breath.work/privacy\" (Expected: \"https://luma-breath.work/privacy\", Count: 1)"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "ROBOTS-/privacy",
+      "name": "Robots meta tag specifies index, follow on /privacy",
+      "pass": true,
+      "details": "Robots content: \"index, follow\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "OG-TW-SYNC-/privacy",
+      "name": "OG/Twitter Title, Desc & URL sync on /privacy",
+      "pass": true,
+      "details": "OG URL: \"https://luma-breath.work/privacy\" | Canonical: \"https://luma-breath.work/privacy\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "TITLE-MULT-/terms",
+      "name": "Single <title> tag on /terms",
+      "pass": true,
+      "details": "Found 1 <title> tag(s). Title text: \"Terms of Service | Luma Breathwork\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "DESC-MULT-/terms",
+      "name": "Single <meta name=\"description\"> tag on /terms",
+      "pass": true,
+      "details": "Found 1 description tag(s). Length: 133"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "CANONICAL-/terms",
+      "name": "Single exact <link rel=\"canonical\"> on /terms",
+      "pass": true,
+      "details": "Canonical: \"https://luma-breath.work/terms\" (Expected: \"https://luma-breath.work/terms\", Count: 1)"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "ROBOTS-/terms",
+      "name": "Robots meta tag specifies index, follow on /terms",
+      "pass": true,
+      "details": "Robots content: \"index, follow\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "OG-TW-SYNC-/terms",
+      "name": "OG/Twitter Title, Desc & URL sync on /terms",
+      "pass": true,
+      "details": "OG URL: \"https://luma-breath.work/terms\" | Canonical: \"https://luma-breath.work/terms\""
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "UNIQUE-TITLES",
+      "name": "All 11 routes have globally unique <title> tags",
+      "pass": true,
+      "details": "11 unique titles out of 11 routes"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "UNIQUE-DESCRIPTIONS",
+      "name": "All 11 routes have globally unique <meta name=\"description\"> tags",
+      "pass": true,
+      "details": "11 unique descriptions out of 11 routes"
+    },
+    {
+      "suite": "SUITE 2",
+      "testId": "UNIQUE-CANONICALS",
+      "name": "All 11 routes have globally unique canonical URLs",
+      "pass": true,
+      "details": "11 unique canonical URLs out of 11 routes"
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-TITLE-/",
+      "name": "Title length for / (< 65 chars, >= 15)",
+      "pass": true,
+      "details": "Length: 58 chars | \"Luma — Free Breathwork App & Online Guided Retention Timer\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-TITLE-/timer",
+      "name": "Title length for /timer (< 65 chars, >= 15)",
+      "pass": true,
+      "details": "Length: 57 chars | \"Free Wim Hof Breathing Timer & Retention Stopwatch | Luma\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-TITLE-/guide/wim-hof-method",
+      "name": "Title length for /guide/wim-hof-method (< 65 chars, >= 15)",
+      "pass": true,
+      "details": "Length: 61 chars | \"How to Do Wim Hof Breathing Method: Step-by-Step Guide | Luma\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-TITLE-/retention-times",
+      "name": "Title length for /retention-times (< 65 chars, >= 15)",
+      "pass": true,
+      "details": "Length: 55 chars | \"Wim Hof Retention Times: Benchmarks & Physiology | Luma\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-TITLE-/science-and-safety",
+      "name": "Title length for /science-and-safety (< 65 chars, >= 15)",
+      "pass": true,
+      "details": "Length: 54 chars | \"Science of Wim Hof Breathwork: Studies & Safety | Luma\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-TITLE-/apple-watch",
+      "name": "Title length for /apple-watch (< 65 chars, >= 15)",
+      "pass": true,
+      "details": "Length: 43 chars | \"Apple Watch Companion Breathwork App | Luma\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-TITLE-/faq",
+      "name": "Title length for /faq (< 65 chars, >= 15)",
+      "pass": true,
+      "details": "Length: 49 chars | \"Wim Hof Breathwork FAQ: Technique & Safety | Luma\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-TITLE-/about",
+      "name": "Title length for /about (< 65 chars, >= 15)",
+      "pass": true,
+      "details": "Length: 32 chars | \"About Luma & Mission | Luma Team\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-TITLE-/medical-disclaimer",
+      "name": "Title length for /medical-disclaimer (< 65 chars, >= 15)",
+      "pass": true,
+      "details": "Length: 56 chars | \"Medical Disclaimer & Safety Guidelines | Luma Breathwork\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-TITLE-/privacy",
+      "name": "Title length for /privacy (< 65 chars, >= 15)",
+      "pass": true,
+      "details": "Length: 55 chars | \"Privacy Policy | Luma Breathwork (Zero Data Collection)\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-TITLE-/terms",
+      "name": "Title length for /terms (< 65 chars, >= 15)",
+      "pass": true,
+      "details": "Length: 34 chars | \"Terms of Service | Luma Breathwork\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-DESC-/",
+      "name": "Description length for / (100–165 chars)",
+      "pass": true,
+      "details": "Length: 154 chars | \"The #1 free breathwork app & online guided timer. Compatible with Wim ...\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-DESC-/timer",
+      "name": "Description length for /timer (100–165 chars)",
+      "pass": true,
+      "details": "Length: 152 chars | \"Free interactive online Wim Hof Method breathing pacer and retention s...\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-DESC-/guide/wim-hof-method",
+      "name": "Description length for /guide/wim-hof-method (100–165 chars)",
+      "pass": true,
+      "details": "Length: 150 chars | \"Master the Wim Hof breathing technique. Comprehensive 5-step guide cov...\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-DESC-/retention-times",
+      "name": "Description length for /retention-times (100–165 chars)",
+      "pass": true,
+      "details": "Length: 152 chars | \"What is a normal Wim Hof retention time? Comprehensive round-by-round ...\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-DESC-/science-and-safety",
+      "name": "Description length for /science-and-safety (100–165 chars)",
+      "pass": true,
+      "details": "Length: 158 chars | \"Scientific analysis of Radboud University clinical trials (Kox et al.)...\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-DESC-/apple-watch",
+      "name": "Description length for /apple-watch (100–165 chars)",
+      "pass": true,
+      "details": "Length: 141 chars | \"Tactile wrist haptics breathwork companion paired with your iPhone. Cu...\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-DESC-/faq",
+      "name": "Description length for /faq (100–165 chars)",
+      "pass": true,
+      "details": "Length: 146 chars | \"Frequently asked questions about Wim Hof breathing, tingling sensation...\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-DESC-/about",
+      "name": "Description length for /about (100–165 chars)",
+      "pass": true,
+      "details": "Length: 132 chars | \"The story behind Luma: an independent, ad-free biohacking project crea...\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-DESC-/medical-disclaimer",
+      "name": "Description length for /medical-disclaimer (100–165 chars)",
+      "pass": true,
+      "details": "Length: 152 chars | \"Essential health disclaimers, contraindications (epilepsy, pregnancy, ...\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-DESC-/privacy",
+      "name": "Description length for /privacy (100–165 chars)",
+      "pass": true,
+      "details": "Length: 127 chars | \"Luma privacy policy: 100% offline-first design with zero data tracking...\""
+    },
+    {
+      "suite": "SUITE 3",
+      "testId": "LEN-DESC-/terms",
+      "name": "Description length for /terms (100–165 chars)",
+      "pass": true,
+      "details": "Length: 133 chars | \"Terms and conditions, liability waivers, and intellectual property not...\""
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-JSON-/",
+      "name": "Valid JSON syntax in Schema.org ld+json on /",
+      "pass": true,
+      "details": "JSON parsed cleanly"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-GRAPH-/",
+      "name": "@graph array with @context \"https://schema.org\" on /",
+      "pass": true,
+      "details": "@context: \"https://schema.org\", Entities count: 4"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-TYPES-/",
+      "name": "Required schema types present for /",
+      "pass": true,
+      "details": "Found: [Organization, WebSite, SoftwareApplication, Offer, FAQPage, Question, Answer] | Required: [WebSite, SoftwareApplication, Organization, FAQPage]"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-URLS-/",
+      "name": "All entity URLs referenced in schema resolve on /",
+      "pass": true,
+      "details": "Checked 7 schema URLs. Broken: 0"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-JSON-/timer",
+      "name": "Valid JSON syntax in Schema.org ld+json on /timer",
+      "pass": true,
+      "details": "JSON parsed cleanly"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-GRAPH-/timer",
+      "name": "@graph array with @context \"https://schema.org\" on /timer",
+      "pass": true,
+      "details": "@context: \"https://schema.org\", Entities count: 2"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-TYPES-/timer",
+      "name": "Required schema types present for /timer",
+      "pass": true,
+      "details": "Found: [WebApplication, Offer, BreadcrumbList, ListItem] | Required: [WebApplication] + BreadcrumbList"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-URLS-/timer",
+      "name": "All entity URLs referenced in schema resolve on /timer",
+      "pass": true,
+      "details": "Checked 3 schema URLs. Broken: 0"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-JSON-/guide/wim-hof-method",
+      "name": "Valid JSON syntax in Schema.org ld+json on /guide/wim-hof-method",
+      "pass": true,
+      "details": "JSON parsed cleanly"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-GRAPH-/guide/wim-hof-method",
+      "name": "@graph array with @context \"https://schema.org\" on /guide/wim-hof-method",
+      "pass": true,
+      "details": "@context: \"https://schema.org\", Entities count: 2"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-TYPES-/guide/wim-hof-method",
+      "name": "Required schema types present for /guide/wim-hof-method",
+      "pass": true,
+      "details": "Found: [HowTo, HowToStep, BreadcrumbList, ListItem] | Required: [HowTo] + BreadcrumbList"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-URLS-/guide/wim-hof-method",
+      "name": "All entity URLs referenced in schema resolve on /guide/wim-hof-method",
+      "pass": true,
+      "details": "Checked 2 schema URLs. Broken: 0"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-JSON-/retention-times",
+      "name": "Valid JSON syntax in Schema.org ld+json on /retention-times",
+      "pass": true,
+      "details": "JSON parsed cleanly"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-GRAPH-/retention-times",
+      "name": "@graph array with @context \"https://schema.org\" on /retention-times",
+      "pass": true,
+      "details": "@context: \"https://schema.org\", Entities count: 2"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-TYPES-/retention-times",
+      "name": "Required schema types present for /retention-times",
+      "pass": true,
+      "details": "Found: [MedicalWebPage, BreadcrumbList, ListItem] | Required: [MedicalWebPage] + BreadcrumbList"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-URLS-/retention-times",
+      "name": "All entity URLs referenced in schema resolve on /retention-times",
+      "pass": true,
+      "details": "Checked 3 schema URLs. Broken: 0"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-JSON-/science-and-safety",
+      "name": "Valid JSON syntax in Schema.org ld+json on /science-and-safety",
+      "pass": true,
+      "details": "JSON parsed cleanly"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-GRAPH-/science-and-safety",
+      "name": "@graph array with @context \"https://schema.org\" on /science-and-safety",
+      "pass": true,
+      "details": "@context: \"https://schema.org\", Entities count: 2"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-TYPES-/science-and-safety",
+      "name": "Required schema types present for /science-and-safety",
+      "pass": true,
+      "details": "Found: [MedicalWebPage, BreadcrumbList, ListItem] | Required: [MedicalWebPage] + BreadcrumbList"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-URLS-/science-and-safety",
+      "name": "All entity URLs referenced in schema resolve on /science-and-safety",
+      "pass": true,
+      "details": "Checked 3 schema URLs. Broken: 0"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-JSON-/apple-watch",
+      "name": "Valid JSON syntax in Schema.org ld+json on /apple-watch",
+      "pass": true,
+      "details": "JSON parsed cleanly"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-GRAPH-/apple-watch",
+      "name": "@graph array with @context \"https://schema.org\" on /apple-watch",
+      "pass": true,
+      "details": "@context: \"https://schema.org\", Entities count: 2"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-TYPES-/apple-watch",
+      "name": "Required schema types present for /apple-watch",
+      "pass": true,
+      "details": "Found: [SoftwareApplication, Offer, BreadcrumbList, ListItem] | Required: [SoftwareApplication] + BreadcrumbList"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-URLS-/apple-watch",
+      "name": "All entity URLs referenced in schema resolve on /apple-watch",
+      "pass": true,
+      "details": "Checked 3 schema URLs. Broken: 0"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-JSON-/faq",
+      "name": "Valid JSON syntax in Schema.org ld+json on /faq",
+      "pass": true,
+      "details": "JSON parsed cleanly"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-GRAPH-/faq",
+      "name": "@graph array with @context \"https://schema.org\" on /faq",
+      "pass": true,
+      "details": "@context: \"https://schema.org\", Entities count: 2"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-TYPES-/faq",
+      "name": "Required schema types present for /faq",
+      "pass": true,
+      "details": "Found: [FAQPage, Question, Answer, BreadcrumbList, ListItem] | Required: [FAQPage] + BreadcrumbList"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-URLS-/faq",
+      "name": "All entity URLs referenced in schema resolve on /faq",
+      "pass": true,
+      "details": "Checked 3 schema URLs. Broken: 0"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-JSON-/about",
+      "name": "Valid JSON syntax in Schema.org ld+json on /about",
+      "pass": true,
+      "details": "JSON parsed cleanly"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-GRAPH-/about",
+      "name": "@graph array with @context \"https://schema.org\" on /about",
+      "pass": true,
+      "details": "@context: \"https://schema.org\", Entities count: 3"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-TYPES-/about",
+      "name": "Required schema types present for /about",
+      "pass": true,
+      "details": "Found: [ProfilePage, Organization, BreadcrumbList, ListItem] | Required: [] + BreadcrumbList"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-URLS-/about",
+      "name": "All entity URLs referenced in schema resolve on /about",
+      "pass": true,
+      "details": "Checked 5 schema URLs. Broken: 0"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-JSON-/medical-disclaimer",
+      "name": "Valid JSON syntax in Schema.org ld+json on /medical-disclaimer",
+      "pass": true,
+      "details": "JSON parsed cleanly"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-GRAPH-/medical-disclaimer",
+      "name": "@graph array with @context \"https://schema.org\" on /medical-disclaimer",
+      "pass": true,
+      "details": "@context: \"https://schema.org\", Entities count: 2"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-TYPES-/medical-disclaimer",
+      "name": "Required schema types present for /medical-disclaimer",
+      "pass": true,
+      "details": "Found: [MedicalWebPage, BreadcrumbList, ListItem] | Required: [MedicalWebPage] + BreadcrumbList"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-URLS-/medical-disclaimer",
+      "name": "All entity URLs referenced in schema resolve on /medical-disclaimer",
+      "pass": true,
+      "details": "Checked 3 schema URLs. Broken: 0"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-JSON-/privacy",
+      "name": "Valid JSON syntax in Schema.org ld+json on /privacy",
+      "pass": true,
+      "details": "JSON parsed cleanly"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-GRAPH-/privacy",
+      "name": "@graph array with @context \"https://schema.org\" on /privacy",
+      "pass": true,
+      "details": "@context: \"https://schema.org\", Entities count: 2"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-TYPES-/privacy",
+      "name": "Required schema types present for /privacy",
+      "pass": true,
+      "details": "Found: [WebPage, BreadcrumbList, ListItem] | Required: [WebPage] + BreadcrumbList"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-URLS-/privacy",
+      "name": "All entity URLs referenced in schema resolve on /privacy",
+      "pass": true,
+      "details": "Checked 3 schema URLs. Broken: 0"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-JSON-/terms",
+      "name": "Valid JSON syntax in Schema.org ld+json on /terms",
+      "pass": true,
+      "details": "JSON parsed cleanly"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-GRAPH-/terms",
+      "name": "@graph array with @context \"https://schema.org\" on /terms",
+      "pass": true,
+      "details": "@context: \"https://schema.org\", Entities count: 2"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-TYPES-/terms",
+      "name": "Required schema types present for /terms",
+      "pass": true,
+      "details": "Found: [WebPage, BreadcrumbList, ListItem] | Required: [WebPage] + BreadcrumbList"
+    },
+    {
+      "suite": "SUITE 4",
+      "testId": "SCHEMA-URLS-/terms",
+      "name": "All entity URLs referenced in schema resolve on /terms",
+      "pass": true,
+      "details": "Checked 3 schema URLs. Broken: 0"
+    },
+    {
+      "suite": "SUITE 5",
+      "testId": "OG-IMAGE-/",
+      "name": "OG/Twitter image, 1200x630 dimensions & alt tag on /",
+      "pass": true,
+      "details": "Image: \"https://luma-breath.work/screenshots/1.webp\" (1200x630), Alt: \"Luma Breathwork &amp; Wim Hof Retention Timer App\", Card: \"summary_large_image\", Exists: true"
+    },
+    {
+      "suite": "SUITE 5",
+      "testId": "OG-IMAGE-/timer",
+      "name": "OG/Twitter image, 1200x630 dimensions & alt tag on /timer",
+      "pass": true,
+      "details": "Image: \"https://luma-breath.work/screenshots/1.webp\" (1200x630), Alt: \"Luma Breathwork &amp; Wim Hof Retention Timer App\", Card: \"summary_large_image\", Exists: true"
+    },
+    {
+      "suite": "SUITE 5",
+      "testId": "OG-IMAGE-/guide/wim-hof-method",
+      "name": "OG/Twitter image, 1200x630 dimensions & alt tag on /guide/wim-hof-method",
+      "pass": true,
+      "details": "Image: \"https://luma-breath.work/screenshots/1.webp\" (1200x630), Alt: \"Luma Breathwork &amp; Wim Hof Retention Timer App\", Card: \"summary_large_image\", Exists: true"
+    },
+    {
+      "suite": "SUITE 5",
+      "testId": "OG-IMAGE-/retention-times",
+      "name": "OG/Twitter image, 1200x630 dimensions & alt tag on /retention-times",
+      "pass": true,
+      "details": "Image: \"https://luma-breath.work/screenshots/1.webp\" (1200x630), Alt: \"Luma Breathwork &amp; Wim Hof Retention Timer App\", Card: \"summary_large_image\", Exists: true"
+    },
+    {
+      "suite": "SUITE 5",
+      "testId": "OG-IMAGE-/science-and-safety",
+      "name": "OG/Twitter image, 1200x630 dimensions & alt tag on /science-and-safety",
+      "pass": true,
+      "details": "Image: \"https://luma-breath.work/screenshots/1.webp\" (1200x630), Alt: \"Luma Breathwork &amp; Wim Hof Retention Timer App\", Card: \"summary_large_image\", Exists: true"
+    },
+    {
+      "suite": "SUITE 5",
+      "testId": "OG-IMAGE-/apple-watch",
+      "name": "OG/Twitter image, 1200x630 dimensions & alt tag on /apple-watch",
+      "pass": true,
+      "details": "Image: \"https://luma-breath.work/screenshots/1.webp\" (1200x630), Alt: \"Luma Breathwork &amp; Wim Hof Retention Timer App\", Card: \"summary_large_image\", Exists: true"
+    },
+    {
+      "suite": "SUITE 5",
+      "testId": "OG-IMAGE-/faq",
+      "name": "OG/Twitter image, 1200x630 dimensions & alt tag on /faq",
+      "pass": true,
+      "details": "Image: \"https://luma-breath.work/screenshots/1.webp\" (1200x630), Alt: \"Luma Breathwork &amp; Wim Hof Retention Timer App\", Card: \"summary_large_image\", Exists: true"
+    },
+    {
+      "suite": "SUITE 5",
+      "testId": "OG-IMAGE-/about",
+      "name": "OG/Twitter image, 1200x630 dimensions & alt tag on /about",
+      "pass": true,
+      "details": "Image: \"https://luma-breath.work/screenshots/1.webp\" (1200x630), Alt: \"Luma Breathwork &amp; Wim Hof Retention Timer App\", Card: \"summary_large_image\", Exists: true"
+    },
+    {
+      "suite": "SUITE 5",
+      "testId": "OG-IMAGE-/medical-disclaimer",
+      "name": "OG/Twitter image, 1200x630 dimensions & alt tag on /medical-disclaimer",
+      "pass": true,
+      "details": "Image: \"https://luma-breath.work/screenshots/1.webp\" (1200x630), Alt: \"Luma Breathwork &amp; Wim Hof Retention Timer App\", Card: \"summary_large_image\", Exists: true"
+    },
+    {
+      "suite": "SUITE 5",
+      "testId": "OG-IMAGE-/privacy",
+      "name": "OG/Twitter image, 1200x630 dimensions & alt tag on /privacy",
+      "pass": true,
+      "details": "Image: \"https://luma-breath.work/screenshots/1.webp\" (1200x630), Alt: \"Luma Breathwork &amp; Wim Hof Retention Timer App\", Card: \"summary_large_image\", Exists: true"
+    },
+    {
+      "suite": "SUITE 5",
+      "testId": "OG-IMAGE-/terms",
+      "name": "OG/Twitter image, 1200x630 dimensions & alt tag on /terms",
+      "pass": true,
+      "details": "Image: \"https://luma-breath.work/screenshots/1.webp\" (1200x630), Alt: \"Luma Breathwork &amp; Wim Hof Retention Timer App\", Card: \"summary_large_image\", Exists: true"
+    },
+    {
+      "suite": "SUITE 6",
+      "testId": "INTERNAL-LINKS-CRAWL",
+      "name": "All internal <a> href links point to existing routes / valid anchors",
+      "pass": true,
+      "details": "Checked 272 internal <a> links across all routes. Broken: 0"
+    },
+    {
+      "suite": "SUITE 6",
+      "testId": "MEDIA-ASSETS-CRAWL",
+      "name": "All <img>, <video>, <source>, poster assets exist on disk",
+      "pass": true,
+      "details": "Checked 72 media/asset references across all routes. Broken: 0"
+    },
+    {
+      "suite": "SUITE 7",
+      "testId": "SSR-ROOT-/",
+      "name": "Substantial pre-rendered SSR DOM markup in #root for /",
+      "pass": true,
+      "details": "Root HTML length: 83660 chars (Nav: true, Footer: true, H1: true)"
+    },
+    {
+      "suite": "SUITE 7",
+      "testId": "SSR-ROOT-/timer",
+      "name": "Substantial pre-rendered SSR DOM markup in #root for /timer",
+      "pass": true,
+      "details": "Root HTML length: 24594 chars (Nav: true, Footer: true, H1: true)"
+    },
+    {
+      "suite": "SUITE 7",
+      "testId": "SSR-ROOT-/guide/wim-hof-method",
+      "name": "Substantial pre-rendered SSR DOM markup in #root for /guide/wim-hof-method",
+      "pass": true,
+      "details": "Root HTML length: 25857 chars (Nav: true, Footer: true, H1: true)"
+    },
+    {
+      "suite": "SUITE 7",
+      "testId": "SSR-ROOT-/retention-times",
+      "name": "Substantial pre-rendered SSR DOM markup in #root for /retention-times",
+      "pass": true,
+      "details": "Root HTML length: 20614 chars (Nav: true, Footer: true, H1: true)"
+    },
+    {
+      "suite": "SUITE 7",
+      "testId": "SSR-ROOT-/science-and-safety",
+      "name": "Substantial pre-rendered SSR DOM markup in #root for /science-and-safety",
+      "pass": true,
+      "details": "Root HTML length: 20084 chars (Nav: true, Footer: true, H1: true)"
+    },
+    {
+      "suite": "SUITE 7",
+      "testId": "SSR-ROOT-/apple-watch",
+      "name": "Substantial pre-rendered SSR DOM markup in #root for /apple-watch",
+      "pass": true,
+      "details": "Root HTML length: 16787 chars (Nav: true, Footer: true, H1: true)"
+    },
+    {
+      "suite": "SUITE 7",
+      "testId": "SSR-ROOT-/faq",
+      "name": "Substantial pre-rendered SSR DOM markup in #root for /faq",
+      "pass": true,
+      "details": "Root HTML length: 24126 chars (Nav: true, Footer: true, H1: true)"
+    },
+    {
+      "suite": "SUITE 7",
+      "testId": "SSR-ROOT-/about",
+      "name": "Substantial pre-rendered SSR DOM markup in #root for /about",
+      "pass": true,
+      "details": "Root HTML length: 14068 chars (Nav: true, Footer: true, H1: true)"
+    },
+    {
+      "suite": "SUITE 7",
+      "testId": "SSR-ROOT-/medical-disclaimer",
+      "name": "Substantial pre-rendered SSR DOM markup in #root for /medical-disclaimer",
+      "pass": true,
+      "details": "Root HTML length: 12464 chars (Nav: true, Footer: true, H1: true)"
+    },
+    {
+      "suite": "SUITE 7",
+      "testId": "SSR-ROOT-/privacy",
+      "name": "Substantial pre-rendered SSR DOM markup in #root for /privacy",
+      "pass": true,
+      "details": "Root HTML length: 11199 chars (Nav: true, Footer: true, H1: true)"
+    },
+    {
+      "suite": "SUITE 7",
+      "testId": "SSR-ROOT-/terms",
+      "name": "Substantial pre-rendered SSR DOM markup in #root for /terms",
+      "pass": true,
+      "details": "Root HTML length: 11341 chars (Nav: true, Footer: true, H1: true)"
+    }
+  ]
+}

@@ -8,7 +8,7 @@ interface FooterProps {
 export function Footer({ onNavigate }: FooterProps) {
   const [showModal, setShowModal] = useState(false);
   const [copied, setCopied] = useState(false);
-  const logoSrc = `${import.meta.env.BASE_URL}screenshots/logo.webp`;
+  const logoSrc = `${import.meta.env?.BASE_URL || '/'}screenshots/logo.webp`;
   const supportUrl = "https://ko-fi.com/mateusz_b";
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {

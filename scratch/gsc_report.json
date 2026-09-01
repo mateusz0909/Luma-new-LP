@@ -1,0 +1,212 @@
+{
+  "target_site": "sc-domain:luma-breath.work",
+  "start_date": "2026-05-31",
+  "end_date": "2026-08-29",
+  "properties": [
+    {
+      "siteUrl": "sc-domain:dopokizycietrwa.pl",
+      "permissionLevel": "siteOwner"
+    },
+    {
+      "siteUrl": "http://midnightjazz.weebly.com/",
+      "permissionLevel": "siteOwner"
+    },
+    {
+      "siteUrl": "sc-domain:lemmi.studio",
+      "permissionLevel": "siteOwner"
+    },
+    {
+      "siteUrl": "http://www.midnightjazz.weebly.com/",
+      "permissionLevel": "siteOwner"
+    },
+    {
+      "siteUrl": "sc-domain:luma-breath.work",
+      "permissionLevel": "siteOwner"
+    }
+  ],
+  "sitemaps": [
+    {
+      "path": "https://luma-breath.work/sitemap.xml",
+      "lastSubmitted": "2026-08-21T09:48:18.634Z",
+      "isPending": false,
+      "isSitemapsIndex": false,
+      "type": "sitemap",
+      "lastDownloaded": "2026-08-30T22:41:25.694Z",
+      "warnings": "0",
+      "errors": "0",
+      "contents": [
+        {
+          "type": "web",
+          "submitted": "11",
+          "indexed": "0"
+        }
+      ]
+    }
+  ],
+  "top_queries": [
+    {
+      "keys": [
+        "how to do wim hof breathing method"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 58
+    },
+    {
+      "keys": [
+        "how to wim hof"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 43
+    },
+    {
+      "keys": [
+        "luma breath"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 5
+    },
+    {
+      "keys": [
+        "wim hof breathin"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 63
+    },
+    {
+      "keys": [
+        "wim hof breathing explained"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 63
+    },
+    {
+      "keys": [
+        "wim hof breathing method"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 67
+    },
+    {
+      "keys": [
+        "wim hof breathing method explained"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 77
+    },
+    {
+      "keys": [
+        "wim hof breathing online"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 7
+    },
+    {
+      "keys": [
+        "wim hof breathwork"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 76
+    },
+    {
+      "keys": [
+        "wim hof method"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 43
+    },
+    {
+      "keys": [
+        "wim hof method breathing technique"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 48
+    },
+    {
+      "keys": [
+        "wim hof method of breathing"
+      ],
+      "clicks": 0,
+      "impressions": 2,
+      "ctr": 0,
+      "position": 63.5
+    },
+    {
+      "keys": [
+        "wim hof timer"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 6
+    },
+    {
+      "keys": [
+        "wim hoff breathing technique"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 66
+    }
+  ],
+  "top_pages": [
+    {
+      "keys": [
+        "https://luma-breath.work/"
+      ],
+      "clicks": 2,
+      "impressions": 26,
+      "ctr": 0.07692307692307693,
+      "position": 7.769230769230769
+    },
+    {
+      "keys": [
+        "https://luma-breath.work/about"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 95
+    },
+    {
+      "keys": [
+        "https://luma-breath.work/guide/wim-hof-method"
+      ],
+      "clicks": 0,
+      "impressions": 68,
+      "ctr": 0,
+      "position": 62.23529411764706
+    },
+    {
+      "keys": [
+        "https://luma-breath.work/timer"
+      ],
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 56
+    }
+  ]
+}

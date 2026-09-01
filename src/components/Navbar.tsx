@@ -8,7 +8,7 @@ interface NavbarProps {
 
 export function Navbar({ currentPath = '/', onNavigate }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const logoSrc = `${import.meta.env.BASE_URL}screenshots/logo.webp`;
+  const logoSrc = `${import.meta.env?.BASE_URL || '/'}screenshots/logo.webp`;
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     if (path.startsWith('http') || path.startsWith('#')) return;

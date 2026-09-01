@@ -13,8 +13,15 @@ import AboutPage from './pages/AboutPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 
-export default function App() {
+export interface AppProps {
+  initialPath?: string;
+}
+
+export default function App({ initialPath }: AppProps = {}) {
   const [currentPath, setCurrentPath] = useState<string>(() => {
+    if (initialPath) {
+      return initialPath.replace(/\/$/, '') || '/';
+    }
     if (typeof window !== 'undefined') {
       const path = window.location.pathname.replace(/\/$/, '') || '/';
       return path;
@@ -25,6 +32,8 @@ export default function App() {
   const [isEmbed, setIsEmbed] = useState(false);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const handlePopState = () => {
       const path = window.location.pathname.replace(/\/$/, '') || '/';
       setCurrentPath(path);
@@ -42,11 +51,13 @@ export default function App() {
 
   const navigate = (path: string) => {
     const normalized = path.replace(/\/$/, '') || '/';
-    window.history.pushState({}, '', normalized);
+    if (typeof window !== 'undefined') {
+      window.history.pushState({}, '', normalized);
+      const urlParams = new URLSearchParams(window.location.search);
+      setIsEmbed(urlParams.get('embed') === 'true');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
     setCurrentPath(normalized);
-    const urlParams = new URLSearchParams(window.location.search);
-    setIsEmbed(urlParams.get('embed') === 'true');
-    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   const renderPage = () => {

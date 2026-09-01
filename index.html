@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="3Lp8xmpJBirPctDUZjUNoI6taGCiLxPM9t3WafXwtN8" />
+    <meta name="robots" content="index, follow" />
     
     <!-- Primary SEO Meta Tags -->
     <title>Luma — Free Breathwork App &amp; Online Guided Retention Timer</title>
@@ -36,6 +37,9 @@
     <meta property="og:title" content="Luma — Free Breathwork App &amp; Online Guided Retention Timer" />
     <meta property="og:description" content="100% free breathwork app &amp; online guided timer. Customizable 30-40 power breaths, retention stopwatch, Apple Watch companion haptics &amp; zero ads." />
     <meta property="og:image" content="https://luma-breath.work/screenshots/1.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Luma Breathwork &amp; Wim Hof Retention Timer App" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
@@ -56,15 +60,23 @@
       "@context": "https://schema.org",
       "@graph": [
         {
+          "@type": "Organization",
+          "@id": "https://luma-breath.work/#organization",
+          "name": "Luma Breathwork",
+          "url": "https://luma-breath.work/",
+          "logo": "https://luma-breath.work/favicon.svg",
+          "sameAs": [
+            "https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722"
+          ]
+        },
+        {
           "@type": "WebSite",
           "@id": "https://luma-breath.work/#website",
           "url": "https://luma-breath.work/",
           "name": "Luma Breathwork",
           "description": "Free breathwork app, online guided timer and retention stopwatch for iOS and Apple Watch.",
           "publisher": {
-            "@type": "Organization",
-            "name": "Luma Breathwork",
-            "url": "https://luma-breath.work/about"
+            "@id": "https://luma-breath.work/#organization"
           }
         },
         {
@@ -82,9 +94,7 @@
           "image": "https://luma-breath.work/screenshots/logo.webp",
           "screenshot": "https://luma-breath.work/screenshots/1.webp",
           "author": {
-            "@type": "Organization",
-            "name": "Luma Team",
-            "url": "https://luma-breath.work/about"
+            "@id": "https://luma-breath.work/#organization"
           },
           "description": "100% free Wim Hof Method compatible breathing app and timer for iOS & Apple Watch. Guided 30-40 power breaths, retention stopwatch, Apple Watch haptics, and zero subscriptions."
         },

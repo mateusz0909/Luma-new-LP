@@ -1,0 +1,217 @@
+[
+  {
+    "url": "https://luma-breath.work/",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "lastCrawlTime": "2026-08-21T09:34:52Z",
+    "userCanonical": "https://luma-breath.work/",
+    "googleCanonical": "https://luma-breath.work/",
+    "raw": {
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "lastCrawlTime": "2026-08-21T09:34:52Z",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://luma-breath.work/",
+      "userCanonical": "https://luma-breath.work/",
+      "sitemap": [
+        "https://luma-breath.work/sitemap.xml"
+      ],
+      "crawledAs": "MOBILE"
+    }
+  },
+  {
+    "url": "https://luma-breath.work/timer",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "lastCrawlTime": "2026-08-26T10:51:36Z",
+    "userCanonical": "https://luma-breath.work/timer",
+    "googleCanonical": "https://luma-breath.work/timer",
+    "raw": {
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "lastCrawlTime": "2026-08-26T10:51:36Z",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://luma-breath.work/timer",
+      "userCanonical": "https://luma-breath.work/timer",
+      "crawledAs": "MOBILE"
+    }
+  },
+  {
+    "url": "https://luma-breath.work/guide/wim-hof-method",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "lastCrawlTime": "2026-08-26T10:51:36Z",
+    "userCanonical": "https://luma-breath.work/guide/wim-hof-method",
+    "googleCanonical": "https://luma-breath.work/guide/wim-hof-method",
+    "raw": {
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "lastCrawlTime": "2026-08-26T10:51:36Z",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://luma-breath.work/guide/wim-hof-method",
+      "userCanonical": "https://luma-breath.work/guide/wim-hof-method",
+      "sitemap": [
+        "https://luma-breath.work/sitemap.xml"
+      ],
+      "referringUrls": [
+        "https://luma-breath.work/sitemap.xml"
+      ],
+      "crawledAs": "MOBILE"
+    }
+  },
+  {
+    "url": "https://luma-breath.work/retention-times",
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "lastCrawlTime": "Never",
+    "userCanonical": "None",
+    "googleCanonical": "None",
+    "raw": {
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED",
+      "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED"
+    }
+  },
+  {
+    "url": "https://luma-breath.work/science-and-safety",
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "lastCrawlTime": "Never",
+    "userCanonical": "None",
+    "googleCanonical": "None",
+    "raw": {
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED",
+      "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED"
+    }
+  },
+  {
+    "url": "https://luma-breath.work/apple-watch",
+    "verdict": "NEUTRAL",
+    "coverageState": "URL is unknown to Google",
+    "lastCrawlTime": "Never",
+    "userCanonical": "None",
+    "googleCanonical": "None",
+    "raw": {
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED",
+      "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED"
+    }
+  },
+  {
+    "url": "https://luma-breath.work/faq",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "lastCrawlTime": "2026-08-26T00:26:49Z",
+    "userCanonical": "https://luma-breath.work/faq",
+    "googleCanonical": "https://luma-breath.work/faq",
+    "raw": {
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "lastCrawlTime": "2026-08-26T00:26:49Z",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://luma-breath.work/faq",
+      "userCanonical": "https://luma-breath.work/faq",
+      "referringUrls": [
+        "https://luma-breath.work/sitemap.xml"
+      ],
+      "crawledAs": "MOBILE"
+    }
+  },
+  {
+    "url": "https://luma-breath.work/about",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "lastCrawlTime": "2026-08-25T14:45:54Z",
+    "userCanonical": "https://luma-breath.work/about",
+    "googleCanonical": "https://luma-breath.work/about",
+    "raw": {
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "lastCrawlTime": "2026-08-25T14:45:54Z",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://luma-breath.work/about",
+      "userCanonical": "https://luma-breath.work/about",
+      "referringUrls": [
+        "https://luma-breath.work/sitemap.xml"
+      ],
+      "crawledAs": "MOBILE"
+    }
+  },
+  {
+    "url": "https://luma-breath.work/medical-disclaimer",
+    "verdict": "NEUTRAL",
+    "coverageState": "Discovered - currently not indexed",
+    "lastCrawlTime": "Never",
+    "userCanonical": "None",
+    "googleCanonical": "None",
+    "raw": {
+      "verdict": "NEUTRAL",
+      "coverageState": "Discovered - currently not indexed",
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED",
+      "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+      "sitemap": [
+        "https://luma-breath.work/sitemap.xml"
+      ],
+      "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED"
+    }
+  },
+  {
+    "url": "https://luma-breath.work/privacy",
+    "verdict": "PASS",
+    "coverageState": "Submitted and indexed",
+    "lastCrawlTime": "2026-08-25T22:36:54Z",
+    "userCanonical": "https://luma-breath.work/privacy",
+    "googleCanonical": "https://luma-breath.work/privacy",
+    "raw": {
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "robotsTxtState": "ALLOWED",
+      "indexingState": "INDEXING_ALLOWED",
+      "lastCrawlTime": "2026-08-25T22:36:54Z",
+      "pageFetchState": "SUCCESSFUL",
+      "googleCanonical": "https://luma-breath.work/privacy",
+      "userCanonical": "https://luma-breath.work/privacy",
+      "referringUrls": [
+        "https://luma-breath.work/sitemap.xml"
+      ],
+      "crawledAs": "MOBILE"
+    }
+  },
+  {
+    "url": "https://luma-breath.work/terms",
+    "verdict": "NEUTRAL",
+    "coverageState": "Discovered - currently not indexed",
+    "lastCrawlTime": "Never",
+    "userCanonical": "None",
+    "googleCanonical": "None",
+    "raw": {
+      "verdict": "NEUTRAL",
+      "coverageState": "Discovered - currently not indexed",
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
+      "indexingState": "INDEXING_STATE_UNSPECIFIED",
+      "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
+      "sitemap": [
+        "https://luma-breath.work/sitemap.xml"
+      ],
+      "crawledAs": "CRAWLING_USER_AGENT_UNSPECIFIED"
+    }
+  }
+]

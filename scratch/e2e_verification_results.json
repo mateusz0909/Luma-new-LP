@@ -1,0 +1,603 @@
+{
+  "timestamp": "2026-09-01T18:18:20.557Z",
+  "summary": {
+    "total": 82,
+    "passed": 64,
+    "failed": 17,
+    "warned": 1,
+    "durationSeconds": 4.379,
+    "allPassed": false
+  },
+  "results": [
+    {
+      "tier": 1,
+      "id": "T1.1",
+      "name": "GSC Audit Report file existence",
+      "status": "PASS",
+      "details": "Found at docs/seo-gsc-audit-report.md (64799 bytes)"
+    },
+    {
+      "tier": 1,
+      "id": "T1.2",
+      "name": "GSC Audit: Executive Summary",
+      "status": "PASS",
+      "details": "Section identified in audit report"
+    },
+    {
+      "tier": 1,
+      "id": "T1.3",
+      "name": "GSC Audit: Search Performance & Metrics",
+      "status": "PASS",
+      "details": "Section identified in audit report"
+    },
+    {
+      "tier": 1,
+      "id": "T1.4",
+      "name": "GSC Audit: Indexation Status & Sitemaps",
+      "status": "PASS",
+      "details": "Section identified in audit report"
+    },
+    {
+      "tier": 1,
+      "id": "T1.5",
+      "name": "GSC Audit: Keyword Strategy & Query Matrix",
+      "status": "PASS",
+      "details": "Section identified in audit report"
+    },
+    {
+      "tier": 1,
+      "id": "T1.6",
+      "name": "GSC Audit: Actionable Remediation Roadmap",
+      "status": "PASS",
+      "details": "Section identified in audit report"
+    },
+    {
+      "tier": 1,
+      "id": "T1.7[/]",
+      "name": "Route HTML generated: /",
+      "status": "PASS",
+      "details": "dist/index.html exists (7863 bytes)"
+    },
+    {
+      "tier": 1,
+      "id": "T1.7[/timer]",
+      "name": "Route HTML generated: /timer",
+      "status": "PASS",
+      "details": "dist/timer/index.html exists (5162 bytes)"
+    },
+    {
+      "tier": 1,
+      "id": "T1.7[/guide/wim-hof-method]",
+      "name": "Route HTML generated: /guide/wim-hof-method",
+      "status": "PASS",
+      "details": "dist/guide/wim-hof-method/index.html exists (5940 bytes)"
+    },
+    {
+      "tier": 1,
+      "id": "T1.7[/retention-times]",
+      "name": "Route HTML generated: /retention-times",
+      "status": "PASS",
+      "details": "dist/retention-times/index.html exists (4848 bytes)"
+    },
+    {
+      "tier": 1,
+      "id": "T1.7[/science-and-safety]",
+      "name": "Route HTML generated: /science-and-safety",
+      "status": "PASS",
+      "details": "dist/science-and-safety/index.html exists (4918 bytes)"
+    },
+    {
+      "tier": 1,
+      "id": "T1.7[/apple-watch]",
+      "name": "Route HTML generated: /apple-watch",
+      "status": "PASS",
+      "details": "dist/apple-watch/index.html exists (4935 bytes)"
+    },
+    {
+      "tier": 1,
+      "id": "T1.7[/faq]",
+      "name": "Route HTML generated: /faq",
+      "status": "PASS",
+      "details": "dist/faq/index.html exists (5756 bytes)"
+    },
+    {
+      "tier": 1,
+      "id": "T1.7[/about]",
+      "name": "Route HTML generated: /about",
+      "status": "PASS",
+      "details": "dist/about/index.html exists (4542 bytes)"
+    },
+    {
+      "tier": 1,
+      "id": "T1.7[/medical-disclaimer]",
+      "name": "Route HTML generated: /medical-disclaimer",
+      "status": "PASS",
+      "details": "dist/medical-disclaimer/index.html exists (4828 bytes)"
+    },
+    {
+      "tier": 1,
+      "id": "T1.7[/privacy]",
+      "name": "Route HTML generated: /privacy",
+      "status": "PASS",
+      "details": "dist/privacy/index.html exists (4662 bytes)"
+    },
+    {
+      "tier": 1,
+      "id": "T1.7[/terms]",
+      "name": "Route HTML generated: /terms",
+      "status": "PASS",
+      "details": "dist/terms/index.html exists (4533 bytes)"
+    },
+    {
+      "tier": 1,
+      "id": "T1.18[/]",
+      "name": "Metadata presence & canonical: /",
+      "status": "PASS",
+      "details": "Canonical: https://luma-breath.work/ | OG & Twitter tags complete"
+    },
+    {
+      "tier": 1,
+      "id": "T1.18[/timer]",
+      "name": "Metadata presence & canonical: /timer",
+      "status": "PASS",
+      "details": "Canonical: https://luma-breath.work/timer | OG & Twitter tags complete"
+    },
+    {
+      "tier": 1,
+      "id": "T1.18[/guide/wim-hof-method]",
+      "name": "Metadata presence & canonical: /guide/wim-hof-method",
+      "status": "PASS",
+      "details": "Canonical: https://luma-breath.work/guide/wim-hof-method | OG & Twitter tags complete"
+    },
+    {
+      "tier": 1,
+      "id": "T1.18[/retention-times]",
+      "name": "Metadata presence & canonical: /retention-times",
+      "status": "PASS",
+      "details": "Canonical: https://luma-breath.work/retention-times | OG & Twitter tags complete"
+    },
+    {
+      "tier": 1,
+      "id": "T1.18[/science-and-safety]",
+      "name": "Metadata presence & canonical: /science-and-safety",
+      "status": "PASS",
+      "details": "Canonical: https://luma-breath.work/science-and-safety | OG & Twitter tags complete"
+    },
+    {
+      "tier": 1,
+      "id": "T1.18[/apple-watch]",
+      "name": "Metadata presence & canonical: /apple-watch",
+      "status": "PASS",
+      "details": "Canonical: https://luma-breath.work/apple-watch | OG & Twitter tags complete"
+    },
+    {
+      "tier": 1,
+      "id": "T1.18[/faq]",
+      "name": "Metadata presence & canonical: /faq",
+      "status": "PASS",
+      "details": "Canonical: https://luma-breath.work/faq | OG & Twitter tags complete"
+    },
+    {
+      "tier": 1,
+      "id": "T1.18[/about]",
+      "name": "Metadata presence & canonical: /about",
+      "status": "PASS",
+      "details": "Canonical: https://luma-breath.work/about | OG & Twitter tags complete"
+    },
+    {
+      "tier": 1,
+      "id": "T1.18[/medical-disclaimer]",
+      "name": "Metadata presence & canonical: /medical-disclaimer",
+      "status": "PASS",
+      "details": "Canonical: https://luma-breath.work/medical-disclaimer | OG & Twitter tags complete"
+    },
+    {
+      "tier": 1,
+      "id": "T1.18[/privacy]",
+      "name": "Metadata presence & canonical: /privacy",
+      "status": "PASS",
+      "details": "Canonical: https://luma-breath.work/privacy | OG & Twitter tags complete"
+    },
+    {
+      "tier": 1,
+      "id": "T1.18[/terms]",
+      "name": "Metadata presence & canonical: /terms",
+      "status": "PASS",
+      "details": "Canonical: https://luma-breath.work/terms | OG & Twitter tags complete"
+    },
+    {
+      "tier": 1,
+      "id": "T1.29",
+      "name": "Title Tag Uniqueness Across All 11 Routes",
+      "status": "PASS",
+      "details": "11 unique titles across 11 generated routes"
+    },
+    {
+      "tier": 1,
+      "id": "T1.30",
+      "name": "Meta Description Uniqueness Across All 11 Routes",
+      "status": "PASS",
+      "details": "11 unique meta descriptions across 11 generated routes"
+    },
+    {
+      "tier": 1,
+      "id": "T1.31",
+      "name": "Canonical URL Uniqueness & Exact Route Mapping",
+      "status": "PASS",
+      "details": "11 unique canonical URLs properly mapped"
+    },
+    {
+      "tier": 2,
+      "id": "T2.1[/]",
+      "name": "Title SERP length (< 65 chars): /",
+      "status": "PASS",
+      "details": "Length: 58 chars (\"Luma — Free Breathwork App & Online Guided Re...\")"
+    },
+    {
+      "tier": 2,
+      "id": "T2.1[/timer]",
+      "name": "Title SERP length (< 65 chars): /timer",
+      "status": "FAIL",
+      "details": "Length: 70 chars (\"Free Wim Hof Timer Online — Guided Breathwork...\")",
+      "error": "Title length (70) outside optimal [15, 64] range: \"Free Wim Hof Timer Online — Guided Breathwork Pacer & Stopwatch | Luma\""
+    },
+    {
+      "tier": 2,
+      "id": "T2.1[/guide/wim-hof-method]",
+      "name": "Title SERP length (< 65 chars): /guide/wim-hof-method",
+      "status": "PASS",
+      "details": "Length: 61 chars (\"How to Do Wim Hof Breathing Method: Step-by-S...\")"
+    },
+    {
+      "tier": 2,
+      "id": "T2.1[/retention-times]",
+      "name": "Title SERP length (< 65 chars): /retention-times",
+      "status": "FAIL",
+      "details": "Length: 65 chars (\"Wim Hof Retention Times: Averages, Benchmarks...\")",
+      "error": "Title length (65) outside optimal [15, 64] range: \"Wim Hof Retention Times: Averages, Benchmarks & Physiology | Luma\""
+    },
+    {
+      "tier": 2,
+      "id": "T2.1[/science-and-safety]",
+      "name": "Title SERP length (< 65 chars): /science-and-safety",
+      "status": "FAIL",
+      "details": "Length: 68 chars (\"The Science & Safety of Wim Hof Breathwork: C...\")",
+      "error": "Title length (68) outside optimal [15, 64] range: \"The Science & Safety of Wim Hof Breathwork: Clinical Research | Luma\""
+    },
+    {
+      "tier": 2,
+      "id": "T2.1[/apple-watch]",
+      "name": "Title SERP length (< 65 chars): /apple-watch",
+      "status": "PASS",
+      "details": "Length: 43 chars (\"Apple Watch Companion Breathwork App | Luma\")"
+    },
+    {
+      "tier": 2,
+      "id": "T2.1[/faq]",
+      "name": "Title SERP length (< 65 chars): /faq",
+      "status": "PASS",
+      "details": "Length: 59 chars (\"Wim Hof Breathwork FAQ: Technique, Tingling &...\")"
+    },
+    {
+      "tier": 2,
+      "id": "T2.1[/about]",
+      "name": "Title SERP length (< 65 chars): /about",
+      "status": "PASS",
+      "details": "Length: 32 chars (\"About Luma & Mission | Luma Team\")"
+    },
+    {
+      "tier": 2,
+      "id": "T2.1[/medical-disclaimer]",
+      "name": "Title SERP length (< 65 chars): /medical-disclaimer",
+      "status": "PASS",
+      "details": "Length: 56 chars (\"Medical Disclaimer & Safety Guidelines | Luma...\")"
+    },
+    {
+      "tier": 2,
+      "id": "T2.1[/privacy]",
+      "name": "Title SERP length (< 65 chars): /privacy",
+      "status": "PASS",
+      "details": "Length: 55 chars (\"Privacy Policy | Luma Breathwork (Zero Data C...\")"
+    },
+    {
+      "tier": 2,
+      "id": "T2.1[/terms]",
+      "name": "Title SERP length (< 65 chars): /terms",
+      "status": "PASS",
+      "details": "Length: 34 chars (\"Terms of Service | Luma Breathwork\")"
+    },
+    {
+      "tier": 2,
+      "id": "T2.12[/]",
+      "name": "Meta description SERP length (100-165 chars): /",
+      "status": "PASS",
+      "details": "Length: 154 chars (optimal: 100-165 chars)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.12[/timer]",
+      "name": "Meta description SERP length (100-165 chars): /timer",
+      "status": "FAIL",
+      "details": "Length: 168 chars (optimal: 100-165 chars)",
+      "error": "Meta description length (168) outside optimal [100, 165] range: \"Free interactive online Wim Hof Method breathing pacer and retention stopwatch. 30-40 power breaths, Tibetan bowl sound chimes, recovery hold countdown in your browser.\""
+    },
+    {
+      "tier": 2,
+      "id": "T2.12[/guide/wim-hof-method]",
+      "name": "Meta description SERP length (100-165 chars): /guide/wim-hof-method",
+      "status": "PASS",
+      "details": "Length: 162 chars (optimal: 100-165 chars)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.12[/retention-times]",
+      "name": "Meta description SERP length (100-165 chars): /retention-times",
+      "status": "PASS",
+      "details": "Length: 152 chars (optimal: 100-165 chars)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.12[/science-and-safety]",
+      "name": "Meta description SERP length (100-165 chars): /science-and-safety",
+      "status": "PASS",
+      "details": "Length: 158 chars (optimal: 100-165 chars)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.12[/apple-watch]",
+      "name": "Meta description SERP length (100-165 chars): /apple-watch",
+      "status": "PASS",
+      "details": "Length: 141 chars (optimal: 100-165 chars)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.12[/faq]",
+      "name": "Meta description SERP length (100-165 chars): /faq",
+      "status": "PASS",
+      "details": "Length: 146 chars (optimal: 100-165 chars)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.12[/about]",
+      "name": "Meta description SERP length (100-165 chars): /about",
+      "status": "PASS",
+      "details": "Length: 132 chars (optimal: 100-165 chars)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.12[/medical-disclaimer]",
+      "name": "Meta description SERP length (100-165 chars): /medical-disclaimer",
+      "status": "PASS",
+      "details": "Length: 152 chars (optimal: 100-165 chars)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.12[/privacy]",
+      "name": "Meta description SERP length (100-165 chars): /privacy",
+      "status": "PASS",
+      "details": "Length: 113 chars (optimal: 100-165 chars)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.12[/terms]",
+      "name": "Meta description SERP length (100-165 chars): /terms",
+      "status": "PASS",
+      "details": "Length: 110 chars (optimal: 100-165 chars)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.23[/]",
+      "name": "Schema.org JSON-LD structure & entity types: /",
+      "status": "PASS",
+      "details": "Types found: [WebSite, Organization, SoftwareApplication, Offer, FAQPage, Question, Answer] | Required: [WebSite, SoftwareApplication]"
+    },
+    {
+      "tier": 2,
+      "id": "T2.23[/timer]",
+      "name": "Schema.org JSON-LD structure & entity types: /timer",
+      "status": "PASS",
+      "details": "Types found: [WebApplication, Offer, BreadcrumbList, ListItem] | Required: [WebApplication] + BreadcrumbList"
+    },
+    {
+      "tier": 2,
+      "id": "T2.23[/guide/wim-hof-method]",
+      "name": "Schema.org JSON-LD structure & entity types: /guide/wim-hof-method",
+      "status": "PASS",
+      "details": "Types found: [HowTo, HowToStep, BreadcrumbList, ListItem] | Required: [HowTo] + BreadcrumbList"
+    },
+    {
+      "tier": 2,
+      "id": "T2.23[/retention-times]",
+      "name": "Schema.org JSON-LD structure & entity types: /retention-times",
+      "status": "PASS",
+      "details": "Types found: [MedicalWebPage, BreadcrumbList, ListItem] | Required: [MedicalWebPage] + BreadcrumbList"
+    },
+    {
+      "tier": 2,
+      "id": "T2.23[/science-and-safety]",
+      "name": "Schema.org JSON-LD structure & entity types: /science-and-safety",
+      "status": "PASS",
+      "details": "Types found: [MedicalWebPage, BreadcrumbList, ListItem] | Required: [MedicalWebPage] + BreadcrumbList"
+    },
+    {
+      "tier": 2,
+      "id": "T2.23[/apple-watch]",
+      "name": "Schema.org JSON-LD structure & entity types: /apple-watch",
+      "status": "PASS",
+      "details": "Types found: [SoftwareApplication, Offer, BreadcrumbList, ListItem] | Required: [SoftwareApplication] + BreadcrumbList"
+    },
+    {
+      "tier": 2,
+      "id": "T2.23[/faq]",
+      "name": "Schema.org JSON-LD structure & entity types: /faq",
+      "status": "PASS",
+      "details": "Types found: [FAQPage, Question, Answer, BreadcrumbList, ListItem] | Required: [FAQPage] + BreadcrumbList"
+    },
+    {
+      "tier": 2,
+      "id": "T2.23[/about]",
+      "name": "Schema.org JSON-LD structure & entity types: /about",
+      "status": "PASS",
+      "details": "Types found: [ProfilePage, Organization, BreadcrumbList, ListItem] | Required: [(ProfilePage|Organization|AboutPage)] + BreadcrumbList"
+    },
+    {
+      "tier": 2,
+      "id": "T2.23[/medical-disclaimer]",
+      "name": "Schema.org JSON-LD structure & entity types: /medical-disclaimer",
+      "status": "PASS",
+      "details": "Types found: [MedicalWebPage, BreadcrumbList, ListItem] | Required: [(MedicalWebPage|WebPage)] + BreadcrumbList"
+    },
+    {
+      "tier": 2,
+      "id": "T2.23[/privacy]",
+      "name": "Schema.org JSON-LD structure & entity types: /privacy",
+      "status": "PASS",
+      "details": "Types found: [WebPage, BreadcrumbList, ListItem] | Required: [WebPage] + BreadcrumbList"
+    },
+    {
+      "tier": 2,
+      "id": "T2.23[/terms]",
+      "name": "Schema.org JSON-LD structure & entity types: /terms",
+      "status": "PASS",
+      "details": "Types found: [WebPage, BreadcrumbList, ListItem] | Required: [WebPage] + BreadcrumbList"
+    },
+    {
+      "tier": 2,
+      "id": "T2.34[/]",
+      "name": "Static SSR DOM content in <div id=\"root\">: /",
+      "status": "FAIL",
+      "details": "Root DOM content length: 0 chars | Contains semantic tags: false",
+      "error": "SSR HTML in #root is too short (0 chars <= 500) or missing pre-rendered DOM markup (empty root shell detected)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.34[/timer]",
+      "name": "Static SSR DOM content in <div id=\"root\">: /timer",
+      "status": "FAIL",
+      "details": "Root DOM content length: 0 chars | Contains semantic tags: false",
+      "error": "SSR HTML in #root is too short (0 chars <= 500) or missing pre-rendered DOM markup (empty root shell detected)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.34[/guide/wim-hof-method]",
+      "name": "Static SSR DOM content in <div id=\"root\">: /guide/wim-hof-method",
+      "status": "FAIL",
+      "details": "Root DOM content length: 0 chars | Contains semantic tags: false",
+      "error": "SSR HTML in #root is too short (0 chars <= 500) or missing pre-rendered DOM markup (empty root shell detected)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.34[/retention-times]",
+      "name": "Static SSR DOM content in <div id=\"root\">: /retention-times",
+      "status": "FAIL",
+      "details": "Root DOM content length: 0 chars | Contains semantic tags: false",
+      "error": "SSR HTML in #root is too short (0 chars <= 500) or missing pre-rendered DOM markup (empty root shell detected)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.34[/science-and-safety]",
+      "name": "Static SSR DOM content in <div id=\"root\">: /science-and-safety",
+      "status": "FAIL",
+      "details": "Root DOM content length: 0 chars | Contains semantic tags: false",
+      "error": "SSR HTML in #root is too short (0 chars <= 500) or missing pre-rendered DOM markup (empty root shell detected)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.34[/apple-watch]",
+      "name": "Static SSR DOM content in <div id=\"root\">: /apple-watch",
+      "status": "FAIL",
+      "details": "Root DOM content length: 0 chars | Contains semantic tags: false",
+      "error": "SSR HTML in #root is too short (0 chars <= 500) or missing pre-rendered DOM markup (empty root shell detected)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.34[/faq]",
+      "name": "Static SSR DOM content in <div id=\"root\">: /faq",
+      "status": "FAIL",
+      "details": "Root DOM content length: 0 chars | Contains semantic tags: false",
+      "error": "SSR HTML in #root is too short (0 chars <= 500) or missing pre-rendered DOM markup (empty root shell detected)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.34[/about]",
+      "name": "Static SSR DOM content in <div id=\"root\">: /about",
+      "status": "FAIL",
+      "details": "Root DOM content length: 0 chars | Contains semantic tags: false",
+      "error": "SSR HTML in #root is too short (0 chars <= 500) or missing pre-rendered DOM markup (empty root shell detected)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.34[/medical-disclaimer]",
+      "name": "Static SSR DOM content in <div id=\"root\">: /medical-disclaimer",
+      "status": "FAIL",
+      "details": "Root DOM content length: 0 chars | Contains semantic tags: false",
+      "error": "SSR HTML in #root is too short (0 chars <= 500) or missing pre-rendered DOM markup (empty root shell detected)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.34[/privacy]",
+      "name": "Static SSR DOM content in <div id=\"root\">: /privacy",
+      "status": "FAIL",
+      "details": "Root DOM content length: 0 chars | Contains semantic tags: false",
+      "error": "SSR HTML in #root is too short (0 chars <= 500) or missing pre-rendered DOM markup (empty root shell detected)"
+    },
+    {
+      "tier": 2,
+      "id": "T2.34[/terms]",
+      "name": "Static SSR DOM content in <div id=\"root\">: /terms",
+      "status": "FAIL",
+      "details": "Root DOM content length: 0 chars | Contains semantic tags: false",
+      "error": "SSR HTML in #root is too short (0 chars <= 500) or missing pre-rendered DOM markup (empty root shell detected)"
+    },
+    {
+      "tier": 3,
+      "id": "T3.1",
+      "name": "Heading Hierarchy: Exactly 1 H1 Tag Per Route",
+      "status": "FAIL",
+      "details": "/: 0 H1 tags found (expected exactly 1); /timer: 0 H1 tags found (expected exactly 1); /guide/wim-hof-method: 0 H1 tags found (expected exactly 1); /retention-times: 0 H1 tags found (expected exactly 1); /science-and-safety: 0 H1 tags found (expected exactly 1); /apple-watch: 0 H1 tags found (expected exactly 1); /faq: 0 H1 tags found (expected exactly 1); /about: 0 H1 tags found (expected exactly 1); /medical-disclaimer: 0 H1 tags found (expected exactly 1); /privacy: 0 H1 tags found (expected exactly 1); /terms: 0 H1 tags found (expected exactly 1)",
+      "error": "Invalid H1 heading hierarchy detected"
+    },
+    {
+      "tier": 3,
+      "id": "T3.2",
+      "name": "Heading Uniqueness: Unique H1 Text Across All Routes",
+      "status": "FAIL",
+      "details": "0 unique H1 headings across 0 routes",
+      "error": "Duplicate H1 headings found between distinct routes"
+    },
+    {
+      "tier": 3,
+      "id": "T3.3",
+      "name": "Image Accessibility: Alt Attributes & Aria-Hidden Tags",
+      "status": "PASS",
+      "details": "Checked 0 total <img> elements across all routes"
+    },
+    {
+      "tier": 3,
+      "id": "T3.4",
+      "name": "Sitemap.xml Integrity: All 11 Routes, Valid Priorities & Format",
+      "status": "PASS",
+      "details": "Found 11 URLs in sitemap (dist\\sitemap.xml) | All 11 routes present: true"
+    },
+    {
+      "tier": 3,
+      "id": "T3.5",
+      "name": "Robots.txt Configuration: User-agent, Allow & Sitemap URL",
+      "status": "PASS",
+      "details": "Configured at dist\\robots.txt"
+    },
+    {
+      "tier": 4,
+      "id": "T4.1",
+      "name": "TypeScript Compilation: tsc --noEmit",
+      "status": "PASS",
+      "details": "Clean compilation with 0 type errors"
+    },
+    {
+      "tier": 4,
+      "id": "T4.2",
+      "name": "Production Build Pipeline: npm run build (Skipped via --skip-build)",
+      "status": "WARN"
+    }
+  ]
+}

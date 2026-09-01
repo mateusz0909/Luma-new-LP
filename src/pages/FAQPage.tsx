@@ -172,10 +172,11 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
                       onClick={() => toggleFaq(item.id)}
                       className="flex justify-between items-center w-full text-left gap-6 cursor-pointer group"
                       aria-expanded={isOpen}
+                      aria-label={`Toggle FAQ: ${item.q}`}
                     >
-                      <span className="text-lg sm:text-xl font-bold text-white group-hover:text-[#d8d628] transition-colors">
+                      <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-[#d8d628] transition-colors">
                         {item.q}
-                      </span>
+                      </h3>
                       <div className="w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center shrink-0 group-hover:border-[#d8d628]/40 transition-all">
                         <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#d8d628]' : 'text-white/70'}`} />
                       </div>
@@ -212,12 +213,15 @@ export function FAQPage({ onNavigate }: FAQPageProps) {
         >
           Launch Online Timer &rarr;
         </a>
-        <div className="flex gap-4 font-mono text-xs">
+        <div className="flex flex-wrap gap-4 font-mono text-xs">
           <a href="/guide/wim-hof-method" onClick={(e) => handleLinkClick(e, '/guide/wim-hof-method')} className="text-white/60 hover:text-white">
             Full Method Guide &rarr;
           </a>
           <a href="/retention-times" onClick={(e) => handleLinkClick(e, '/retention-times')} className="text-white/60 hover:text-white">
             Retention Benchmarks &rarr;
+          </a>
+          <a href="/science-and-safety" onClick={(e) => handleLinkClick(e, '/science-and-safety')} className="text-white/60 hover:text-white">
+            Science &amp; Safety &rarr;
           </a>
         </div>
       </footer>

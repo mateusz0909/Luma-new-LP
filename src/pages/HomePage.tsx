@@ -1,10 +1,9 @@
-import React, { useRef, useState, useEffect, Suspense, lazy } from 'react';
+import React, { useRef, useState, useEffect, Suspense } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import { ArrowRight, ChevronDown, Play, Sparkles, BookOpen, Watch, ExternalLink } from 'lucide-react';
+import { ArrowRight, ChevronDown, Play, Sparkles, BookOpen, Watch, Activity, ShieldAlert } from 'lucide-react';
+import WebBreathingPacer from '../components/WebBreathingPacer';
 
-const WebBreathingPacer = lazy(() => import('../components/WebBreathingPacer'));
-
-const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+const asset = (path: string) => `${import.meta.env?.BASE_URL || '/'}${path.startsWith('/') ? path.slice(1) : path}`;
 
 const logoSrc = asset('screenshots/logo.webp');
 const appearanceSettings = asset('screenshots/appearance-settings.webp');
@@ -85,28 +84,28 @@ const galleryItems = [
 const faqs = [
   {
     id: 1,
-    question: "Is Luma really 100% free with no subscriptions?",
+    question: "Is Luma really 100% free with no subscriptions or ads?",
     answer: "Yes, Luma is completely free forever. There are zero subscriptions, no hidden paywalls, and no advertisements. All breathing timers, retention stopwatch tools, ambient audio, customizable themes, and Apple Watch features are fully unlocked for everyone."
   },
   {
     id: 2,
-    question: "How does Luma support the Wim Hof Method?",
-    answer: "Luma is purpose-built for Wim Hof Method (Iceman) breathwork. It provides guided rhythmic power breathing (customizable 30–40 breaths), an automated breath retention stopwatch with hold history, recovery breath timers (15s on full lungs), and fully customizable round cycles."
+    question: "How does Luma support the Wim Hof Breathing Method?",
+    answer: "Luma is purpose-built for the Wim Hof Breathing Method. It provides guided rhythmic power breathing (customizable 30–40 breaths), an automated breath retention stopwatch with round hold history, recovery breath timers (15s on full lungs), and fully customizable multi-round protocols."
   },
   {
     id: 3,
-    question: "Can I use Luma on my Apple Watch?",
-    answer: "Yes! Luma includes an Apple Watch companion app with custom tactile wrist haptics paired with your iPhone. Feel every breath pulse on your wrist while your session runs on iPhone."
+    question: "Can I practice breathwork with Luma on Apple Watch?",
+    answer: "Yes! Luma includes a dedicated Apple Watch companion app. Experience tactile wrist haptics for each inhale, exhale, retention hold, and recovery phase with synchronized Apple HealthKit logging."
   },
   {
     id: 4,
-    question: "Does Luma sync with Apple Health?",
-    answer: "Yes, Luma seamlessly integrates with Apple Health (HealthKit), automatically logging your Mindful Minutes and session heart rate to give you complete visibility over your recovery, nervous system regulation, and consistency."
+    question: "Does Luma automatically sync with Apple Health (HealthKit)?",
+    answer: "Yes, Luma automatically logs your Mindful Minutes and tracks heart rate metrics during breath retention protocols directly into Apple Health (HealthKit) for full recovery and HRV insights."
   },
   {
     id: 5,
-    question: "Can I practice Wim Hof breathing in my web browser?",
-    answer: "Yes, our interactive Web Breathing Pacer right here on this page allows you to practice guided power breathing, retention stopwatch timing, and recovery holds directly in any desktop or mobile browser without installing anything."
+    question: "Can I practice Wim Hof breathing online in my web browser?",
+    answer: "Yes, our interactive Web Breathing Pacer right here on this page allows you to practice guided cyclic power breathing, retention stopwatch timing, and recovery holds directly in your desktop or mobile browser with zero installation."
   }
 ];
 
@@ -292,12 +291,16 @@ export function HomePage({ onNavigate }: HomePageProps) {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="z-10 flex flex-col items-center w-full px-4 text-center"
         >
+          <span className="font-mono text-xs uppercase tracking-widest text-[#d8d628] border border-[#d8d628]/30 rounded-full px-4 py-1.5 inline-flex mb-6 backdrop-blur-md bg-black/40">
+            100% FREE &bull; ZERO ADS &bull; APPLE WATCH READY
+          </span>
           <div className="mb-8 md:mb-12">
             <h1 className="text-[20vw] md:text-[18vw] leading-[0.8] font-bold tracking-tighter uppercase text-white">
-              Breathe.
+              <span className="block">Breathe.</span>
+              <span className="sr-only">Free Wim Hof Breathing Method App &amp; Guided Retention Timer</span>
             </h1>
             <p className="font-serif italic text-xl sm:text-2xl md:text-5xl mt-6 md:mt-10 text-white/90 max-w-4xl mx-auto font-normal">
-              The Iceman method, reimagined. Free breathwork app &amp; retention timer.
+              The Wim Hof Method, reimagined. Free breathwork app, online guided pacer &amp; retention timer.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -312,7 +315,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               onClick={(e) => handleLinkClick(e, '/timer')}
               className="px-6 py-3.5 rounded-full bg-white/10 border border-white/15 text-white font-mono text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all"
             >
-              Try Web Timer &rarr;
+              Launch Web Timer &rarr;
             </a>
           </div>
         </motion.div>
@@ -320,6 +323,17 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
       {/* Editorial Statement (Blockquote semantic tag) */}
       <section className="py-[12vh] md:py-[15vh] px-6 md:px-20 max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-8"
+        >
+          <span className="font-mono text-xs uppercase tracking-widest text-[#d8d628] border border-[#d8d628]/30 rounded-full px-4 py-1.5 inline-block">
+            OUR PHILOSOPHY
+          </span>
+        </motion.div>
         <motion.blockquote 
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -327,13 +341,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif leading-[1.15] tracking-tight"
         >
-          We believe breath is the ultimate tool for human optimization. <br className="hidden md:block"/>
-          <span className="text-white/60">No paywalls. No noise. Just pure focus.</span>
+          We believe conscious breathwork is the ultimate tool for human resilience and nervous system regulation. <br className="hidden md:block"/>
+          <span className="text-white/60">No subscriptions. No paywalls. No noise. Just pure focus.</span>
         </motion.blockquote>
       </section>
 
       {/* Showcase Section */}
-      <section ref={containerRef} className="relative px-6 md:px-20 max-w-7xl mx-auto pb-[10vh]">
+      <section ref={containerRef} className="relative px-6 md:px-20 max-w-7xl mx-auto pb-[10vh]" aria-label="Practice Architecture">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -341,9 +355,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
           transition={{ duration: 0.5 }}
           className="mb-10"
         >
-          <h2 className="text-xs font-mono uppercase tracking-widest text-[#d8d628] border border-[#d8d628]/30 rounded-full px-4 py-1.5 inline-block">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#d8d628] border border-[#d8d628]/30 rounded-full px-4 py-1.5 inline-block">
             PRACTICE ARCHITECTURE
-          </h2>
+          </span>
+          <h2 className="sr-only">Wim Hof Breathwork Protocol: Daily Ritual, Sensory Immersion &amp; Retention Analytics</h2>
         </motion.div>
         
         {/* Mobile View: Cards */}
@@ -357,9 +372,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
           >
             <div className="w-full flex flex-col gap-3">
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-3 py-1 w-fit">01 / RITUAL</span>
-              <h3 className="text-3xl font-bold tracking-tight">Your daily practice.</h3>
+              <h3 className="text-3xl font-bold tracking-tight">Your daily breath ritual.</h3>
               <p className="text-base text-white/60 font-serif italic">
-                Fully customizable rounds, retention times, and recovery holds.
+                Tailor your 30–40 power breath cycles, unforced empty-lung retentions, and 15-second recovery holds with seamless fluidity.
               </p>
             </div>
             <PhoneFrame>
@@ -376,9 +391,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
           >
             <div className="w-full flex flex-col gap-3">
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-3 py-1 w-fit">02 / IMMERSION</span>
-              <h3 className="text-3xl font-bold tracking-tight">Deep focus.</h3>
+              <h3 className="text-3xl font-bold tracking-tight">Deep sensory focus.</h3>
               <p className="text-base text-white/60 font-serif italic">
-                Immersive audio, haptic feedback, and distraction-free visual timers.
+                Immerse in acoustic Tibetan singing bowls, tactile Apple Watch wrist haptics, and distraction-free dark OLED visual pacing.
               </p>
             </div>
             <PhoneFrame>
@@ -395,9 +410,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
           >
             <div className="w-full flex flex-col gap-3">
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-3 py-1 w-fit">03 / INSIGHT</span>
-              <h3 className="text-3xl font-bold tracking-tight">Track everything.</h3>
+              <h3 className="text-3xl font-bold tracking-tight">Track retention metrics.</h3>
               <p className="text-base text-white/60 font-serif italic">
-                Detailed analytics, personal records, and streak tracking.
+                Analyze retention time trends across rounds, celebrate personal best holds, and sync Mindful Minutes effortlessly with Apple Health.
               </p>
             </div>
             <PhoneFrame>
@@ -417,9 +432,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
               className="flex flex-col gap-8"
             >
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">01 / RITUAL</span>
-              <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Your daily<br/>practice.</h3>
+              <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Your daily<br/>breath ritual.</h3>
               <p className="text-xl md:text-3xl text-white/70 font-serif italic leading-relaxed">
-                Fully customizable rounds, retention times, and recovery holds.
+                Tailor your 30–40 power breath cycles, unforced empty-lung retentions, and 15-second recovery holds with seamless fluidity.
               </p>
             </motion.div>
 
@@ -431,9 +446,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
               className="flex flex-col gap-8"
             >
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">02 / IMMERSION</span>
-              <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Deep<br/>focus.</h3>
+              <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Deep<br/>sensory focus.</h3>
               <p className="text-xl md:text-3xl text-white/70 font-serif italic leading-relaxed">
-                Immersive audio, haptic feedback, and distraction-free timers.
+                Immerse in acoustic Tibetan singing bowls, tactile Apple Watch wrist haptics, and distraction-free dark OLED visual pacing.
               </p>
             </motion.div>
 
@@ -445,9 +460,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
               className="flex flex-col gap-8"
             >
               <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 w-fit">03 / INSIGHT</span>
-              <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Track<br/>everything.</h3>
+              <h3 className="text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9]">Track retention<br/>metrics.</h3>
               <p className="text-xl md:text-3xl text-white/70 font-serif italic leading-relaxed">
-                Detailed analytics, best holds, and streak tracking.
+                Analyze retention time trends across rounds, celebrate personal best holds, and sync Mindful Minutes effortlessly with Apple Health.
               </p>
             </motion.div>
           </div>
@@ -492,7 +507,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* Interactive Web Breathing Pacer Section */}
-      <section className="py-20 px-6 md:px-20 max-w-7xl mx-auto border-t border-white/10">
+      <section className="py-20 px-6 md:px-20 max-w-7xl mx-auto border-t border-white/10" aria-label="Web Breathing Pacer">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -501,11 +516,11 @@ export function HomePage({ onNavigate }: HomePageProps) {
           className="text-center max-w-2xl mx-auto mb-10"
         >
           <span className="text-[#49cfff] font-mono text-xs tracking-widest border border-[#49cfff]/30 rounded-full px-4 py-1.5 inline-flex mb-4">
-            ONLINE SIMULATOR
+            FREE ONLINE BREATHING PACER
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Try the Guided Pacer now.</h2>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Free Online Wim Hof Breathing Timer &amp; Guided Pacer</h2>
           <p className="text-white/70 font-serif italic text-base md:text-lg mt-2">
-            Experience guided power breathing and empty-lung retention right in your browser.
+            Experience guided cyclic power breathing, acoustic Tibetan bowl sound chimes, and automatic breath hold retention stopwatch directly in your browser.
           </p>
         </motion.div>
         <motion.div
@@ -526,7 +541,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-24 overflow-hidden border-t border-white/10 bg-white/[0.02]">
+      <section className="py-24 overflow-hidden border-t border-white/10 bg-white/[0.02]" aria-label="Interface Showcase">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -534,8 +549,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
           transition={{ duration: 0.6 }}
           className="px-6 md:px-20 max-w-7xl mx-auto mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">The Interface: Breathwork &amp; Retention Timer.</h2>
-          <p className="text-xl text-white/70 font-serif italic">Designed for clarity, deep focus, and seamless retention tracking.</p>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">Pure Focus: The Breathwork &amp; Retention Timer Interface</h2>
+          <p className="text-xl text-white/70 font-serif italic">Engineered with OLED black aesthetics, smooth spring animations, and distraction-free breathing rounds.</p>
         </motion.div>
         
         <motion.div 
@@ -565,7 +580,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* Appearance Themes Section */}
-      <section className="border-t border-white/10 py-24 md:py-32 overflow-hidden bg-[radial-gradient(circle_at_top,#ffffff0d,transparent_35%),linear-gradient(180deg,#000000_0%,#050814_100%)]">
+      <section className="border-t border-white/10 py-24 md:py-32 overflow-hidden bg-[radial-gradient(circle_at_top,#ffffff0d,transparent_35%),linear-gradient(180deg,#000000_0%,#050814_100%)]" aria-label="Appearance Themes">
         <div className="px-6 md:px-20 max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -574,9 +589,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mb-14 md:mb-20"
           >
-            <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 inline-flex">NEW / APPEARANCE</span>
-            <h2 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.95]">Change the mood, keep the flow. Customizable themes.</h2>
-            <p className="mt-6 text-xl md:text-2xl text-white/70 font-serif italic leading-relaxed">Switch visual themes without disrupting your practice.</p>
+            <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 inline-flex">CUSTOMIZABLE THEMES</span>
+            <h2 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.95]">Customizable OLED Themes: Change the Mood, Keep the Flow</h2>
+            <p className="mt-6 text-xl md:text-2xl text-white/70 font-serif italic leading-relaxed">Choose between glowing neon orbs, deep plum midnight, or calm forest hues tailored for morning or bedtime breathwork.</p>
           </motion.div>
 
           <div className="grid grid-cols-1 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-10 md:gap-12 items-start">
@@ -629,7 +644,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* Brutalist Grid Section */}
-      <section className="border-t border-white/10">
+      <section className="border-t border-white/10" aria-label="Ecosystem and Sensory Features">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -643,7 +658,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10 border-b border-white/10">
-          <motion.div 
+          <motion.article 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
@@ -653,8 +668,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <div className="absolute top-0 right-0 w-96 h-96 bg-white/[0.01] group-hover:bg-[#49cfff]/[0.06] rounded-full blur-3xl pointer-events-none transition-colors duration-700" />
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
               <img src={asset('screenshots/applewatch-icon.webp')} alt="Apple Watch App icon" width="192" height="64" loading="lazy" decoding="async" className="w-48 h-16 object-contain object-left group-hover:scale-105 transition-transform duration-500 invert origin-left" />
-              <h3 className="text-3xl font-bold tracking-tight">Apple Watch Companion</h3>
-              <p className="text-lg text-white/70 group-hover:text-white transition-colors font-serif italic">Tactile wrist haptics companion paired with your iPhone. Feel every breath pulse.</p>
+              <h3 className="text-3xl font-bold tracking-tight">Apple Watch Companion App</h3>
+              <p className="text-lg text-white/70 group-hover:text-white transition-colors font-serif italic">Feel every inhale, exhale, and retention hold with synchronized tactile wrist haptics while your session runs on iPhone.</p>
               <a href="/apple-watch" onClick={(e) => handleLinkClick(e, '/apple-watch')} className="font-mono text-xs uppercase tracking-wider text-[#d8d628] group-hover:text-white flex items-center gap-1">
                 Learn more &rarr;
               </a>
@@ -662,9 +677,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-40 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
               <img src={asset('screenshots/watch-screen.webp')} alt="Luma Apple Watch companion app timer and haptics" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
-          </motion.div>
+          </motion.article>
 
-          <motion.div 
+          <motion.article 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
@@ -674,17 +689,17 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <div className="absolute top-0 right-0 w-96 h-96 bg-white/[0.01] group-hover:bg-[#49cfff]/[0.06] rounded-full blur-3xl pointer-events-none transition-colors duration-700" />
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
               <img src={asset('screenshots/liveactivity-icon.webp')} alt="iOS Live Activities & Lock Screen Widgets icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-105 transition-transform duration-500" />
-              <h3 className="text-3xl font-bold tracking-tight">Widgets &amp; Live Activities</h3>
-              <p className="text-lg text-white/70 group-hover:text-white transition-colors font-serif italic">Track your session on the Lock Screen and customize your Home Screen with beautiful iOS widgets.</p>
+              <h3 className="text-3xl font-bold tracking-tight">iOS Widgets &amp; Live Activities</h3>
+              <p className="text-lg text-white/70 group-hover:text-white transition-colors font-serif italic">Monitor active breathing sessions directly on Dynamic Island and Lock Screen, with streak widgets for your Home Screen.</p>
             </div>
             <div className="absolute -bottom-24 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-40 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
               <img src={asset('screenshots/home-widgets.webp')} alt="Luma iOS Home Screen and Lock Screen breathwork widgets" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
-          </motion.div>
+          </motion.article>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/10">
-          <motion.div 
+          <motion.article 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
@@ -694,15 +709,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <div className="absolute top-0 right-0 w-96 h-96 bg-white/[0.01] group-hover:bg-[#49cfff]/[0.06] rounded-full blur-3xl pointer-events-none transition-colors duration-700" />
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
               <img src={asset('screenshots/ah-icon.webp')} alt="Apple Health Integration icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-105 transition-transform duration-500" />
-              <h3 className="text-3xl font-bold tracking-tight">Apple Health</h3>
-              <p className="text-lg text-white/70 group-hover:text-white transition-colors font-serif italic">Seamlessly sync your mindful minutes and heart rate data.</p>
+              <h3 className="text-3xl font-bold tracking-tight">Apple HealthKit Sync</h3>
+              <p className="text-lg text-white/70 group-hover:text-white transition-colors font-serif italic">Automatically log your Mindful Minutes and track heart rate variability (HRV) trends during breath retention protocols.</p>
             </div>
             <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[-15deg] group-hover:rotate-[-5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-40 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
               <img src={asset('screenshots/applehealth-screen.webp')} alt="Luma Mindful Minutes syncing with Apple Health" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
-          </motion.div>
+          </motion.article>
 
-          <motion.div 
+          <motion.article 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
@@ -712,18 +727,197 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <div className="absolute top-0 right-0 w-96 h-96 bg-white/[0.01] group-hover:bg-[#49cfff]/[0.06] rounded-full blur-3xl pointer-events-none transition-colors duration-700" />
             <div className="z-10 flex flex-col gap-6 w-full md:w-2/3">
               <img src={asset('screenshots/haptics-icon.webp')} alt="Haptic Vibration Feedback icon" width="48" height="48" loading="lazy" decoding="async" className="w-12 h-12 object-contain group-hover:scale-105 transition-transform duration-500" />
-              <h3 className="text-3xl font-bold tracking-tight">Haptics</h3>
-              <p className="text-lg text-white/70 group-hover:text-white transition-colors font-serif italic">Feel every breath with custom-designed haptic feedback patterns.</p>
+              <h3 className="text-3xl font-bold tracking-tight">Precision Sensory Haptics</h3>
+              <p className="text-lg text-white/70 group-hover:text-white transition-colors font-serif italic">Close your eyes and breathe in total darkness. Tailored vibration envelopes guide your pacing without screen glare.</p>
             </div>
             <div className="absolute -bottom-10 -right-10 w-[50%] md:w-[40%] rotate-[15deg] group-hover:rotate-[5deg] group-hover:-translate-y-4 transition-all duration-700 ease-out opacity-40 group-hover:opacity-100 drop-shadow-2xl pointer-events-none">
               <img src={asset('screenshots/haptics.webp')} alt="Luma custom haptic feedback patterns for breathing" loading="lazy" decoding="async" className="w-full h-auto object-contain rounded-[2rem] border-4 border-white/10" />
             </div>
-          </motion.div>
+          </motion.article>
+        </div>
+      </section>
+
+      {/* Knowledge & Physiology Hub Section */}
+      <section className="border-t border-white/10 py-24 md:py-32 px-6 md:px-20 max-w-7xl mx-auto" aria-label="Knowledge and Physiology Hub">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mb-14 md:mb-20"
+        >
+          <span className="text-[#d8d628] font-mono text-xs tracking-widest border border-[#d8d628]/30 rounded-full px-4 py-1.5 inline-flex">
+            KNOWLEDGE &amp; PHYSIOLOGY HUB
+          </span>
+          <h2 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.95] text-white">
+            Master the Science Behind the Breath.
+          </h2>
+          <p className="mt-6 text-xl md:text-2xl text-white/70 font-serif italic leading-relaxed">
+            Deep-dive into peer-reviewed clinical research, normative retention benchmarks, full method tutorials, and our Apple Watch companion architecture.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {/* Card 1: Method Guide */}
+          <motion.article 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.5 }}
+            className="relative rounded-[2rem] border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8 sm:p-10 flex flex-col justify-between group hover:border-[#d8d628]/40 hover:bg-white/[0.05] transition-all duration-500 overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#d8d628]/[0.04] rounded-full blur-3xl pointer-events-none group-hover:bg-[#d8d628]/[0.08] transition-colors duration-500" />
+            <div className="relative z-10">
+              <div className="flex items-center justify-between gap-4 mb-6">
+                <span className="font-mono text-xs tracking-widest text-[#d8d628] uppercase border border-[#d8d628]/30 rounded-full px-3 py-1">
+                  TUTORIAL &bull; 5-STEP PROTOCOL
+                </span>
+                <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#d8d628] group-hover:scale-110 transition-transform">
+                  <BookOpen className="w-5 h-5" />
+                </div>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-white group-hover:text-[#d8d628] transition-colors">
+                How to Do Wim Hof Breathing
+              </h3>
+              <p className="mt-4 text-base sm:text-lg text-white/70 font-serif italic leading-relaxed">
+                A comprehensive step-by-step masterclass covering cyclic hyperventilation, empty-lung retention technique, and the 15-second recovery breath.
+              </p>
+            </div>
+            <div className="relative z-10 mt-8 pt-6 border-t border-white/10">
+              <a 
+                href="/guide/wim-hof-method" 
+                onClick={(e) => handleLinkClick(e, '/guide/wim-hof-method')}
+                className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-white group-hover:text-[#d8d628] font-bold transition-all"
+              >
+                <span className="w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:bg-[#d8d628] group-hover:text-black transition-all">
+                  <ArrowRight className="w-3.5 h-3.5 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                </span>
+                Read Full Method Guide &rarr;
+              </a>
+            </div>
+          </motion.article>
+
+          {/* Card 2: Retention Times */}
+          <motion.article 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="relative rounded-[2rem] border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8 sm:p-10 flex flex-col justify-between group hover:border-[#49cfff]/40 hover:bg-white/[0.05] transition-all duration-500 overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#49cfff]/[0.04] rounded-full blur-3xl pointer-events-none group-hover:bg-[#49cfff]/[0.08] transition-colors duration-500" />
+            <div className="relative z-10">
+              <div className="flex items-center justify-between gap-4 mb-6">
+                <span className="font-mono text-xs tracking-widest text-[#49cfff] uppercase border border-[#49cfff]/30 rounded-full px-3 py-1">
+                  PHYSIOLOGY &bull; ROUND BENCHMARKS
+                </span>
+                <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#49cfff] group-hover:scale-110 transition-transform">
+                  <Activity className="w-5 h-5" />
+                </div>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-white group-hover:text-[#49cfff] transition-colors">
+                Retention Times &amp; Physiology
+              </h3>
+              <p className="mt-4 text-base sm:text-lg text-white/70 font-serif italic leading-relaxed">
+                Understand normative breath-hold durations across rounds 1 to 4, hypocapnia, cellular oxygenation, and why retentions naturally extend.
+              </p>
+            </div>
+            <div className="relative z-10 mt-8 pt-6 border-t border-white/10">
+              <a 
+                href="/retention-times" 
+                onClick={(e) => handleLinkClick(e, '/retention-times')}
+                className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-white group-hover:text-[#49cfff] font-bold transition-all"
+              >
+                <span className="w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:bg-[#49cfff] group-hover:text-black transition-all">
+                  <ArrowRight className="w-3.5 h-3.5 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                </span>
+                Explore Retention Benchmarks &rarr;
+              </a>
+            </div>
+          </motion.article>
+
+          {/* Card 3: Science & Safety */}
+          <motion.article 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="relative rounded-[2rem] border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8 sm:p-10 flex flex-col justify-between group hover:border-[#d8d628]/40 hover:bg-white/[0.05] transition-all duration-500 overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#d8d628]/[0.04] rounded-full blur-3xl pointer-events-none group-hover:bg-[#d8d628]/[0.08] transition-colors duration-500" />
+            <div className="relative z-10">
+              <div className="flex items-center justify-between gap-4 mb-6">
+                <span className="font-mono text-xs tracking-widest text-[#d8d628] uppercase border border-[#d8d628]/30 rounded-full px-3 py-1">
+                  CLINICAL RESEARCH &bull; E-E-A-T
+                </span>
+                <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#d8d628] group-hover:scale-110 transition-transform">
+                  <ShieldAlert className="w-5 h-5" />
+                </div>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-white group-hover:text-[#d8d628] transition-colors">
+                Science &amp; Safety Guidelines
+              </h3>
+              <p className="mt-4 text-base sm:text-lg text-white/70 font-serif italic leading-relaxed">
+                Examine the Radboud University trials, respiratory alkalosis, autonomic nervous system modulation, and vital medical contraindications.
+              </p>
+            </div>
+            <div className="relative z-10 mt-8 pt-6 border-t border-white/10">
+              <a 
+                href="/science-and-safety" 
+                onClick={(e) => handleLinkClick(e, '/science-and-safety')}
+                className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-white group-hover:text-[#d8d628] font-bold transition-all"
+              >
+                <span className="w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:bg-[#d8d628] group-hover:text-black transition-all">
+                  <ArrowRight className="w-3.5 h-3.5 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                </span>
+                Read Clinical Science &rarr;
+              </a>
+            </div>
+          </motion.article>
+
+          {/* Card 4: Apple Watch App */}
+          <motion.article 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="relative rounded-[2rem] border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8 sm:p-10 flex flex-col justify-between group hover:border-[#49cfff]/40 hover:bg-white/[0.05] transition-all duration-500 overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#49cfff]/[0.04] rounded-full blur-3xl pointer-events-none group-hover:bg-[#49cfff]/[0.08] transition-colors duration-500" />
+            <div className="relative z-10">
+              <div className="flex items-center justify-between gap-4 mb-6">
+                <span className="font-mono text-xs tracking-widest text-[#49cfff] uppercase border border-[#49cfff]/30 rounded-full px-3 py-1">
+                  COMPANION &bull; TACTILE HAPTICS
+                </span>
+                <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#49cfff] group-hover:scale-110 transition-transform">
+                  <Watch className="w-5 h-5" />
+                </div>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-white group-hover:text-[#49cfff] transition-colors">
+                Apple Watch Companion App
+              </h3>
+              <p className="mt-4 text-base sm:text-lg text-white/70 font-serif italic leading-relaxed">
+                Experience eyes-free breath pacing with distinct wrist vibration envelopes for inhales, exhales, and retentions with automatic HealthKit logging.
+              </p>
+            </div>
+            <div className="relative z-10 mt-8 pt-6 border-t border-white/10">
+              <a 
+                href="/apple-watch" 
+                onClick={(e) => handleLinkClick(e, '/apple-watch')}
+                className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-white group-hover:text-[#49cfff] font-bold transition-all"
+              >
+                <span className="w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:bg-[#49cfff] group-hover:text-black transition-all">
+                  <ArrowRight className="w-3.5 h-3.5 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
+                </span>
+                Explore Watch App &rarr;
+              </a>
+            </div>
+          </motion.article>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="border-t border-white/10 py-24 md:py-32 px-6 md:px-20 max-w-7xl mx-auto">
+      <section className="border-t border-white/10 py-24 md:py-32 px-6 md:px-20 max-w-7xl mx-auto" aria-label="Frequently Asked Questions">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -735,10 +929,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
             FAQ / KNOWLEDGE
           </span>
           <h2 className="mt-6 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.95]">
-            Breathwork &amp; Luma FAQ.
+            Frequently Asked Questions: Wim Hof Breathwork &amp; Luma App
           </h2>
           <p className="mt-6 text-xl md:text-2xl text-white/70 font-serif italic leading-relaxed">
-            Everything you need to know about breathwork, retention timer, Apple Watch haptics, and our 100% free philosophy.
+            Clear, science-backed answers regarding cyclic hyperventilation, breath hold physiology, Apple Watch haptics, and our 100% free philosophy.
           </p>
         </motion.div>
 
@@ -811,13 +1005,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="z-10 flex flex-col items-center"
         >
-          <h2 className="text-5xl md:text-8xl font-bold tracking-tighter mb-6">Start your breath practice.</h2>
+          <h2 className="text-5xl md:text-8xl font-bold tracking-tighter mb-6">Start your daily breathwork practice.</h2>
           <p className="text-xl md:text-2xl text-white/70 font-serif italic mb-12 max-w-xl">
-            Join thousands of others optimizing their mind and body. No paywalls. Free forever.
+            Unlock mental clarity, nervous system resilience, and deep recovery. Zero subscriptions. 100% free forever.
           </p>
           <CTAButton 
             href="https://apps.apple.com/us/app/luma-breathwork-meditation/id6737122722" 
-            text="Get Luma Free" 
+            text="Get Luma Free on App Store" 
             ariaLabel="Get Luma Free for iOS from Apple App Store"
             eventName="App Store PreFooter Click"
           />

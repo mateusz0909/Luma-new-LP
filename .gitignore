@@ -7,4 +7,8 @@ coverage/
 .env*
 !.env.example
 test-screenshots/
-
+*.json.token
+*token*.json
+*client_secret*.json
+*service_account*.json
+credentials*.json
